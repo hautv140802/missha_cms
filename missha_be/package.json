@@ -1,0 +1,42 @@
+{
+  "name": "missha-be",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "deploy": "strapi deploy"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@strapi/plugin-cloud": "4.25.9",
+    "@strapi/plugin-documentation": "^4.25.9",
+    "@strapi/plugin-i18n": "4.25.9",
+    "@strapi/plugin-users-permissions": "4.25.9",
+    "@strapi/strapi": "4.25.9",
+    "moment-timezone": "^0.5.45",
+    "pg": "8.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "slugify": "^1.6.6",
+    "strapi-advanced-uuid": "^1.3.0",
+    "strapi-plugin-meilisearch": "^0.12.0",
+    "strapi-plugin-populate-deep": "^3.0.1",
+    "styled-components": "5.3.3"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "ec139231-bead-4b66-a9fb-92132bfec0f1"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
