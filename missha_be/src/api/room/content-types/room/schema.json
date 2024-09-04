@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rooms",
+  "info": {
+    "singularName": "room",
+    "pluralName": "rooms",
+    "displayName": "room"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "room_id": {
+      "type": "customField",
+      "options": {
+        "uuid-format": "^[a-z0-9]{40}$"
+      },
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "seen_status": {
+      "type": "boolean"
+    }
+  }
+}

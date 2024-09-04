@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookings",
+  "info": {
+    "singularName": "booking",
+    "pluralName": "bookings",
+    "displayName": "Booking",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "customer_full_name": {
+      "type": "string"
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "services": {
+      "type": "enumeration",
+      "enum": [
+        "Tổng hợp",
+        "Nặn mụn",
+        "Lăn mụn"
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Chờ xác nhận",
+        "Xác nhận",
+        "Hoàn thành",
+        "Huỷ"
+      ]
+    }
+  }
+}

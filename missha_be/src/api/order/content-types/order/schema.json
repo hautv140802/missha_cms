@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customer_email": {
+      "type": "string"
+    },
+    "customer_full_name": {
+      "type": "string"
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "shipping_address": {
+      "type": "string"
+    },
+    "shipping_method": {
+      "type": "enumeration",
+      "enum": [
+        "Giao qua đối tác"
+      ],
+      "default": "Giao qua đối tác"
+    },
+    "payment_method": {
+      "type": "enumeration",
+      "enum": [
+        "VNPAY",
+        "COD"
+      ]
+    },
+    "total": {
+      "type": "biginteger"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Chờ xác nhận",
+        "Xác nhận",
+        "Đang vận chuyển",
+        "Hoàn thành"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "voucher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::voucher.voucher"
+    },
+    "transport_fee": {
+      "type": "biginteger",
+      "default": "35000"
+    },
+    "order_code": {
+      "type": "customField",
+      "options": {
+        "uuid-format": "^[A-Z]{4}[0-9]{6}$"
+      },
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    }
+  }
+}

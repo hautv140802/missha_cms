@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_lines",
+  "info": {
+    "singularName": "product-line",
+    "pluralName": "product-lines",
+    "displayName": "product-line",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "product_line"
+    }
+  }
+}

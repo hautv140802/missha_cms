@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skin_properties",
+  "info": {
+    "singularName": "skin-property",
+    "pluralName": "skin-properties",
+    "displayName": "skin_property"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "skin_properties"
+    }
+  }
+}

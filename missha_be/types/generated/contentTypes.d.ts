@@ -788,6 +788,483 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBookingBooking extends Schema.CollectionType {
+  collectionName: 'bookings';
+  info: {
+    singularName: 'booking';
+    pluralName: 'bookings';
+    displayName: 'Booking';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    customer_email: Attribute.String;
+    customer_full_name: Attribute.String;
+    customer_phone: Attribute.String;
+    date: Attribute.DateTime;
+    services: Attribute.Enumeration<
+      ['T\u1ED5ng h\u1EE3p', 'N\u1EB7n m\u1EE5n', 'L\u0103n m\u1EE5n']
+    >;
+    status: Attribute.Enumeration<
+      [
+        'Ch\u1EDD x\u00E1c nh\u1EADn',
+        'X\u00E1c nh\u1EADn',
+        'Ho\u00E0n th\u00E0nh',
+        'Hu\u1EF7'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.String;
+    banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMessageMessage extends Schema.CollectionType {
+  collectionName: 'messages';
+  info: {
+    singularName: 'message';
+    pluralName: 'messages';
+    displayName: 'message';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    sender: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    content: Attribute.Text;
+    room: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'api::room.room'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    customer_email: Attribute.String;
+    customer_full_name: Attribute.String;
+    customer_phone: Attribute.String;
+    shipping_address: Attribute.String;
+    shipping_method: Attribute.Enumeration<
+      ['Giao qua \u0111\u1ED1i t\u00E1c']
+    > &
+      Attribute.DefaultTo<'Giao qua \u0111\u1ED1i t\u00E1c'>;
+    payment_method: Attribute.Enumeration<['VNPAY', 'COD']>;
+    total: Attribute.BigInteger;
+    status: Attribute.Enumeration<
+      [
+        'Ch\u1EDD x\u00E1c nh\u1EADn',
+        'X\u00E1c nh\u1EADn',
+        '\u0110ang v\u1EADn chuy\u1EC3n',
+        'Ho\u00E0n th\u00E0nh'
+      ]
+    >;
+    user: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    voucher: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'api::voucher.voucher'
+    >;
+    transport_fee: Attribute.BigInteger & Attribute.DefaultTo<'35000'>;
+    order_code: Attribute.UID<
+      undefined,
+      undefined,
+      {
+        'uuid-format': '^[A-Z]{4}[0-9]{6}$';
+      }
+    > &
+      Attribute.CustomField<
+        'plugin::strapi-advanced-uuid.uuid',
+        {
+          'uuid-format': '^[A-Z]{4}[0-9]{6}$';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
+  collectionName: 'order_details';
+  info: {
+    singularName: 'order-detail';
+    pluralName: 'order-details';
+    displayName: 'order-detail';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'api::product.product'
+    >;
+    order: Attribute.Relation<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'api::order.order'
+    >;
+    unit_price: Attribute.BigInteger;
+    quantity: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.String;
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
+    gallery: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    price: Attribute.BigInteger & Attribute.DefaultTo<'10000'>;
+    sale_price: Attribute.BigInteger & Attribute.DefaultTo<'10000'>;
+    total_purchase: Attribute.Integer & Attribute.DefaultTo<0>;
+    description: Attribute.Blocks;
+    product_line: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::product-line.product-line'
+    >;
+    skin_properties: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::skin-property.skin-property'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductLineProductLine extends Schema.CollectionType {
+  collectionName: 'product_lines';
+  info: {
+    singularName: 'product-line';
+    pluralName: 'product-lines';
+    displayName: 'product-line';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.String;
+    products: Attribute.Relation<
+      'api::product-line.product-line',
+      'oneToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product-line.product-line',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product-line.product-line',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRoomRoom extends Schema.CollectionType {
+  collectionName: 'rooms';
+  info: {
+    singularName: 'room';
+    pluralName: 'rooms';
+    displayName: 'room';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    room_id: Attribute.UID<
+      undefined,
+      undefined,
+      {
+        'uuid-format': '^[a-z0-9]{40}$';
+      }
+    > &
+      Attribute.CustomField<
+        'plugin::strapi-advanced-uuid.uuid',
+        {
+          'uuid-format': '^[a-z0-9]{40}$';
+        }
+      >;
+    user: Attribute.Relation<
+      'api::room.room',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    seen_status: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::room.room', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSkinPropertySkinProperty extends Schema.CollectionType {
+  collectionName: 'skin_properties';
+  info: {
+    singularName: 'skin-property';
+    pluralName: 'skin-properties';
+    displayName: 'skin_property';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.String;
+    products: Attribute.Relation<
+      'api::skin-property.skin-property',
+      'manyToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::skin-property.skin-property',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::skin-property.skin-property',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserVoucherUserVoucher extends Schema.CollectionType {
+  collectionName: 'user_vouchers';
+  info: {
+    singularName: 'user-voucher';
+    pluralName: 'user-vouchers';
+    displayName: 'user-voucher';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    voucher: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'api::voucher.voucher'
+    >;
+    status: Attribute.Enumeration<['USED', 'UNUSED']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-voucher.user-voucher',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVoucherVoucher extends Schema.CollectionType {
+  collectionName: 'vouchers';
+  info: {
+    singularName: 'voucher';
+    pluralName: 'vouchers';
+    displayName: 'Voucher';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Attribute.String;
+    amount_decrease: Attribute.BigInteger;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::voucher.voucher',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::voucher.voucher',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -806,6 +1283,17 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::booking.booking': ApiBookingBooking;
+      'api::category.category': ApiCategoryCategory;
+      'api::message.message': ApiMessageMessage;
+      'api::order.order': ApiOrderOrder;
+      'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
+      'api::product.product': ApiProductProduct;
+      'api::product-line.product-line': ApiProductLineProductLine;
+      'api::room.room': ApiRoomRoom;
+      'api::skin-property.skin-property': ApiSkinPropertySkinProperty;
+      'api::user-voucher.user-voucher': ApiUserVoucherUserVoucher;
+      'api::voucher.voucher': ApiVoucherVoucher;
     }
   }
 }
