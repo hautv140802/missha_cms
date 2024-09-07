@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-04T08:33:26.105Z"
+    "x-generation-date": "2024-09-07T05:27:44.957Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -646,6 +646,27 @@
                             }
                           }
                         }
+                      },
+                      "address": {},
+                      "full_name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "createdAt": {
                         "type": "string",
@@ -3285,6 +3306,27 @@
                           }
                         }
                       },
+                      "address": {},
+                      "full_name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -4120,6 +4162,27 @@
                             }
                           }
                         }
+                      },
+                      "address": {},
+                      "full_name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "createdAt": {
                         "type": "string",
@@ -6291,6 +6354,27 @@
                                         }
                                       }
                                     }
+                                  },
+                                  "address": {},
+                                  "full_name": {
+                                    "type": "string"
+                                  },
+                                  "phone": {
+                                    "type": "string"
+                                  },
+                                  "gender": {
+                                    "type": "string",
+                                    "enum": [
+                                      "male",
+                                      "female"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "USER",
+                                      "ADMIN"
+                                    ]
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -10444,6 +10528,27 @@
                           }
                         }
                       },
+                      "address": {},
+                      "full_name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -12525,6 +12630,27 @@
                             }
                           }
                         }
+                      },
+                      "address": {},
+                      "full_name": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "createdAt": {
                         "type": "string",
