@@ -29,16 +29,16 @@ const Login = () => {
     await authApi
       .login(data)
       .then(res => {
-        // if (res?.data?.user?.type === variables.ADMIN) {
-        localStorage.setItem(variables.ACCESS_TOKEN, res?.data?.jwt);
-        localStorage.setItem(variables.ROLE, res?.data?.user?.type);
-        const user = res?.data?.user;
-        localStorage.setItem(variables.PROFILE, JSON.stringify(user));
-        toast.success('Đăng nhập thành công');
-        navigate(paths.ORDERS);
-        // } else {
-        //   toast.error('Tài khoản không hợp lệ!');
-        // }
+        if (res?.data?.user?.type === variables.ADMIN) {
+          localStorage.setItem(variables.ACCESS_TOKEN, res?.data?.jwt);
+          localStorage.setItem(variables.ROLE, res?.data?.user?.type);
+          const user = res?.data?.user;
+          localStorage.setItem(variables.PROFILE, JSON.stringify(user));
+          toast.success('Đăng nhập thành công');
+          navigate(paths.ORDERS);
+        } else {
+          toast.error('Tài khoản không hợp lệ!');
+        }
       })
       .catch(e => {
         toast.error('Đăng nhập thất bại');
