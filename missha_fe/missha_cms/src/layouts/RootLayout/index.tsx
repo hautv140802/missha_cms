@@ -9,8 +9,11 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, type MenuProps } from 'antd';
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import svgs from '../../assets/svgs';
+import paths from '../../utils/constants/paths';
+import { getAccessToken } from '@/utils/functions/getAccessToken';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -31,8 +34,12 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem('Tổng quan', 'HOME', <BarChartOutlined />),
-  getItem('Quản lý đơn hàng', 'ORDERS', <BgColorsOutlined />),
+  // getItem('Tổng quan', 'HOME', <BarChartOutlined />),
+  getItem(
+    'Quản lý đơn hàng',
+    paths.ORDERS,
+    <img src={svgs.menuOrder} className="w-[24px] h-[24px]" />
+  ),
   getItem('Quản lý sản phẩm', 'PRODUCT', <ProductOutlined />, [
     getItem('Sản phẩm chính', 'MAIN_PRODUCT', <ProductOutlined />),
     getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
@@ -45,33 +52,77 @@ const items: MenuItem[] = [
 ];
 
 const RootLayout = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isLoggedIn = getAccessToken();
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const [selectedOpenKeys, setSelectedOpenKeys] = useState<string[]>([]);
   const [collapsed, setCollapsed] = useState(false);
+
+  const handleClickItem = ({
+    key,
+    keyPath,
+  }: {
+    key: string;
+    keyPath: string[];
+  }) => {
+    console.log(key, keyPath);
+    setSelectedKeys([key]);
+    navigate(keyPath[0]);
+  };
+
+  useEffect(() => {
+    setSelectedKeys([location.pathname]);
+  }, []);
+
+  const handelChangeOpenKey = (keys: string[]) => {
+    setSelectedOpenKeys(keys);
+  };
+
+  if (!isLoggedIn) {
+    return <Navigate to={paths.LOGIN} />;
+  }
+
   return (
     <Layout style={{ minHeight: '100vh', width: '100vw' }}>
-      {' '}
       <Sider
         collapsible
         collapsed={collapsed}
         onCollapse={value => setCollapsed(value)}
         theme="light"
       >
-        {/* <div className="demo-logo-vertical my-[1rem] flex items-center justify-center">
-          <img src="" alt="" width={70} height={70} />
+        <div className="demo-logo-vertical my-[1rem] flex items-center justify-center">
+          <img src={svgs.logo} alt="" width={70} height={70} />
           <span>Missha</span>
-        </div> */}
+        </div>
+
         <Menu
           theme="light"
-          //   selectedKeys={selectedKeys}
-          //   openKeys={openKeys}
           mode="inline"
           items={items}
-          //   onClick={handleOnClickMenuItem}
-          //   onOpenChange={handleOpenChange}
+          className="my-[32px]"
+          selectedKeys={selectedKeys}
+          openKeys={selectedKeys}
+          onClick={handleClickItem}
+          onOpenChange={handelChangeOpenKey}
         />
       </Sider>
-      <Content>
-        <Outlet />
-      </Content>
+      <Layout>
+        <Header
+          style={{
+            padding: '0 20px',
+            background: '#FFFFFF',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            gap: '16px',
+            alignItems: 'center',
+          }}
+        ></Header>
+        <Content>
+          <Outlet />
+        </Content>
+        <Footer style={{ textAlign: 'center' }}></Footer>
+      </Layout>
     </Layout>
   );
 };
