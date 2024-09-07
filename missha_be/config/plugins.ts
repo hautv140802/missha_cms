@@ -30,6 +30,20 @@ export default ({env}) => ({
           options: {
             locale: 'vi',
           },
+        },
+        product_line: {
+          field: 'slug',
+          references: 'name',
+          options: {
+            locale: 'vi',
+          },
+        },
+        skin_property: {
+          field: 'slug',
+          references: 'name',
+          options: {
+            locale: 'vi',
+          },
         }
       },
     },
