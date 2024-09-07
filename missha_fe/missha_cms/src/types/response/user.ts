@@ -8,6 +8,10 @@ export type UserType = {
   type: string;
   createdAt: string;
   updatedAt: string;
+  address: string;
+  full_name: string;
+  phone: string;
+  gender: string;
 };
 
 export type UserResponseType = {
