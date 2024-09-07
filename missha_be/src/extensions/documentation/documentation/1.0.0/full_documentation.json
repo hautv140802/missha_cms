@@ -15,10 +15,14 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     "x-generation-date": "2024-09-07T06:53:06.393Z"
 =======
     "x-generation-date": "2024-09-07T06:29:20.367Z"
 >>>>>>> 51e7cc4 (fix: type user)
+=======
+    "x-generation-date": "2024-09-07T06:43:56.698Z"
+>>>>>>> 6da72c7 (add doc)
   },
   "x-strapi-config": {
     "path": "/documentation",
