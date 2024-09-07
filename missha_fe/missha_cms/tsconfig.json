@@ -14,7 +14,32 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node", "vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/components/*": ["src/components/*"],
+      "@/api/*": ["src/api/*"],
+      "@/customIcons/*": ["src/customIcons/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/assets/*": ["src/assets/*"],
+      "@/recoil/*": ["src/recoil/*"],
+      "@/routes/*": ["src/routes/*"],
+      "@/types/*": ["src/types/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/layouts/*": ["src/layouts/*"]
+    }
   },
-  "include": ["src", "vite.config.ts"]
+  "include": [
+    "vite.config.ts",
+    "tailwind.config.js",
+    "postcss.config.js",
+    ".eslintrc.cjs",
+    "src",
+    "src/pages/Login.tsx"
+  ],
+  "exclude": ["dist", "node_modules"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
