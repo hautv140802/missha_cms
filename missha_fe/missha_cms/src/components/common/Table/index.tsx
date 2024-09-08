@@ -1,40 +1,41 @@
 import { Pagination, PaginationProps, Table, TableProps } from 'antd';
 
-interface ITableComponentProps extends TableProps {
-  isoLoading?: boolean;
+interface ITableCustomComponentProps extends TableProps {
+  isLoading?: boolean;
   pagination?: PaginationProps;
   pageSizeUI?: number;
+  setCurrentPage?: (page: number) => void;
 }
 
-const TableComponent = ({
-  columns,
-  dataSource,
-  pagination,
-  isoLoading,
-  pageSizeUI,
-  ...rest
-}: ITableComponentProps) => {
-  const paginationConfig = pageSizeUI
-    ? {
-        pageSize: pageSizeUI,
-        showSizeChanger: false,
-      }
-    : false;
+const TableCustomComponent = (props: ITableCustomComponentProps) => {
+  const { pagination, isLoading, pageSizeUI, setCurrentPage, ...rest } = props;
 
+  const onChange: PaginationProps['onChange'] = page => {
+    setCurrentPage?.(page);
+  };
   return (
     <div>
       <Table
-        columns={columns}
-        dataSource={dataSource}
-        pagination={paginationConfig}
+        pagination={
+          pageSizeUI
+            ? {
+                pageSize: pageSizeUI,
+                showSizeChanger: false,
+              }
+            : false
+        }
         scroll={{ x: 'max-content' }}
         {...rest}
       />
-      {!isoLoading && pagination && (
-        <Pagination {...pagination} className="flex justify-end mt-[1.8rem]" />
+      {!isLoading && (
+        <Pagination
+          {...pagination}
+          onChange={onChange}
+          className="flex justify-end mt-[1.8rem]"
+        />
       )}
     </div>
   );
 };
 
-export default TableComponent;
+export default TableCustomComponent;
