@@ -40,11 +40,11 @@ const items: MenuItem[] = [
     paths.ORDERS,
     <img src={svgs.menuOrder} className="w-[24px] h-[24px]" />
   ),
-  getItem('Quản lý sản phẩm', 'PRODUCT', <ProductOutlined />, [
-    getItem('Sản phẩm chính', 'MAIN_PRODUCT', <ProductOutlined />),
-    getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
-  ]),
-  getItem('Quản lý danh mục sản phẩm', 'PARENT_CATEGORY', <UserOutlined />),
+  // getItem('Quản lý sản phẩm', 'PRODUCT', <ProductOutlined />, [
+  //   getItem('Sản phẩm chính', 'MAIN_PRODUCT', <ProductOutlined />),
+  //   getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
+  // ]),
+  getItem('Quản lý danh mục sản phẩm', paths.CATEGORIES, <UserOutlined />),
   getItem('Quản lý khách hàng', 'CUSTOMER', <DesktopOutlined />),
   getItem('Quản lý Reels', 'REEL', <VideoCameraOutlined />),
   getItem('Quản lý Vouchers', 'VOUCHERS', <PieChartOutlined />),
@@ -84,7 +84,7 @@ const RootLayout = () => {
   }
 
   return (
-    <Layout style={{ minHeight: '100vh', width: '100vw' }}>
+    <Layout className="min-h-screen w-[99vw]">
       <Sider
         collapsible
         collapsed={collapsed}
@@ -93,7 +93,6 @@ const RootLayout = () => {
       >
         <div className="demo-logo-vertical my-[1rem] flex items-center justify-center">
           <img src={svgs.logo} alt="" width={70} height={70} />
-          <span>Missha</span>
         </div>
 
         <Menu

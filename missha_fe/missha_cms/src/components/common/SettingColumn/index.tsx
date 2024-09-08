@@ -22,6 +22,7 @@ const SettingColumn = (props: ISettingColumnProps) => {
     handelCancel,
     ...rest
   } = props;
+
   const handleSelectAll = () => {
     const allOptionValues = options.map(option => option.value as string);
     onChange(allOptionValues);

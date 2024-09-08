@@ -5,6 +5,7 @@ import NotFound from '@/pages/NotFound';
 import paths from '@/utils/constants/paths';
 import RootLayout from '@/layouts/RootLayout';
 import Orders from '@/pages/Order';
+import Categories from '@/pages/Categories';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
         path: paths.ORDERS,
         element: <Orders />,
       },
+      { path: paths.CATEGORIES, element: <Categories /> },
     ],
   },
 ]);
