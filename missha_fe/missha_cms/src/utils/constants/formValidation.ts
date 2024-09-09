@@ -69,6 +69,7 @@ const formValidation = {
   parentProduct: { required: 'Sản phẩm chính không được để trống' },
   size: { required: 'Kích cỡ giày không được để trống' },
   quantity: { required: 'Số lượng không được để trống' },
+  product_line: { required: 'Tên dòng sản phẩm không được để trống' },
 };
 
 export default formValidation;

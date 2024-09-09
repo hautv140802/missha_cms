@@ -149,7 +149,9 @@ const CategoryForm = (props: ICategoryFormProps) => {
 
       <div className="flex justify-end items-end gap-[1.2rem]">
         <ButtonComponent text="Hủy" onClick={onCloseModal} />
-        <ButtonComponent type="primary" htmlType="submit" text="Lưu" />
+        {type !== formType.FORM_VIEW && (
+          <ButtonComponent type="primary" htmlType="submit" text="Lưu" />
+        )}
       </div>
     </form>
   );

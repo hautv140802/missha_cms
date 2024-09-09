@@ -1,16 +1,13 @@
 import ActionsColumn from '@/components/common/ActionsColumn';
-import AvatarComponent from '@/components/common/Avatar';
 import ButtonComponent from '@/components/common/Button';
 import ContentWrapper from '@/components/common/ContentWrapper';
 import ModalComponent from '@/components/common/Modal';
 import SettingColumn from '@/components/common/SettingColumn';
 import TableComponent from '@/components/common/Table';
-import CategoryForm from '@/components/pages/CategoryForm';
-import useDeleteCategory from '@/libs/axios/category/useDeleteCategory';
-import { useFetchCategories } from '@/libs/swr/useFetchCategories';
+import ProductLineForm from '@/components/pages/ProductLineForm';
+import useDeleteProductLine from '@/libs/axios/productLine/useDeleteProductLine';
+import { useFetchProductLines } from '@/libs/swr/useFetchProductLines';
 import { BaseData } from '@/types/base/baseData';
-import { ImageType } from '@/types/common/image';
-
 import { CategoryResponseType } from '@/types/response/category';
 import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
@@ -22,16 +19,9 @@ import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const defaultCheckedList = [
-  'id',
-  'name',
-  'slug',
-  'banner',
-  'products',
-  'actions',
-];
+const defaultCheckedList = ['id', 'name', 'slug', 'actions'];
 
-const Categories = () => {
+const ProductLines = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCheckedList, setCurrentCheckedList] =
     useState<string[]>(defaultCheckedList);
@@ -53,7 +43,7 @@ const Categories = () => {
     'pagination[pageSize]': PAGE_SIZE,
   };
 
-  const { data, isLoading, pagination, mutate } = useFetchCategories(params);
+  const { data, isLoading, pagination, mutate } = useFetchProductLines(params);
   const columns: TableColumnsType<any> = [
     {
       title: 'ID',
@@ -69,17 +59,6 @@ const Categories = () => {
       title: 'Slug',
       dataIndex: ['attributes', 'slug'],
       key: 'slug',
-    },
-    {
-      title: 'Banner',
-      dataIndex: ['attributes', 'banner', 'data'],
-      key: 'banner',
-      render: (banner: BaseData<ImageType>) => (
-        <AvatarComponent
-          src={banner?.attributes?.url}
-          alt={banner?.attributes?.name}
-        />
-      ),
     },
     {
       title: 'Create at',
@@ -112,8 +91,8 @@ const Categories = () => {
             setOpenTime(new Date().toString());
           }}
           onHandleDelete={async () => {
-            const categoryRes = await useDeleteCategory(record.id);
-            if (categoryRes && categoryRes.data.id) {
+            const productLineRes = await useDeleteProductLine(record.id);
+            if (productLineRes && productLineRes.data.id) {
               toast.success('Xóa thông tin thành công!');
               mutate();
             } else {
@@ -181,15 +160,15 @@ const Categories = () => {
   };
   const title =
     currentFormType === formType.FORM_VIEW
-      ? 'Xem chi tiết danh mục'
+      ? 'Xem chi tiết dòng sản phẩm'
       : currentFormType === formType.FORM_CREATE
-      ? 'Tạo mới danh mục'
-      : 'Cập nhật danh mục';
+      ? 'Tạo mới dòng sản phẩm'
+      : 'Cập nhật dòng sản phẩm';
   return (
     <ContentWrapper className="h-full">
       <div>
         <p className="uppercase text-[1.6rem] font-[700]">
-          Quản lý danh mục sản phẩm
+          Quản lý dòng sản phẩm
         </p>
         <div className="flex justify-between items-center mb-[1.8rem] mt-[2.4rem]">
           <div className="max-w-[20rem]">
@@ -246,7 +225,7 @@ const Categories = () => {
         title={title}
         onCancel={handleCancelFormModal}
       >
-        <CategoryForm
+        <ProductLineForm
           type={currentFormType}
           record={selectedRecord}
           onCloseModal={handleCancelFormModal}
@@ -258,4 +237,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default ProductLines;
