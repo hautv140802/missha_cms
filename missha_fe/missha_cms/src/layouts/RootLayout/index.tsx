@@ -45,6 +45,7 @@ const items: MenuItem[] = [
   //   getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
   // ]),
   getItem('Quản lý danh mục sản phẩm', paths.CATEGORIES, <UserOutlined />),
+  getItem('Quản lý dòng sản phẩm', paths.PRODUCT_LINES, <DesktopOutlined />),
   getItem('Quản lý khách hàng', 'CUSTOMER', <DesktopOutlined />),
   getItem('Quản lý Reels', 'REEL', <VideoCameraOutlined />),
   getItem('Quản lý Vouchers', 'VOUCHERS', <PieChartOutlined />),

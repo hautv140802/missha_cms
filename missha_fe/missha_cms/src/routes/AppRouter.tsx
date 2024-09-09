@@ -6,6 +6,7 @@ import paths from '@/utils/constants/paths';
 import RootLayout from '@/layouts/RootLayout';
 import Orders from '@/pages/Order';
 import Categories from '@/pages/Categories';
+import ProductLines from '@/pages/ProductLines';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
         element: <Orders />,
       },
       { path: paths.CATEGORIES, element: <Categories /> },
+      { path: paths.PRODUCT_LINES, element: <ProductLines /> },
     ],
   },
 ]);

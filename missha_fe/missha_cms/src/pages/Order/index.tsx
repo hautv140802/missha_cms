@@ -1,5 +1,5 @@
 import Search from 'antd/es/input/Search';
-import ContentWrapper from '../../components/common/ContentWraper';
+import ContentWrapper from '../../components/common/ContentWrapper';
 import { SettingOutlined } from '@ant-design/icons';
 import TableComponent from '../../components/common/Table';
 
