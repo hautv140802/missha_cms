@@ -1,24 +1,24 @@
 import ButtonComponent from '@/components/common/Button';
 import InputComponent from '@/components/common/Input';
-import useCreateProductLine from '@/libs/axios/productLine/useCreateProductLine';
-import useUpdateProductLine from '@/libs/axios/productLine/useUpdateProductLine';
+import useCreateSkinProperty from '@/libs/axios/skinProperty/useCreateSkinProperty';
+import useUpdateSkinProperty from '@/libs/axios/skinProperty/useUpdateSkinProperty';
 import { BaseData } from '@/types/base/baseData';
-import { FormProductLine } from '@/types/request/form/formProductLine';
-import { ProductLineResponseType } from '@/types/response/product';
+import { FormSkinPropertyType } from '@/types/request/form/formSkinProperty';
+import { SkinPropertiesResponseType } from '@/types/response/product';
 import formType from '@/utils/constants/formType';
 import formValidation from '@/utils/constants/formValidation';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-interface IProductLineFormProps {
+interface ISkinPropertyFormProps {
   type: string;
-  record?: BaseData<ProductLineResponseType>;
+  record?: BaseData<SkinPropertiesResponseType>;
   onCloseModal?: () => void;
   openTime?: string;
   handleComplete?: () => void;
 }
-const ProductLineForm = (props: IProductLineFormProps) => {
+const SkinPropertyForm = (props: ISkinPropertyFormProps) => {
   const { type, record, onCloseModal, openTime, handleComplete } = props;
 
   const {
@@ -26,7 +26,7 @@ const ProductLineForm = (props: IProductLineFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormProductLine>({
+  } = useForm<FormSkinPropertyType>({
     mode: 'onChange',
   });
   useEffect(() => {
@@ -36,15 +36,15 @@ const ProductLineForm = (props: IProductLineFormProps) => {
     });
   }, [record?.id, openTime]);
 
-  const onSubmit: SubmitHandler<FormProductLine> = async data => {
+  const onSubmit: SubmitHandler<FormSkinPropertyType> = async data => {
     const body = {
       name: data.name,
       slug: data.slug,
     };
 
     if (type === formType.FORM_CREATE) {
-      const productLineRes = await useCreateProductLine(body);
-      if (productLineRes && productLineRes.data.id) {
+      const skinPropertyRes = await useCreateSkinProperty(body);
+      if (skinPropertyRes && skinPropertyRes.data.id) {
         toast.success('Thêm thông tin thành công!');
 
         reset();
@@ -57,9 +57,9 @@ const ProductLineForm = (props: IProductLineFormProps) => {
     if (!record) return;
 
     if (type === formType.FORM_UPDATE) {
-      const productLineRes = await useUpdateProductLine(record?.id, body);
-      console.log(productLineRes);
-      if (productLineRes.data && productLineRes.data.id) {
+      const skinPropertyRes = await useUpdateSkinProperty(record?.id, body);
+      console.log(skinPropertyRes);
+      if (skinPropertyRes.data && skinPropertyRes.data.id) {
         toast.success('Cập nhật thông tin thành công!');
         handleComplete?.();
       } else {
@@ -74,12 +74,12 @@ const ProductLineForm = (props: IProductLineFormProps) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <InputComponent
-        label="Tên dòng sản phẩm:"
+        label="Đặc tính của da:"
         name="name"
-        placeholder="Tên dòng sản phẩm"
+        placeholder="Đặc tính của da"
         control={control}
         errors={errors.name}
-        rules={formValidation.product_line}
+        rules={formValidation.skin_property}
       />
       {type === formType.FORM_VIEW && (
         <InputComponent
@@ -100,4 +100,4 @@ const ProductLineForm = (props: IProductLineFormProps) => {
   );
 };
 
-export default ProductLineForm;
+export default SkinPropertyForm;

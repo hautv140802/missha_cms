@@ -4,7 +4,6 @@ import axios from 'axios';
 import urls from '@/utils/constants/urls';
 
 import axiosClient from '..';
-import toast from 'react-hot-toast';
 
 export const usePostUploadFile = async (originFileObj: RcFile) => {
   try {

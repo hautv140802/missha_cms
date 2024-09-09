@@ -6,7 +6,6 @@ import useCreateCategory from '@/libs/axios/category/useCreateCategory';
 import useUpdateCategory from '@/libs/axios/category/useUpdateCategory';
 import { usePostUploadFile } from '@/libs/axios/upload/usePostUpload';
 import { BaseData } from '@/types/base/baseData';
-import { CategoryTableType } from '@/types/common/tables/category';
 import { UploadLocalType } from '@/types/common/UploadLocalType';
 import { FormCategoryType } from '@/types/request/form/formCategoryType';
 import { CategoryResponseType } from '@/types/response/category';

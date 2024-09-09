@@ -4,11 +4,11 @@ import ContentWrapper from '@/components/common/ContentWrapper';
 import ModalComponent from '@/components/common/Modal';
 import SettingColumn from '@/components/common/SettingColumn';
 import TableComponent from '@/components/common/Table';
-import ProductLineForm from '@/components/pages/ProductLineForm';
-import useDeleteProductLine from '@/libs/axios/productLine/useDeleteProductLine';
-import { useFetchProductLines } from '@/libs/swr/useFetchProductLines';
+import SkinPropertyForm from '@/components/pages/SkinPropertyForm';
+import useDeleteSkinProperty from '@/libs/axios/skinProperty/useDeleteSkinProperty';
+import { useFetchSkinProperties } from '@/libs/swr/useFetchSkinProperties';
 import { BaseData } from '@/types/base/baseData';
-import { ProductLineResponseType } from '@/types/response/product';
+import { SkinPropertiesResponseType } from '@/types/response/product';
 import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
 import PAGE_SIZE from '@/utils/constants/pageSize';
@@ -19,9 +19,9 @@ import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const defaultCheckedList = ['id', 'name', 'slug', 'actions'];
+const defaultCheckedList = ['id', 'name', 'slug', 'publishedAt', 'actions'];
 
-const ProductLines = () => {
+const SkinProperties = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCheckedList, setCurrentCheckedList] =
     useState<string[]>(defaultCheckedList);
@@ -30,7 +30,7 @@ const ProductLines = () => {
   const [visibleColumns, setVisibleColumns] = useState<TableColumnsType<any>>();
   const [openFormModal, setOpenFormModal] = useState<boolean>(false);
   const [selectedRecord, setSelectedRecord] =
-    useState<BaseData<ProductLineResponseType>>();
+    useState<BaseData<SkinPropertiesResponseType>>();
 
   const [openTime, setOpenTime] = useState<string>();
   const [currentFormType, setCurrentFormType] = useState<string>(
@@ -43,7 +43,8 @@ const ProductLines = () => {
     'pagination[pageSize]': PAGE_SIZE,
   };
 
-  const { data, isLoading, pagination, mutate } = useFetchProductLines(params);
+  const { data, isLoading, pagination, mutate } =
+    useFetchSkinProperties(params);
   const columns: TableColumnsType<any> = [
     {
       title: 'ID',
@@ -59,6 +60,13 @@ const ProductLines = () => {
       title: 'Slug',
       dataIndex: ['attributes', 'slug'],
       key: 'slug',
+    },
+    {
+      title: 'Publish at',
+      dataIndex: ['attributes', 'publishedAt'],
+      render: (publishedAt: string) =>
+        dayjs(publishedAt).format(defaultKey.DATE_TIME_FORMAT),
+      key: 'publishedAt',
     },
     {
       title: 'Create at',
@@ -91,8 +99,8 @@ const ProductLines = () => {
             setOpenTime(new Date().toString());
           }}
           onHandleDelete={async () => {
-            const productLineRes = await useDeleteProductLine(record.id);
-            if (productLineRes && productLineRes.data.id) {
+            const skinPropertyRes = await useDeleteSkinProperty(record.id);
+            if (skinPropertyRes && skinPropertyRes.data.id) {
               toast.success('Xóa thông tin thành công!');
               mutate();
             } else {
@@ -160,15 +168,15 @@ const ProductLines = () => {
   };
   const title =
     currentFormType === formType.FORM_VIEW
-      ? 'Xem chi tiết dòng sản phẩm'
+      ? 'Xem chi tiết đặc tính da'
       : currentFormType === formType.FORM_CREATE
-      ? 'Tạo mới dòng sản phẩm'
-      : 'Cập nhật dòng sản phẩm';
+      ? 'Tạo mới đặc tính da'
+      : 'Cập nhật đặc tính da';
   return (
     <ContentWrapper className="h-full">
       <div>
         <p className="uppercase text-[1.6rem] font-[700]">
-          Quản lý dòng sản phẩm
+          Quản lý đặc tính của da
         </p>
         <div className="flex justify-between items-center mb-[1.8rem] mt-[2.4rem]">
           <div className="max-w-[20rem]">
@@ -225,7 +233,7 @@ const ProductLines = () => {
         title={title}
         onCancel={handleCancelFormModal}
       >
-        <ProductLineForm
+        <SkinPropertyForm
           type={currentFormType}
           record={selectedRecord}
           onCloseModal={handleCancelFormModal}
@@ -237,4 +245,4 @@ const ProductLines = () => {
   );
 };
 
-export default ProductLines;
+export default SkinProperties;

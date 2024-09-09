@@ -70,6 +70,7 @@ const formValidation = {
   size: { required: 'Kích cỡ giày không được để trống' },
   quantity: { required: 'Số lượng không được để trống' },
   product_line: { required: 'Tên dòng sản phẩm không được để trống' },
+  skin_property: { required: 'Đặc tính của da không được để trống' },
 };
 
 export default formValidation;

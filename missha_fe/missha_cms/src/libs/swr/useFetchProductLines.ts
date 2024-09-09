@@ -1,12 +1,11 @@
 import queryString from 'query-string';
 import useSWR from 'swr';
-
 import { fetcher } from './fetcher';
 import urls from '@/utils/constants/urls';
 import { BaseData } from '@/types/base/baseData';
 import { BaseResponse } from '@/types/base/baseResponse';
 import { BaseParamsRequestType } from '@/types/base/baseParamsRequest';
-import { ProductLineResponseType } from '@/types/response/productLine';
+import { ProductLineResponseType } from '@/types/response/product';
 
 export const useFetchProductLines = (params: BaseParamsRequestType) => {
   const url = queryString.stringifyUrl({
