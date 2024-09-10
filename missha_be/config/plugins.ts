@@ -17,28 +17,28 @@ export default ({env}) => ({
             locale: 'vi',
           },
         },
-        blog: {
-          field: 'slug',
-          references: 'name',
-          options: {
-            locale: 'vi',
-          }
-        },
-        blog_category: {
+        // blog: {
+        //   field: 'slug',
+        //   references: 'name',
+        //   options: {
+        //     locale: 'vi',
+        //   }
+        // },
+        // blog_category: {
+        //   field: 'slug',
+        //   references: 'name',
+        //   options: {
+        //     locale: 'vi',
+        //   },
+        // },
+        "product-line": {
           field: 'slug',
           references: 'name',
           options: {
             locale: 'vi',
           },
         },
-        product_line: {
-          field: 'slug',
-          references: 'name',
-          options: {
-            locale: 'vi',
-          },
-        },
-        skin_property: {
+        "skin-property": {
           field: 'slug',
           references: 'name',
           options: {
