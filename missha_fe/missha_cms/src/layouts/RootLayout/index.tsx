@@ -51,6 +51,7 @@ const items: MenuItem[] = [
     paths.SKIN_PROPERTIES,
     <DesktopOutlined />
   ),
+  getItem('Quản lý sản phẩm', paths.PRODUCTS, <DesktopOutlined />),
   getItem('Quản lý khách hàng', 'CUSTOMER', <DesktopOutlined />),
   getItem('Quản lý Reels', 'REEL', <VideoCameraOutlined />),
   getItem('Quản lý Vouchers', 'VOUCHERS', <PieChartOutlined />),

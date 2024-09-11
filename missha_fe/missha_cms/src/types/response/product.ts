@@ -1,6 +1,7 @@
 import { BaseData } from '../base/baseData';
 import { BaseResponse } from '../base/baseResponse';
 import { ImageType } from '../common/image';
+import { CategoryResponseType } from './category';
 
 type FilterProductType = {
   name: string;
@@ -25,16 +26,19 @@ export type ProductResponseType = {
   total_purchase: number;
   description: string;
   gallery: {
-    data: BaseResponse<BaseData<ImageType>[]>;
+    data: BaseData<ImageType>[];
   };
   avatar: {
-    data: BaseResponse<BaseData<ImageType>>;
+    data: BaseData<ImageType>;
   };
   product_line: {
-    data: BaseResponse<BaseData<ProductLineResponseType>>;
+    data: BaseData<ProductLineResponseType>;
   };
   skin_properties: {
-    data: BaseResponse<BaseData<SkinPropertiesResponseType>>;
+    data: BaseData<SkinPropertiesResponseType>;
+  };
+  categories: {
+    data: BaseData<CategoryResponseType>[];
   };
   createdAt: string;
   updatedAt: string;

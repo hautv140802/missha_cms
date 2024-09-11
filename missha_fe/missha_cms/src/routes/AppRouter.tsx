@@ -8,6 +8,7 @@ import Orders from '@/pages/Order';
 import Categories from '@/pages/Categories';
 import ProductLines from '@/pages/ProductLines';
 import SkinProperties from '@/pages/SkinProperties';
+import Products from '@/pages/Products';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: paths.CATEGORIES, element: <Categories /> },
       { path: paths.PRODUCT_LINES, element: <ProductLines /> },
       { path: paths.SKIN_PROPERTIES, element: <SkinProperties /> },
+      { path: paths.PRODUCTS, element: <Products /> },
     ],
   },
 ]);
