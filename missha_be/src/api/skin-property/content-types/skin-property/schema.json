@@ -4,7 +4,8 @@
   "info": {
     "singularName": "skin-property",
     "pluralName": "skin-properties",
-    "displayName": "skin_property"
+    "displayName": "skin_property",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "slug": {
       "type": "string"

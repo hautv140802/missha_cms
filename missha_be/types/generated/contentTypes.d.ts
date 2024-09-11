@@ -893,7 +893,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
     slug: Attribute.String;
     banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     products: Attribute.Relation<
@@ -1083,7 +1083,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
     slug: Attribute.String;
     categories: Attribute.Relation<
       'api::product.product',
@@ -1135,7 +1135,7 @@ export interface ApiProductLineProductLine extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
     slug: Attribute.String;
     products: Attribute.Relation<
       'api::product-line.product-line',
@@ -1205,12 +1205,13 @@ export interface ApiSkinPropertySkinProperty extends Schema.CollectionType {
     singularName: 'skin-property';
     pluralName: 'skin-properties';
     displayName: 'skin_property';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Unique;
     slug: Attribute.String;
     products: Attribute.Relation<
       'api::skin-property.skin-property',
