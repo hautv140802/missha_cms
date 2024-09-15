@@ -1,3 +1,4 @@
+import { RawDraftContentState } from 'draft-js';
 import { BaseData } from '../base/baseData';
 import { BaseResponse } from '../base/baseResponse';
 import { ImageType } from '../common/image';
@@ -24,7 +25,7 @@ export type ProductResponseType = {
   price: number;
   sale_price: number;
   total_purchase: number;
-  description: string;
+  description: RawDraftContentState;
   gallery: {
     data: BaseData<ImageType>[];
   };
@@ -35,7 +36,7 @@ export type ProductResponseType = {
     data: BaseData<ProductLineResponseType>;
   };
   skin_properties: {
-    data: BaseData<SkinPropertiesResponseType>;
+    data: BaseData<SkinPropertiesResponseType>[];
   };
   categories: {
     data: BaseData<CategoryResponseType>[];

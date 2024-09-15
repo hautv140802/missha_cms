@@ -6,7 +6,6 @@ import ModalComponent from '@/components/common/Modal';
 import SettingColumn from '@/components/common/SettingColumn';
 import TableComponent from '@/components/common/Table';
 import ProductForm from '@/components/pages/ProductForm';
-import useDeleteCategory from '@/libs/axios/category/useDeleteCategory';
 import useDeleteProduct from '@/libs/axios/product/useDeleteProduc';
 import { useFetchProducts } from '@/libs/swr/useFetchProducts';
 import { BaseData } from '@/types/base/baseData';
@@ -24,9 +23,11 @@ import { SettingOutlined } from '@ant-design/icons';
 import { TableColumnsType } from 'antd';
 import Search from 'antd/es/input/Search';
 import dayjs from 'dayjs';
+import { convertFromRaw, RawDraftContentState } from 'draft-js';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import EditorComponent from '@/components/common/Editor';
 const defaultCheckedList = [
   'name',
   'slug',
@@ -123,15 +124,15 @@ const Products = () => {
       key: 'categories',
       render: (categories: BaseData<CategoryResponseType>[]) =>
         categories?.map((category, index) => (
-          <p key={index}>{category.attributes.name}</p>
+          <p key={index}>{category?.attributes?.name}</p>
         )),
     },
     {
       title: 'Product line',
       dataIndex: ['attributes', 'product_line', 'data'],
       key: 'product_line',
-      render: (categories: BaseData<ProductLineResponseType>) =>
-        categories.attributes.name,
+      render: (product_line: BaseData<ProductLineResponseType>) =>
+        product_line?.attributes?.name,
     },
     {
       title: 'Skin properties',
@@ -139,7 +140,7 @@ const Products = () => {
       key: 'skin_properties',
       render: (skin_properties: BaseData<SkinPropertiesResponseType>[]) =>
         skin_properties?.map((skin_properties, index) => (
-          <p key={index}>{skin_properties.attributes.name}</p>
+          <p key={index}>{skin_properties?.attributes?.name}</p>
         )),
     },
     {
@@ -150,6 +151,8 @@ const Products = () => {
     // {
     //   title: 'Description',
     //   dataIndex: ['attributes', 'description'],
+    //   render: (description: RawDraftContentState) =>
+    //     convertFromRaw(description).getPlainText(),
     //   key: 'description',
     // },
 
@@ -257,6 +260,7 @@ const Products = () => {
       : currentFormType === formType.FORM_CREATE
       ? 'Tạo mới sản phẩm'
       : 'Cập nhật sản phẩm';
+
   return (
     <ContentWrapper className="h-full">
       <div>
@@ -316,13 +320,15 @@ const Products = () => {
         title={title}
         onCancel={handleCancelFormModal}
       >
-        <ProductForm
-          type={currentFormType}
-          record={selectedRecord}
-          onCloseModal={handleCancelFormModal}
-          openTime={openTime}
-          handleComplete={handleComplete}
-        />
+        {openFormModal && (
+          <ProductForm
+            type={currentFormType}
+            record={selectedRecord}
+            onCloseModal={handleCancelFormModal}
+            openTime={openTime}
+            handleComplete={handleComplete}
+          />
+        )}
       </ModalComponent>
     </ContentWrapper>
   );

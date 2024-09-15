@@ -13,7 +13,7 @@ export const useFetchSkinProperties = (params: BaseParamsRequestType) => {
     query: params,
   });
 
-  const { data, isLoading, error, mutate } = useSWR<
+  const { data, isLoading, error, mutate, isValidating } = useSWR<
     BaseResponse<BaseData<SkinPropertiesResponseType>[]>
   >(url, fetcher);
 
@@ -23,5 +23,6 @@ export const useFetchSkinProperties = (params: BaseParamsRequestType) => {
     isLoading,
     error,
     mutate,
+    isValidating,
   };
 };

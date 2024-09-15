@@ -1,9 +1,9 @@
 import urls from '@/utils/constants/urls';
 import axiosClient from '..';
 import axios from 'axios';
-import { FormProductType } from '@/types/request/form/formProduct';
+import { ProductRequestType } from '@/types/request/product';
 
-const useCreateProduct = async (body: FormProductType) => {
+const useCreateProduct = async (body: ProductRequestType) => {
   try {
     const response = await axiosClient.post(urls.PRODUCTS, {
       data: body,
