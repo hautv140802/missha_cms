@@ -8,7 +8,7 @@ const ModalComponent = (props: ModalProps) => {
       footer={null}
       closeIcon={null}
       classNames={{
-        content: 'rounded-[1.8rem] min-h-[35rem] p-[2.4rem]',
+        content: 'rounded-[1.8rem]  p-[2.4rem]',
         header: 'mb-[16px] *:text-[1.8rem]',
       }}
       centered

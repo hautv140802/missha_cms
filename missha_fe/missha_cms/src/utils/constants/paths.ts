@@ -5,6 +5,7 @@ const paths = {
   CATEGORIES: '/categories',
   PRODUCT_LINES: '/product-lines',
   SKIN_PROPERTIES: '/skin-properties',
+  PRODUCTS: '/products',
 };
 
 export default paths;

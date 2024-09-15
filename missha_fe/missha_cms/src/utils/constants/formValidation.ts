@@ -71,6 +71,14 @@ const formValidation = {
   quantity: { required: 'Số lượng không được để trống' },
   product_line: { required: 'Tên dòng sản phẩm không được để trống' },
   skin_property: { required: 'Đặc tính của da không được để trống' },
+  product_name: { required: 'Tên sản phẩm không được để trống' },
+  product_categories: { required: 'Danh mục sản phẩm khôngs được để trống' },
+  product_skin_properties: {
+    required: 'Đặc tính da sản phẩm không được để trống',
+  },
+  product_product_line: {
+    required: 'Dòng sản phẩm không được để trống',
+  },
 };
 
 export default formValidation;

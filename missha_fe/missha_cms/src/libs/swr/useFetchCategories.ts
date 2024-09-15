@@ -13,9 +13,11 @@ export const useFetchCategories = (params: BaseParamsRequestType) => {
     query: params,
   });
 
-  const { data, isLoading, error, mutate } = useSWR<
+  const { data, isLoading, error, mutate, isValidating } = useSWR<
     BaseResponse<BaseData<CategoryResponseType>[]>
-  >(url, fetcher);
+  >(url, fetcher, {
+    revalidateOnFocus: true,
+  });
 
   return {
     data: data?.data || [],
@@ -23,5 +25,6 @@ export const useFetchCategories = (params: BaseParamsRequestType) => {
     isLoading,
     error,
     mutate,
+    isValidating,
   };
 };

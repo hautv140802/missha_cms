@@ -5,16 +5,16 @@ import urls from '@/utils/constants/urls';
 import { BaseData } from '@/types/base/baseData';
 import { BaseResponse } from '@/types/base/baseResponse';
 import { BaseParamsRequestType } from '@/types/base/baseParamsRequest';
-import { SkinPropertiesResponseType } from '@/types/response/product';
+import { ProductResponseType } from '@/types/response/product';
 
-export const useFetchSkinProperties = (params: BaseParamsRequestType) => {
+export const useFetchProducts = (params: BaseParamsRequestType) => {
   const url = queryString.stringifyUrl({
-    url: `${urls.SKIN_PROPERTIES}`,
+    url: `${urls.PRODUCTS}`,
     query: params,
   });
 
-  const { data, isLoading, error, mutate, isValidating } = useSWR<
-    BaseResponse<BaseData<SkinPropertiesResponseType>[]>
+  const { data, isLoading, error, mutate } = useSWR<
+    BaseResponse<BaseData<ProductResponseType>[]>
   >(url, fetcher);
 
   return {
@@ -23,6 +23,5 @@ export const useFetchSkinProperties = (params: BaseParamsRequestType) => {
     isLoading,
     error,
     mutate,
-    isValidating,
   };
 };
