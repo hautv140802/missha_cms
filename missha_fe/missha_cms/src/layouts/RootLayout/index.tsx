@@ -52,7 +52,7 @@ const items: MenuItem[] = [
     <DesktopOutlined />
   ),
   getItem('Quản lý sản phẩm', paths.PRODUCTS, <DesktopOutlined />),
-  getItem('Quản lý khách hàng', 'CUSTOMER', <DesktopOutlined />),
+  getItem('Quản lý khách hàng', paths.CUSTOMERS, <DesktopOutlined />),
   getItem('Quản lý Reels', 'REEL', <VideoCameraOutlined />),
   getItem('Quản lý Vouchers', 'VOUCHERS', <PieChartOutlined />),
   getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
@@ -73,7 +73,6 @@ const RootLayout = () => {
     key: string;
     keyPath: string[];
   }) => {
-    console.log(key, keyPath);
     setSelectedKeys([key]);
     navigate(keyPath[0]);
   };

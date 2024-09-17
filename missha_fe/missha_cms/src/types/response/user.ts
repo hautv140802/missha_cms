@@ -12,9 +12,23 @@ export type UserType = {
   full_name: string;
   phone: string;
   gender: string;
+  role: UserRole;
 };
 
-export type UserResponseType = {
+export type UserLoginResponseType = {
   jwt: string;
   user: UserType;
 };
+
+export type UserRole = {
+  id: number;
+  name: string;
+  description: string;
+  type: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UserResponseType = {
+  id: number;
+} & UserType;
