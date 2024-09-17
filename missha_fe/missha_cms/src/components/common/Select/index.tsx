@@ -37,14 +37,24 @@ const SelectComponent = (props: ISelectComponentProps) => {
         className={clsx('w-auto flex flex-col gap-[0.6rem]', containerClasName)}
       >
         {!!label && (
-          <label
-            className={clsx(
-              'font-[500] text-[1.4rem] leading-[2rem] text-[#484848]',
-              labelClassName
-            )}
-          >
-            {label}
-          </label>
+          <div className="flex items-center gap-[0.8rem]">
+            <label
+              className={clsx(
+                'font-[500] text-[1.4rem] leading-[2rem] text-[#484848]',
+                labelClassName
+              )}
+            >
+              {label}
+            </label>
+            <div
+              className={clsx(
+                'flex items-center justify-center',
+                isRequired ? 'visible' : 'invisible'
+              )}
+            >
+              <span className="text-[red] font-bold text-[1.6rem]">*</span>
+            </div>
+          </div>
         )}
 
         <Select

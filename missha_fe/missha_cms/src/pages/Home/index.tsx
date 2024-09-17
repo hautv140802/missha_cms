@@ -7,7 +7,6 @@ const Home = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [htmlContent, setHtmlContent] = useState<string>('');
   const onEditorStateChange = (state: EditorState) => {
-    console.log(state);
     setEditorState(state);
     const contentState = state.getCurrentContent();
     const rawContent = convertToRaw(contentState);

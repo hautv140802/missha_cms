@@ -79,6 +79,10 @@ const formValidation = {
   product_product_line: {
     required: 'Dòng sản phẩm không được để trống',
   },
+
+  role: {
+    required: 'Role không được để trống',
+  },
 };
 
 export default formValidation;
