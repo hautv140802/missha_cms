@@ -1095,6 +1095,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     price: Attribute.BigInteger & Attribute.DefaultTo<'10000'>;
     sale_price: Attribute.BigInteger & Attribute.DefaultTo<'10000'>;
     total_purchase: Attribute.Integer & Attribute.DefaultTo<0>;
+    description: Attribute.Blocks;
     product_line: Attribute.Relation<
       'api::product.product',
       'manyToOne',
@@ -1105,7 +1106,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::skin-property.skin-property'
     >;
-    descripton: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
