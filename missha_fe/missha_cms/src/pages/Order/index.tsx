@@ -16,6 +16,7 @@ import SettingColumn from '@/components/common/SettingColumn';
 import { formatPrice } from '@/utils/functions/formatPrice';
 import OrderStatusComponent from '@/components/common/OrderStatus';
 import VoucherBadge from '@/components/common/VoucherBadge';
+import CKEditorComponent from '@/components/common/CKEditor5';
 
 const defaultCheckedList = [
   'order_code',
@@ -106,7 +107,7 @@ const Orders = () => {
     {
       title: 'Voucher',
       dataIndex: ['attributes', 'voucher', 'data'],
-      key: 'transport_fee',
+      key: 'voucher',
       render: voucher => (
         <VoucherBadge
           code={voucher?.attributes?.code}
@@ -266,6 +267,8 @@ const Orders = () => {
           pageSize: pagination?.pageSize || PAGE_SIZE,
         }}
       />
+
+      <CKEditorComponent />
     </ContentWrapper>
   );
 };

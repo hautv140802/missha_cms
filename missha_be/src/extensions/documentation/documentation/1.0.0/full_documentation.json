@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-17T15:01:01.216Z"
+    "x-generation-date": "2024-09-18T15:44:02.339Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2079,7 +2079,6 @@
                         "total_purchase": {
                           "type": "integer"
                         },
-                        "description": {},
                         "product_line": {
                           "type": "object",
                           "properties": {
@@ -2258,6 +2257,9 @@
                               }
                             }
                           }
+                        },
+                        "descripton": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string",
@@ -5870,7 +5872,6 @@
                       "total_purchase": {
                         "type": "integer"
                       },
-                      "description": {},
                       "product_line": {
                         "type": "object",
                         "properties": {
@@ -6049,6 +6050,9 @@
                             }
                           }
                         }
+                      },
+                      "descripton": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",
@@ -6843,7 +6847,6 @@
               "total_purchase": {
                 "type": "integer"
               },
-              "description": {},
               "product_line": {
                 "oneOf": [
                   {
@@ -6868,6 +6871,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "descripton": {
+                "type": "string"
               }
             }
           }
@@ -7904,7 +7910,6 @@
                                       "total_purchase": {
                                         "type": "integer"
                                       },
-                                      "description": {},
                                       "product_line": {
                                         "type": "object",
                                         "properties": {
@@ -8083,6 +8088,9 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "descripton": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -8476,7 +8484,6 @@
           "total_purchase": {
             "type": "integer"
           },
-          "description": {},
           "product_line": {
             "type": "object",
             "properties": {
@@ -8513,6 +8520,9 @@
                 }
               }
             }
+          },
+          "descripton": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -9693,7 +9703,6 @@
                         "total_purchase": {
                           "type": "integer"
                         },
-                        "description": {},
                         "product_line": {
                           "type": "object",
                           "properties": {
@@ -9872,6 +9881,9 @@
                               }
                             }
                           }
+                        },
+                        "descripton": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string",
@@ -11783,7 +11795,6 @@
                         "total_purchase": {
                           "type": "integer"
                         },
-                        "description": {},
                         "product_line": {
                           "type": "object",
                           "properties": {
@@ -11962,6 +11973,9 @@
                               }
                             }
                           }
+                        },
+                        "descripton": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string",
