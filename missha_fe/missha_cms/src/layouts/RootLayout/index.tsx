@@ -53,7 +53,7 @@ const items: MenuItem[] = [
   ),
   getItem('Quản lý sản phẩm', paths.PRODUCTS, <DesktopOutlined />),
   getItem('Quản lý khách hàng', paths.CUSTOMERS, <DesktopOutlined />),
-  getItem('Quản lý Reels', 'REEL', <VideoCameraOutlined />),
+  getItem('Ckeditor', paths.CKEDITOR, <VideoCameraOutlined />),
   getItem('Quản lý Vouchers', 'VOUCHERS', <PieChartOutlined />),
   getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
 ];

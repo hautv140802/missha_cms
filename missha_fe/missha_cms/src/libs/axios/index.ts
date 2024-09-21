@@ -34,7 +34,7 @@ axiosClient.interceptors.response.use(
 
   error => {
     console.log(error);
-    const { status } = error.response;
+    const { status } = error?.response;
 
     if (status === 401) {
       sessionStorage.removeItem(variables.ACCESS_TOKEN);

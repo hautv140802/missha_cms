@@ -10,6 +10,7 @@ import ProductLines from '@/pages/ProductLines';
 import SkinProperties from '@/pages/SkinProperties';
 import Products from '@/pages/Products';
 import Customers from '@/pages/Customers';
+import CKeditor from '@/pages/CKeditor';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: paths.SKIN_PROPERTIES, element: <SkinProperties /> },
       { path: paths.PRODUCTS, element: <Products /> },
       { path: paths.CUSTOMERS, element: <Customers /> },
+      { path: paths.CKEDITOR, element: <CKeditor /> },
     ],
   },
 ]);
