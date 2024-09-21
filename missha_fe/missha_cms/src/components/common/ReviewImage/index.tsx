@@ -4,7 +4,7 @@ import { Image } from 'antd';
 
 interface IReviewImageProps {
   listImage?: UploadLocalType[] | UploadLocalType;
-  onDelete?: (id?: number) => void;
+  onDelete?: (id?: number | string) => void;
   disabled?: boolean;
 }
 const ReviewImage = (props: IReviewImageProps) => {

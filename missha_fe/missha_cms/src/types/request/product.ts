@@ -4,9 +4,9 @@ export type ProductRequestType = {
   name: string;
   price?: number;
   sale_price: number;
-  description?: any;
+  descripton?: string;
   categories?: BaseID[];
-  avatar?: number;
+  avatar?: number | null;
   gallery?: number[];
   product_line?: BaseID;
   skin_properties?: BaseID[];

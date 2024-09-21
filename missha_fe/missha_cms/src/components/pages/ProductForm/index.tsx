@@ -14,7 +14,6 @@ import { UploadFile } from 'antd';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import { FormProductType } from '@/types/request/form/formProduct';
 import PAGE_SIZE from '@/utils/constants/pageSize';
@@ -25,6 +24,7 @@ import { DefaultOptionType } from 'antd/es/select';
 import SelectComponent from '@/components/common/Select';
 import { formatValue } from '@/utils/functions/formatValue';
 import formValidation from '@/utils/constants/formValidation';
+import ReactQuillComponent from '@/components/common/ReactQuill';
 interface IProductFormProps {
   type: string;
   record?: BaseData<ProductResponseType>;
@@ -51,7 +51,9 @@ const ProductForm = (props: IProductFormProps) => {
     DefaultOptionType[]
   >([]);
 
+  const [description, setDescription] = useState<string>('');
   const isDisable = type === formType.FORM_VIEW;
+  const [galleryIDs, setGalleryIDs] = useState<number[] | null>(null);
   const {
     control,
     handleSubmit,
@@ -107,7 +109,9 @@ const ProductForm = (props: IProductFormProps) => {
     setOptionCategories([]);
     setOptionProductLines([]);
     setOptionSkinProperties([]);
-
+    setGalleryIDs(
+      record?.attributes?.gallery?.data?.map(item => item.id) || null
+    );
     reset({
       name: record?.attributes.name,
       slug: record?.attributes.slug,
@@ -137,6 +141,11 @@ const ProductForm = (props: IProductFormProps) => {
           name: gall.attributes.name,
           url: `${BASE_URL}${gall.attributes.url}`,
         }))
+      );
+    }
+    if (record?.attributes.descripton) {
+      setDescription(
+        formType.FORM_CREATE !== type ? record?.attributes.descripton : ''
       );
     }
   }, [record?.id, openTime]);
@@ -291,23 +300,21 @@ const ProductForm = (props: IProductFormProps) => {
   };
 
   const onSubmit: SubmitHandler<FormProductType> = async data => {
-    let galleryIds: number[] | undefined;
-    let avatarId: number | undefined;
+    let galleryIds: number[] | undefined | null;
+    let avatarId: number | undefined | null;
 
     const resAvatar = await uploadAvatar();
     const resGal = await uploadGallery();
     if (resAvatar) {
       avatarId = resAvatar[0]?.id?.toString();
     } else {
-      avatarId = record?.attributes.avatar.data.id;
+      avatarId = avatar?.id || null;
     }
 
-    const tempGalleryIDs = gallery?.map(item => item.id);
-
     if (resGal.length) {
-      galleryIds = [...(tempGalleryIDs || []), ...resGal];
+      galleryIds = [...(galleryIDs || []), ...resGal];
     } else {
-      galleryIds = tempGalleryIDs;
+      galleryIds = galleryIDs;
     }
 
     const convertData = {
@@ -315,8 +322,9 @@ const ProductForm = (props: IProductFormProps) => {
       categories: formatValue(data?.categories),
       product_line: data?.product_line ? { id: data?.product_line } : undefined,
       skin_properties: formatValue(data?.skin_properties),
-      avatar: avatarId || undefined,
+      avatar: avatarId || null,
       gallery: galleryIds || undefined,
+      descripton: description,
     };
 
     if (type === formType.FORM_CREATE) {
@@ -348,7 +356,7 @@ const ProductForm = (props: IProductFormProps) => {
     setAvatarFile(fileList);
   };
 
-  const handleDeleteAvatar = (id?: number) => {
+  const handleDeleteAvatar = (id?: number | string) => {
     if (id) {
       setAvatar(undefined);
       setAvatarFile(undefined);
@@ -362,7 +370,14 @@ const ProductForm = (props: IProductFormProps) => {
     setGallery(prev => [...(prev || []), image]);
     setGalleryFileLists(prev => [...(prev || []), fileListItem]);
   };
-  const handleDeleteGallery = (id?: number) => {
+  const handleDeleteGallery = (id?: string | number) => {
+    const searchCondition = 'rc-upload';
+    if (id && !id?.toString().includes(searchCondition)) {
+      const tempCurrentId = galleryIDs?.filter(
+        galleryID => galleryID !== Number(id)
+      );
+      setGalleryIDs(tempCurrentId || null);
+    }
     if (id) {
       const tempCurrent = gallery?.filter(item => item.id !== id);
       setGallery(tempCurrent);
@@ -549,6 +564,11 @@ const ProductForm = (props: IProductFormProps) => {
           disabled={isDisable}
         />
       </div>
+
+      <ReactQuillComponent
+        setCurrentValue={setDescription}
+        currentValue={description}
+      />
 
       <div className="flex justify-end items-end gap-[1.2rem]">
         <ButtonComponent

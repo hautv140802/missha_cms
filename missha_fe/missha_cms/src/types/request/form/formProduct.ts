@@ -6,7 +6,6 @@ export type FormProductType = {
   price: number;
   sale_price: number;
   total_purchase?: number;
-  description?: any;
   categories?: number[];
   avatar?: number;
   gallery?: number[];

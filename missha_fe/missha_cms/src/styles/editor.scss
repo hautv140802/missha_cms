@@ -1,27 +1,10 @@
-.rdw-link-modal {
-  .rdw-link-modal-input {
-    background-color: white;
-    color: black;
-  }
-
-  #openLinkInNewWindow {
-    background-color: white;
-    color: white;
-  }
-}
-
-.rdw-embedded-modal {
-  .rdw-embedded-modal-link-input,
-  .rdw-embedded-modal-size-input {
-    background-color: white;
-    color: black;
-  }
-}
-
-.rdw-image-modal {
-  .rdw-image-modal-url-input,
-  .rdw-image-modal-size-input {
-    background-color: white;
-    color: black;
+.quill {
+  .ql-container {
+    overflow-y: auto;
+    .ql-editor {
+      min-height: 10rem;
+      max-height: 40rem;
+      overflow: auto;
+    }
   }
 }

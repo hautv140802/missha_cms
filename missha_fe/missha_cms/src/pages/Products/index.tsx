@@ -23,11 +23,8 @@ import { SettingOutlined } from '@ant-design/icons';
 import { TableColumnsType } from 'antd';
 import Search from 'antd/es/input/Search';
 import dayjs from 'dayjs';
-import { convertFromRaw, RawDraftContentState } from 'draft-js';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import EditorComponent from '@/components/common/Editor';
 const defaultCheckedList = [
   'name',
   'slug',
@@ -148,13 +145,19 @@ const Products = () => {
       dataIndex: ['attributes', 'total_purchase'],
       key: 'total_purchase',
     },
-    // {
-    //   title: 'Description',
-    //   dataIndex: ['attributes', 'description'],
-    //   render: (description: RawDraftContentState) =>
-    //     convertFromRaw(description).getPlainText(),
-    //   key: 'description',
-    // },
+    {
+      title: 'Description',
+      dataIndex: ['attributes', 'descripton'],
+      render: (descripton: string) => (
+        <div
+          className="h-[5rem] overflow-y-auto"
+          dangerouslySetInnerHTML={{
+            __html: descripton,
+          }}
+        />
+      ),
+      key: 'description',
+    },
 
     {
       title: 'Create at',
