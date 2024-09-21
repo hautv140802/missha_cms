@@ -2,10 +2,20 @@ import axiosClient from '@/libs/axios';
 import { BASE_URL } from '@/utils/constants/base';
 import urls from '@/utils/constants/urls';
 import axios from 'axios';
-import { useState, useRef, useCallback } from 'react';
+import clsx from 'clsx';
+import { useRef, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+interface IReactQuillComponentProps {
+  currentValue: string;
+  setCurrentValue: (value: string) => void;
+  label?: string;
+  containerClassName?: string;
+  labelClassName?: string;
+  isRequired?: boolean;
+  className?: string;
+}
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'], // toggled buttons
   ['blockquote', 'code-block'],
@@ -23,13 +33,21 @@ const toolbarOptions = [
   [{ color: [] }, { background: [] }], // dropdown with defaults from theme
   [{ font: [] }],
   [{ align: [] }],
+  // ['Resize', 'DisplaySize'],
 
   // ['clean'], // remove formatting button
 ];
-const ReactQuillComponent = () => {
+const ReactQuillComponent = (props: IReactQuillComponentProps) => {
+  const {
+    currentValue,
+    setCurrentValue,
+    containerClassName,
+    label,
+    labelClassName,
+    isRequired,
+    className,
+  } = props;
   const quillRef = useRef<ReactQuill>(null);
-  const [value, setValue] = useState('');
-  console.log(value);
   const imageHandler = useCallback(() => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
@@ -56,9 +74,20 @@ const ReactQuillComponent = () => {
           const editor = quillRef.current?.getEditor();
           const range = editor?.getSelection();
 
-          // Insert the uploaded image at the cursor position
+          // // Insert the uploaded image at the cursor position
+          // if (range) {
+          //   editor?.insertEmbed(range.index, 'image', imageUrl);
+          // }
+          // Yêu cầu người dùng nhập kích thước ảnh
+          const width = prompt('Enter image width (px):', 'auto');
+          const height = prompt('Enter image height (px):', 'auto');
+
+          // Chèn hình ảnh với kích thước tùy chỉnh
           if (range) {
-            editor?.insertEmbed(range.index, 'image', imageUrl);
+            editor?.clipboard.dangerouslyPasteHTML(
+              range.index,
+              `<img src="${imageUrl}" width="${width}" height="${height}" />`
+            );
           }
           //   return `${BASE_API_URL}${response.data[0].url}`;
         } catch (error: any) {
@@ -73,12 +102,33 @@ const ReactQuillComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div className={clsx('w-full', containerClassName)}>
+      {!!label && (
+        <div className="flex items-center gap-[0.8rem]">
+          <label
+            className={clsx(
+              'font-[500] text-[1.4rem] leading-[2rem] text-[#484848]',
+              labelClassName
+            )}
+          >
+            {label}
+          </label>
+          <div
+            className={clsx(
+              'flex items-center justify-center',
+              isRequired ? 'visible' : 'invisible'
+            )}
+          >
+            <span className="text-[red] font-bold text-[1.6rem]">*</span>
+          </div>
+        </div>
+      )}
       <ReactQuill
         ref={quillRef}
+        className={clsx('w-full min-h-[40rem]', className)}
         theme="snow"
-        value={value}
-        onChange={setValue}
+        value={currentValue}
+        onChange={setCurrentValue}
         modules={{
           clipboard: {
             matchVisual: false,
