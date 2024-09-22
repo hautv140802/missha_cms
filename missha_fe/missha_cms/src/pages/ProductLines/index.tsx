@@ -214,8 +214,9 @@ const ProductLines = () => {
         isLoading={isLoading}
         pagination={{
           current: pagination?.page,
-          total: (pagination?.pageCount || 1) * (pagination?.pageSize || 10),
-          pageSize: pagination?.pageSize,
+          total:
+            (pagination?.pageCount || 1) * (pagination?.pageSize || PAGE_SIZE),
+          pageSize: pagination?.pageSize || PAGE_SIZE,
         }}
         setCurrentPage={setCurrentPage}
       />

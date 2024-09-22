@@ -7,6 +7,8 @@ const urls = {
   PRODUCTS: '/products',
   CUSTOMERS: '/users',
   ROLE: '/users-permissions/roles',
+  ORDERS: 'orders',
+  ORDER_DETAILS: 'order-details',
 };
 
 export default urls;

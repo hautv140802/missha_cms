@@ -1,3 +1,7 @@
+import { BaseData } from '../base/baseData';
+import { UserType } from './user';
+import { VoucherResponseType } from './voucher';
+
 export type OrderResponseType = {
   customer_email: string;
   customer_full_name: string;
@@ -7,4 +11,16 @@ export type OrderResponseType = {
   payment_method: string;
   total: number;
   status: string;
+  transport_fee: number;
+  order_code: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  user: {
+    data: BaseData<UserType>;
+  };
+
+  voucher: {
+    data: BaseData<VoucherResponseType>;
+  };
 };

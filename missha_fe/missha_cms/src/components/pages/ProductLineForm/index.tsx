@@ -1,6 +1,5 @@
 import ButtonComponent from '@/components/common/Button';
 import InputComponent from '@/components/common/Input';
-import ReactQuillComponent from '@/components/common/ReactQuill';
 import useCreateProductLine from '@/libs/axios/productLine/useCreateProductLine';
 import useUpdateProductLine from '@/libs/axios/productLine/useUpdateProductLine';
 import { BaseData } from '@/types/base/baseData';
@@ -90,7 +89,6 @@ const ProductLineForm = (props: IProductLineFormProps) => {
           control={control}
         />
       )}
-      <ReactQuillComponent />
 
       <div className="flex justify-end items-end gap-[1.2rem]">
         <ButtonComponent text="Hủy" onClick={onCloseModal} />
