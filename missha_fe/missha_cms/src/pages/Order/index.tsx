@@ -16,7 +16,8 @@ import SettingColumn from '@/components/common/SettingColumn';
 import { formatPrice } from '@/utils/functions/formatPrice';
 import OrderStatusComponent from '@/components/common/OrderStatus';
 import VoucherBadge from '@/components/common/VoucherBadge';
-import CKEditorComponent from '@/components/common/CKEditor5';
+import ModalComponent from '@/components/common/Modal';
+import OrderForm from '@/components/pages/OrderForm';
 
 const defaultCheckedList = [
   'order_code',
@@ -52,7 +53,7 @@ const Orders = () => {
   };
 
   const { data, isLoading, pagination, mutate } = useFetchOrders(params);
-  const columns: TableColumnsType = [
+  const columns: TableColumnsType<any> = [
     {
       title: 'ID',
       dataIndex: ['id'],
@@ -143,16 +144,16 @@ const Orders = () => {
       render: (_, record) => (
         <ActionsColumn
           onHandleView={() => {
-            // setSelectedRecord(record);
-            // setCurrentFormType(formType.FORM_VIEW);
-            // setOpenTime(new Date().toString());
-            // setOpenFormModal(true);
+            setSelectedRecord(record);
+            setCurrentFormType(formType.FORM_VIEW);
+            setOpenTime(new Date().toString());
+            setOpenFormModal(true);
           }}
           onHandleUpdate={() => {
-            // setSelectedRecord(record);
-            // setCurrentFormType(formType.FORM_UPDATE);
-            // setOpenFormModal(true);
-            // setOpenTime(new Date().toString());
+            setSelectedRecord(record);
+            setCurrentFormType(formType.FORM_UPDATE);
+            setOpenFormModal(true);
+            setOpenTime(new Date().toString());
           }}
           onHandleDelete={async () => {
             // const productLineRes = await useDeleteProductLine(record.id);
@@ -222,6 +223,13 @@ const Orders = () => {
     setCurrentFormType(formType.FORM_CREATE);
     setOpenFormModal(true);
   };
+
+  const title =
+    currentFormType === formType.FORM_VIEW
+      ? 'Xem chi tiết đơn hàng'
+      : currentFormType === formType.FORM_CREATE
+      ? 'Tạo mới dòng đơn hàng'
+      : 'Cập nhật dòng đơn hàng';
   return (
     <ContentWrapper className="h-full">
       <div>
@@ -256,7 +264,6 @@ const Orders = () => {
           </div>
         </div>
       </div>
-
       <TableComponent
         dataSource={data}
         columns={visibleColumns}
@@ -267,8 +274,19 @@ const Orders = () => {
           pageSize: pagination?.pageSize || PAGE_SIZE,
         }}
       />
-
-      <CKEditorComponent />
+      <ModalComponent
+        open={openFormModal}
+        title={title}
+        onCancel={handleCancelFormModal}
+      >
+        <OrderForm
+          type={currentFormType}
+          record={selectedRecord}
+          onCloseModal={handleCancelFormModal}
+          openTime={openTime}
+          handleComplete={handleComplete}
+        />
+      </ModalComponent>
     </ContentWrapper>
   );
 };

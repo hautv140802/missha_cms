@@ -5,16 +5,22 @@ import urls from '@/utils/constants/urls';
 import { BaseData } from '@/types/base/baseData';
 import { BaseResponse } from '@/types/base/baseResponse';
 import { BaseParamsRequestType } from '@/types/base/baseParamsRequest';
-import { OrderResponseType } from '@/types/response/order';
+import { OrderDetailResponseType } from '@/types/response/orderDetail';
 
-export const useFetchOrders = (params: BaseParamsRequestType) => {
+export const useFetchOrderDetails = (
+  params: BaseParamsRequestType,
+  orderID: number
+) => {
   const url = queryString.stringifyUrl({
-    url: `${urls.ORDERS}`,
-    query: params,
+    url: `${urls.ORDER_DETAILS}`,
+    query: {
+      ...params,
+      'filters[order]': orderID,
+    },
   });
 
   const { data, isLoading, error, mutate, isValidating } = useSWR<
-    BaseResponse<BaseData<OrderResponseType>[]>
+    BaseResponse<BaseData<OrderDetailResponseType>[]>
   >(url, fetcher);
 
   return {
