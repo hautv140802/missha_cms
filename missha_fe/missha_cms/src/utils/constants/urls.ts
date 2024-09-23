@@ -9,6 +9,7 @@ const urls = {
   ROLE: '/users-permissions/roles',
   ORDERS: 'orders',
   ORDER_DETAILS: 'order-details',
+  VOUCHERS: '/vouchers',
 };
 
 export default urls;
