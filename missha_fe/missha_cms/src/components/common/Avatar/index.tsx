@@ -6,7 +6,7 @@ interface IAvatarProps extends AvatarProps {}
 const AvatarComponent = (props: IAvatarProps) => {
   const { ...rest } = props;
 
-  if (!props.src) return <p className="w-full text-center">-</p>;
+  if (!props.src) return '-';
 
   return (
     <Avatar

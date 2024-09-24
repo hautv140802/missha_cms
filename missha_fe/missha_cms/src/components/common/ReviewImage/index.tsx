@@ -3,7 +3,7 @@ import { DeleteOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
 
 interface IReviewImageProps {
-  listImage?: UploadLocalType[] | UploadLocalType;
+  listImage?: UploadLocalType[] | UploadLocalType | null;
   onDelete?: (id?: number | string) => void;
   disabled?: boolean;
 }

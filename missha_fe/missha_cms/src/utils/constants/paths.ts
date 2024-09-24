@@ -7,7 +7,7 @@ const paths = {
   SKIN_PROPERTIES: '/skin-properties',
   PRODUCTS: '/products',
   CUSTOMERS: '/customers',
-  CKEDITOR: '/ckeditor',
+  VOUCHERS: '/vouchers',
 };
 
 export default paths;
