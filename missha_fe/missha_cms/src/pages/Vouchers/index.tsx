@@ -5,13 +5,10 @@ import ContentWrapper from '@/components/common/ContentWrapper';
 import ModalComponent from '@/components/common/Modal';
 import SettingColumn from '@/components/common/SettingColumn';
 import TableComponent from '@/components/common/Table';
-import ProductLineForm from '@/components/pages/ProductLineForm';
 import VoucherForm from '@/components/pages/VoucherForm';
-import useDeleteProductLine from '@/libs/axios/productLine/useDeleteProductLine';
-import { useFetchProductLines } from '@/libs/swr/useFetchProductLines';
+import useDeleteVoucher from '@/libs/axios/voucher/useDeleteVoucher';
 import { useFetchVouchers } from '@/libs/swr/useFetchVouchers';
 import { BaseData } from '@/types/base/baseData';
-import { ProductLineResponseType } from '@/types/response/product';
 import { VoucherResponseType } from '@/types/response/voucher';
 import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
@@ -78,10 +75,11 @@ const Vouchers = () => {
       key: 'image',
       render: image => (
         <AvatarComponent
-          src={image.attributes.url}
-          alt={image.attributes.name}
+          src={image?.attributes?.url}
+          alt={image?.attributes?.name}
         />
       ),
+      align: 'left',
     },
     {
       title: 'Số tiền giảm',
@@ -127,8 +125,8 @@ const Vouchers = () => {
             setOpenTime(new Date().toString());
           }}
           onHandleDelete={async () => {
-            const productLineRes = await useDeleteVoucher(record.id);
-            if (productLineRes && productLineRes.data.id) {
+            const voucherRes = await useDeleteVoucher(record.id);
+            if (voucherRes && voucherRes.data.id) {
               toast.success('Xóa thông tin thành công!');
               mutate();
             } else {

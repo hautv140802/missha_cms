@@ -35,6 +35,7 @@ const VoucherForm = (props: IVoucherFormProps) => {
     null
   );
   const [imageVoucherFile, setImageVoucherFile] = useState<UploadFile>();
+  const isView = formType.FORM_VIEW === type;
   const {
     control,
     handleSubmit,
@@ -51,11 +52,11 @@ const VoucherForm = (props: IVoucherFormProps) => {
     });
 
     setImageVoucher(
-      record?.attributes.image.data
+      record?.attributes?.image?.data
         ? {
-            id: record?.attributes.image.data.id,
-            name: record?.attributes.image.data.attributes.name,
-            url: `${BASE_URL}${record?.attributes.image.data.attributes.url}`,
+            id: record?.attributes?.image.data.id,
+            name: record?.attributes?.image.data.attributes.name,
+            url: `${BASE_URL}${record?.attributes?.image?.data?.attributes?.url}`,
           }
         : null
     );
@@ -127,32 +128,32 @@ const VoucherForm = (props: IVoucherFormProps) => {
         name="code"
         placeholder="Tên dòng sản phẩm"
         control={control}
-        disabled
+        disabled={isView}
       />
       <InputComponent
         label="Tiêu đề voucher:"
         name="title"
         placeholder="Tên dòng sản phẩm"
         control={control}
-        disabled
+        disabled={isView}
       />
       <InputComponent
         label="Số tiền giảm:"
         name="amount_decrease"
         placeholder="Số tiền giảm"
         control={control}
-        disabled
+        disabled={isView}
       />
       <UploadImageComponent
         label="Ảnh voucher:"
-        disabled={type === formType.FORM_VIEW}
         maxCount={1}
         onAddImage={handleAddImageVoucher}
+        disabled={isView}
       />
       <ReviewImage
         listImage={imageVoucher}
         onDelete={handleDeleteImageVoucher}
-        disabled={type === formType.FORM_VIEW}
+        disabled={isView}
       />
 
       <div className="flex justify-end items-end gap-[1.2rem]">
