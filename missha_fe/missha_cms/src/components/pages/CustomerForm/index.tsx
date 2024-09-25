@@ -3,7 +3,6 @@ import InputComponent from '@/components/common/Input';
 import SelectComponent from '@/components/common/Select';
 import useCreateCustomer from '@/libs/axios/customer/useCreateCustomer';
 import useUpdateCustomer from '@/libs/axios/customer/useUpdateCustomer';
-import roleApi from '@/libs/axios/user/role';
 import { useFetchRoles } from '@/libs/swr/useFetchRoles';
 import { FormUserRequestType } from '@/types/request/form/formCustomer';
 import { UserResponseType, UserRole } from '@/types/response/user';
@@ -97,17 +96,17 @@ const CustomerForm = (props: ICustomerFormProps) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <InputComponent
-        label="Full name:"
+        label="Tên khách hàng:"
         name="full_name"
-        placeholder="Full name"
+        placeholder="Tên khách hàng"
         control={control}
         disabled={isView}
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.2rem]">
         <InputComponent
-          label="Username:"
+          label="Tên tài khoản:"
           name="username"
-          placeholder="Username"
+          placeholder="Tên tài khoản"
           control={control}
           disabled={isView}
           isRequired
@@ -126,9 +125,9 @@ const CustomerForm = (props: ICustomerFormProps) => {
         />
       </div>
       <InputComponent
-        label="Password:"
+        label="Mật khẩu:"
         name="password"
-        placeholder="Password"
+        placeholder="Mật khẩu"
         control={control}
         errors={errors.password}
         rules={formValidation.password}
@@ -136,9 +135,9 @@ const CustomerForm = (props: ICustomerFormProps) => {
         isRequired
       />
       <InputComponent
-        label="Phone:"
+        label="Số điện thoại:"
         name="phone"
-        placeholder="Phone"
+        placeholder="Số điện thoại"
         control={control}
         errors={errors.phone}
         rules={formValidation.phone}
@@ -148,25 +147,25 @@ const CustomerForm = (props: ICustomerFormProps) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[1.2rem]">
         <SelectComponent
-          label="Gender"
+          label="Giới tính:"
           name="gender"
           control={control}
-          placeholder="Gender"
+          placeholder="Giới tính"
           options={[
             {
               value: 'female',
-              label: 'Female',
+              label: 'Nũ',
             },
             {
               value: 'male',
-              label: 'Male',
+              label: 'Nam',
             },
           ]}
           disabled={isView}
         />
         <SelectComponent
           name="blocked"
-          label="Blocked"
+          label="Blocked:"
           control={control}
           placeholder="Blocked"
           options={[
@@ -185,7 +184,7 @@ const CustomerForm = (props: ICustomerFormProps) => {
         <SelectComponent
           name="type"
           control={control}
-          label="Type"
+          label="Type:"
           placeholder="Type"
           options={[
             {
@@ -203,7 +202,7 @@ const CustomerForm = (props: ICustomerFormProps) => {
           control={control}
           name="role"
           defaultValue={record?.role.id || 1}
-          label="Role"
+          label="Role:"
           placeholder="Role"
           options={rolesData?.map(item => ({
             value: item.id,

@@ -11,6 +11,7 @@ import SkinProperties from '@/pages/SkinProperties';
 import Products from '@/pages/Products';
 import Customers from '@/pages/Customers';
 import Vouchers from '@/pages/Vouchers';
+import Bookings from '@/pages/Bookings';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       { path: paths.PRODUCTS, element: <Products /> },
       { path: paths.CUSTOMERS, element: <Customers /> },
       { path: paths.VOUCHERS, element: <Vouchers /> },
+      { path: paths.BOOKINGS, element: <Bookings /> },
     ],
   },
 ]);

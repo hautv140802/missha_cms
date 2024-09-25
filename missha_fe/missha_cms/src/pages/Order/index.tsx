@@ -52,7 +52,7 @@ const Orders = () => {
     'pagination[pageSize]': PAGE_SIZE,
   };
 
-  const { data, isLoading, pagination, mutate } = useFetchOrders(params);
+  const { data, pagination, mutate } = useFetchOrders(params);
   const columns: TableColumnsType<any> = [
     {
       title: 'ID',
@@ -60,47 +60,47 @@ const Orders = () => {
       key: 'id',
     },
     {
-      title: 'Order code',
+      title: 'Mã đơn hàng',
       dataIndex: ['attributes', 'order_code'],
       key: 'order_code',
     },
     {
-      title: 'Customer full name',
+      title: 'Tên khách hàng',
       dataIndex: ['attributes', 'customer_full_name'],
       key: 'customer_full_name',
     },
     {
-      title: 'Customer phone',
+      title: 'Số điện thoại',
       dataIndex: ['attributes', 'customer_phone'],
       key: 'customer_phone',
     },
     {
-      title: 'Total',
+      title: 'Tổng tiền bán',
       dataIndex: ['attributes', 'total'],
       key: 'total',
       render: total => formatPrice(total),
       align: 'right',
     },
     {
-      title: 'Transport fee',
+      title: 'Phí vận chuyển',
       dataIndex: ['attributes', 'transport_fee'],
       key: 'transport_fee',
       render: transport_fee => formatPrice(transport_fee),
       align: 'right',
     },
     {
-      title: 'Status',
+      title: 'Trạng thái',
       dataIndex: ['attributes', 'status'],
       key: 'status',
       render: status => <OrderStatusComponent status={status} />,
     },
     {
-      title: 'Shipping method',
+      title: 'Phương thức vận chuyển',
       dataIndex: ['attributes', 'shipping_method'],
       key: 'shipping_method',
     },
     {
-      title: 'Payment method',
+      title: 'Phương thức thanh toán',
       dataIndex: ['attributes', 'payment_method'],
       key: 'payment_method',
     },
@@ -119,28 +119,28 @@ const Orders = () => {
       align: 'right',
     },
     {
-      title: 'Published at',
+      title: 'Ngày áp dụng',
       dataIndex: ['attributes', 'publishedAt'],
       render: (publishedAt: string) =>
         dayjs(publishedAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'publishedAt',
     },
     {
-      title: 'Created at',
+      title: 'Ngày tạo',
       dataIndex: ['attributes', 'createdAt'],
       render: (createdAt: string) =>
         dayjs(createdAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'createdAt',
     },
     {
-      title: 'Updated at',
+      title: 'Ngày cập nhật',
       dataIndex: ['attributes', 'updatedAt'],
       render: (updatedAt: string) =>
         dayjs(updatedAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'updatedAt',
     },
     {
-      title: 'Actions',
+      title: 'Thao tác',
       render: (_, record) => (
         <ActionsColumn
           onHandleView={() => {

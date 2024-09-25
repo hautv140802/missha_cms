@@ -25,7 +25,6 @@ const Login = () => {
   });
 
   const onSubmit: SubmitHandler<LoginRequestType> = async data => {
-    console.log('data login', data);
     await authApi
       .login(data)
       .then(res => {
@@ -49,7 +48,7 @@ const Login = () => {
   return (
     <div className="w-[300px]">
       <div className="flex items-center justify-center">
-        <h3 className="text-[2.4rem] font-bold">Login</h3>
+        <h3 className="text-[2.4rem] font-bold">Đăng nhập</h3>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-[2.4rem] flex flex-col gap-[2.4rem]">

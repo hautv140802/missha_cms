@@ -1,12 +1,7 @@
 import {
-  BarChartOutlined,
-  BgColorsOutlined,
   DesktopOutlined,
-  HomeOutlined,
   PieChartOutlined,
-  ProductOutlined,
   UserOutlined,
-  VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, type MenuProps } from 'antd';
 import { useEffect, useState } from 'react';
@@ -40,6 +35,7 @@ const items: MenuItem[] = [
     paths.ORDERS,
     <img src={svgs.menuOrder} className="w-[24px] h-[24px]" />
   ),
+  getItem('Quản lý bookings', paths.BOOKINGS, <PieChartOutlined />),
   // getItem('Quản lý sản phẩm', 'PRODUCT', <ProductOutlined />, [
   //   getItem('Sản phẩm chính', 'MAIN_PRODUCT', <ProductOutlined />),
   //   getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
@@ -54,7 +50,7 @@ const items: MenuItem[] = [
   getItem('Quản lý sản phẩm', paths.PRODUCTS, <DesktopOutlined />),
   getItem('Quản lý khách hàng', paths.CUSTOMERS, <DesktopOutlined />),
   getItem('Quản lý Vouchers', paths.VOUCHERS, <PieChartOutlined />),
-  getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
+  // getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
 ];
 
 const RootLayout = () => {

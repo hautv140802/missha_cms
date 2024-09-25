@@ -88,28 +88,28 @@ const Vouchers = () => {
       render: amount_decrease => formatPrice(amount_decrease),
     },
     {
-      title: 'Published at',
+      title: 'Ngày áp dụng',
       dataIndex: ['attributes', 'publishedAt'],
       render: (publishedAt: string) =>
         dayjs(publishedAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'publishedAt',
     },
     {
-      title: 'Create at',
+      title: 'Ngày tạo',
       dataIndex: ['attributes', 'createdAt'],
       render: (createdAt: string) =>
         dayjs(createdAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'createdAt',
     },
     {
-      title: 'Updated at',
+      title: 'Ngày cập nhật',
       dataIndex: ['attributes', 'updatedAt'],
       render: (updatedAt: string) =>
         dayjs(updatedAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'updatedAt',
     },
     {
-      title: 'Actions',
+      title: 'Thao tác',
       render: (_, record) => (
         <ActionsColumn
           onHandleView={() => {
@@ -190,6 +190,7 @@ const Vouchers = () => {
 
   const handleCreateForm = () => {
     setCurrentFormType(formType.FORM_CREATE);
+    setOpenTime(new Date().toString());
     setOpenFormModal(true);
   };
   const title =

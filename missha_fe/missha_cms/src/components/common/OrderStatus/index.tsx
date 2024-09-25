@@ -15,7 +15,7 @@ const OrderStatusComponent = (props: IOrderStatusComponentProps) => {
 
   const currentStatus = variantStatus[status];
   return (
-    <div className={clsx('flex justify-end items-center', className)}>
+    <div className={clsx('w-full flex justify-end items-center', className)}>
       <div
         className={clsx(
           'w-fit flex justify-end items-center h-[2.8rem] text-[1.4rem] py-[0.4rem] px-[1.6rem] rounded-[1.6rem]',
