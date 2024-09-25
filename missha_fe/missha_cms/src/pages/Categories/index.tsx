@@ -22,14 +22,7 @@ import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const defaultCheckedList = [
-  'id',
-  'name',
-  'slug',
-  'banner',
-  'products',
-  'actions',
-];
+const defaultCheckedList = ['name', 'banner', 'products', 'actions'];
 
 const Categories = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -61,7 +54,7 @@ const Categories = () => {
       key: 'id',
     },
     {
-      title: 'Name',
+      title: 'Tên danh mục',
       dataIndex: ['attributes', 'name'],
       key: 'name',
     },
@@ -82,21 +75,21 @@ const Categories = () => {
       ),
     },
     {
-      title: 'Create at',
+      title: 'Ngày tạo',
       dataIndex: ['attributes', 'createdAt'],
       render: (createdAt: string) =>
         dayjs(createdAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'createdAt',
     },
     {
-      title: 'Updated at',
+      title: 'Ngày cập nhật',
       dataIndex: ['attributes', 'updatedAt'],
       render: (updatedAt: string) =>
         dayjs(updatedAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'updatedAt',
     },
     {
-      title: 'Actions',
+      title: 'Thao tác',
       render: (_, record) => (
         <ActionsColumn
           onHandleView={() => {
@@ -177,6 +170,7 @@ const Categories = () => {
 
   const handleCreateForm = () => {
     setCurrentFormType(formType.FORM_CREATE);
+    setOpenTime(new Date().toString());
     setOpenFormModal(true);
   };
   const title =

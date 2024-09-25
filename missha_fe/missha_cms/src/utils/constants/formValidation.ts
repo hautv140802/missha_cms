@@ -83,6 +83,9 @@ const formValidation = {
   role: {
     required: 'Role không được để trống',
   },
+  dateBooking: {
+    required: 'Ngày booking không được để trống',
+  },
 };
 
 export default formValidation;

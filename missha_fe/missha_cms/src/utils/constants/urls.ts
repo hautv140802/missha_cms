@@ -10,6 +10,7 @@ const urls = {
   ORDERS: 'orders',
   ORDER_DETAILS: 'order-details',
   VOUCHERS: '/vouchers',
+  BOOKINGS: '/bookings',
 };
 
 export default urls;

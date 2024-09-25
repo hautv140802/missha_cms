@@ -57,25 +57,25 @@ const OrderForm = (props: IOrderFormProps) => {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.2rem]">
         <InputComponent
-          label="Tên dòng sản phẩm:"
+          label="Tên  khách hàng:"
           name="customer_full_name"
-          placeholder="Tên dòng sản phẩm"
+          placeholder="Tên  khách hàng"
           control={control}
           disabled
         />
         <InputComponent
-          label="Tên dòng sản phẩm:"
+          label="Email:"
           name="customer_email"
-          placeholder="Tên dòng sản phẩm"
+          placeholder="Email"
           control={control}
           disabled
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[1.2rem]">
         <InputComponent
-          label="Tên dòng sản phẩm:"
+          label="Số điển thoại:"
           name="customer_phone"
-          placeholder="Tên dòng sản phẩm"
+          placeholder="Số điển thoại"
           control={control}
           disabled
         />

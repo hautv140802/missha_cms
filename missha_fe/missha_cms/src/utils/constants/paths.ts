@@ -8,6 +8,7 @@ const paths = {
   PRODUCTS: '/products',
   CUSTOMERS: '/customers',
   VOUCHERS: '/vouchers',
+  BOOKINGS: '/bookings',
 };
 
 export default paths;

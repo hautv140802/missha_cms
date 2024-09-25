@@ -50,7 +50,7 @@ const Customers = () => {
     sort: 'id:desc',
   };
 
-  const { data, isLoading, mutate } = useFetchCustomers(params);
+  const { data, mutate } = useFetchCustomers(params);
   const columns: TableColumnsType<any> = [
     {
       title: 'ID',
@@ -58,13 +58,13 @@ const Customers = () => {
       key: 'id',
     },
     {
-      title: 'Full name',
+      title: 'Tên khách hàng',
       dataIndex: 'full_name',
       key: 'full_name',
       render: full_name => checkStringEmpty(full_name),
     },
     {
-      title: 'Username',
+      title: 'Tên tài khoản',
       dataIndex: 'username',
       key: 'username',
       render: username => checkStringEmpty(username),
@@ -76,13 +76,13 @@ const Customers = () => {
       render: email => checkStringEmpty(email),
     },
     {
-      title: 'Phone',
+      title: 'Số điện thoại',
       dataIndex: 'phone',
       key: 'phone',
       render: phone => formatNumberPhone(phone),
     },
     {
-      title: 'Gender',
+      title: 'Giới tính',
       dataIndex: 'gender',
       key: 'gender',
       render: gender => checkStringEmpty(gender),
@@ -116,21 +116,21 @@ const Customers = () => {
     },
 
     {
-      title: 'Create at',
+      title: 'Ngày tạo',
       dataIndex: 'createdAt',
       render: (createdAt: string) =>
         dayjs(createdAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'createdAt',
     },
     {
-      title: 'Updated at',
+      title: 'Ngày cập nhật',
       dataIndex: 'updatedAt',
       render: (updatedAt: string) =>
         dayjs(updatedAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'updatedAt',
     },
     {
-      title: 'Actions',
+      title: 'Thao tác',
       render: (_, record) => (
         <ActionsColumn
           onHandleView={() => {
@@ -211,6 +211,7 @@ const Customers = () => {
 
   const handleCreateForm = () => {
     setCurrentFormType(formType.FORM_CREATE);
+    setOpenTime(new Date().toString());
     setOpenFormModal(true);
   };
   const title =

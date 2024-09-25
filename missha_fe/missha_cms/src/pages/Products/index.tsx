@@ -3,6 +3,7 @@ import AvatarComponent from '@/components/common/Avatar';
 import ButtonComponent from '@/components/common/Button';
 import ContentWrapper from '@/components/common/ContentWrapper';
 import ModalComponent from '@/components/common/Modal';
+import MultiLabel from '@/components/common/MultiLabel';
 import SettingColumn from '@/components/common/SettingColumn';
 import TableComponent from '@/components/common/Table';
 import ProductForm from '@/components/pages/ProductForm';
@@ -71,7 +72,7 @@ const Products = () => {
       key: 'id',
     },
     {
-      title: 'Name',
+      title: 'Tên sản phẩm',
       dataIndex: ['attributes', 'name'],
       key: 'name',
     },
@@ -81,7 +82,7 @@ const Products = () => {
       key: 'slug',
     },
     {
-      title: 'Avatar',
+      title: 'Ảnh chính sản phẩm',
       dataIndex: ['attributes', 'avatar', 'data'],
       key: 'avatar',
       render: (avatar: BaseData<ImageType>) => (
@@ -93,17 +94,17 @@ const Products = () => {
     },
 
     {
-      title: 'Price',
+      title: 'Giá bán',
       dataIndex: ['attributes', 'price'],
       key: 'price',
     },
     {
-      title: 'Sale price',
+      title: 'Giá giảm',
       dataIndex: ['attributes', 'sale_price'],
       key: 'sale_price',
     },
     {
-      title: 'gallery',
+      title: 'Bộ sư tập',
       dataIndex: ['attributes', 'gallery', 'data'],
       key: 'gallery',
       render: (gallery: BaseData<ImageType>[]) =>
@@ -116,23 +117,30 @@ const Products = () => {
         )),
     },
     {
-      title: 'Categories',
+      title: 'Danh mục',
       dataIndex: ['attributes', 'categories', 'data'],
       key: 'categories',
-      render: (categories: BaseData<CategoryResponseType>[]) =>
-        categories?.map((category, index) => (
-          <p key={index}>{category?.attributes?.name}</p>
-        )),
+      render: (categories: BaseData<CategoryResponseType>[], index) => (
+        <MultiLabel
+          arrayItem={categories.map(product => ({
+            id: product.id,
+            title: product.attributes.name || product.id,
+          }))}
+          index={index}
+          lastIndex={categories?.length - 1 || 0}
+          name="Danh mục"
+        />
+      ),
     },
     {
-      title: 'Product line',
+      title: 'Dòng sản phẩm',
       dataIndex: ['attributes', 'product_line', 'data'],
       key: 'product_line',
       render: (product_line: BaseData<ProductLineResponseType>) =>
         product_line?.attributes?.name,
     },
     {
-      title: 'Skin properties',
+      title: 'Tình trạng da',
       dataIndex: ['attributes', 'skin_properties', 'data'],
       key: 'skin_properties',
       render: (skin_properties: BaseData<SkinPropertiesResponseType>[]) =>
@@ -141,16 +149,16 @@ const Products = () => {
         )),
     },
     {
-      title: 'Total purchase',
+      title: 'Số lượt bán',
       dataIndex: ['attributes', 'total_purchase'],
       key: 'total_purchase',
     },
     {
-      title: 'Description',
+      title: 'Mô tả',
       dataIndex: ['attributes', 'descripton'],
       render: (descripton: string) => (
         <div
-          className="h-[5rem] overflow-y-auto"
+          className="max-w-[25rem] h-[5rem] overflow-y-auto"
           dangerouslySetInnerHTML={{
             __html: descripton,
           }}
@@ -160,21 +168,21 @@ const Products = () => {
     },
 
     {
-      title: 'Create at',
+      title: 'Ngày tạo',
       dataIndex: ['attributes', 'createdAt'],
       render: (createdAt: string) =>
         dayjs(createdAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'createdAt',
     },
     {
-      title: 'Updated at',
+      title: 'Ngày cập nhật',
       dataIndex: ['attributes', 'updatedAt'],
       render: (updatedAt: string) =>
         dayjs(updatedAt).format(defaultKey.DATE_TIME_FORMAT),
       key: 'updatedAt',
     },
     {
-      title: 'Actions',
+      title: 'Thao tác',
       render: (_, record) => (
         <ActionsColumn
           onHandleView={() => {
@@ -255,6 +263,7 @@ const Products = () => {
 
   const handleCreateForm = () => {
     setCurrentFormType(formType.FORM_CREATE);
+    setOpenTime(new Date().toString());
     setOpenFormModal(true);
   };
   const title =

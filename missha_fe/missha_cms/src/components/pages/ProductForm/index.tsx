@@ -450,9 +450,9 @@ const ProductForm = (props: IProductFormProps) => {
           />
         )}
         <InputComponent
-          label="Name:"
+          label="Tên sản phẩm:"
           name="name"
-          placeholder="Name"
+          placeholder="Tên sản phảm"
           control={control}
           errors={errors.name}
           rules={formValidation.product_name}
@@ -462,9 +462,9 @@ const ProductForm = (props: IProductFormProps) => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2  gap-[1.2rem]">
         <InputComponent
-          label="Price:"
+          label="Giá bán:"
           name="price"
-          placeholder="Price"
+          placeholder="Giá bán"
           control={control}
           disabled={isDisable}
           errors={errors.price}
@@ -472,16 +472,16 @@ const ProductForm = (props: IProductFormProps) => {
           isRequired
         />
         <InputComponent
-          label="Sale price:"
+          label="Giá giảm:"
           name="sale_price"
-          placeholder="Sale price"
+          placeholder="Giá giảm"
           control={control}
           disabled={isDisable}
         />
       </div>
       <div className="flex flex-col gap-[1.2rem]">
         <UploadImageComponent
-          label="Avatar:"
+          label="Ảnh chính sản phẩm:"
           disabled={isDisable}
           maxCount={1}
           onAddImage={handleAddAvatar}
@@ -493,10 +493,9 @@ const ProductForm = (props: IProductFormProps) => {
         />
       </div>
 
-      {/* <EditorComponent /> */}
       <div className="grid grid-cols-1 md:grid-cols-2  gap-[1.2rem]">
         <SelectComponent
-          label="Categories:"
+          label="Danh mục::"
           control={control}
           name="categories"
           options={optionCategories}
@@ -512,7 +511,8 @@ const ProductForm = (props: IProductFormProps) => {
           onPopupScroll={handlePopupScrollCategory}
         />
         <SelectComponent
-          label="Skin properties:"
+          label="Dòng sản phẩm:"
+          placeholder="Dòng sản phẩm"
           control={control}
           name="skin_properties"
           options={optionSkinProperties}
@@ -530,7 +530,8 @@ const ProductForm = (props: IProductFormProps) => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2  gap-[1.2rem]">
         <SelectComponent
-          label="Product line:"
+          label="Dòng sản phẩm:"
+          placeholder="Dòng sản phẩm"
           control={control}
           name="product_line"
           options={optionProductLines}
@@ -553,7 +554,7 @@ const ProductForm = (props: IProductFormProps) => {
 
       <div className="flex flex-col gap-[1.2rem]">
         <UploadImageComponent
-          label="Gallery:"
+          label="Bộ sư tập:"
           maxCount={1}
           onAddImage={handleAddGallery}
           disabled={isDisable}
