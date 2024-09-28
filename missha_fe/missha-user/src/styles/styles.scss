@@ -1,0 +1,7 @@
+@import "./antd//badge.scss";
+
+.container-image:hover {
+  border-radius: 100%;
+  background: #efefef;
+  transition: all 0.5s ease-in-out;
+}
