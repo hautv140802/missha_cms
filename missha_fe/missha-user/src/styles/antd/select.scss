@@ -1,0 +1,16 @@
+.ant-select.ant-select-borderless.ant-select-single.ant-select-show-arrow {
+  .ant-select-selector {
+    .ant-select-selection-search {
+      input {
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+    }
+    .ant-select-selection-placeholder,
+    .ant-select-selection-item {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: black;
+    }
+  }
+}
