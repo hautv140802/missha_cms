@@ -42,7 +42,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
             />
             <NavItem
               link={paths.ABOUT_US}
-              name="VỀ CHÚNG TÔI"
+              name="BOOKING"
               active={pathname === paths.ABOUT_US}
             />
             <NavItem
@@ -52,7 +52,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
             />
             <NavItem
               link={paths.SUPPORT}
-              name="Hỗ trợ"
+              name="HỖ TRỢ"
               active={pathname === paths.SUPPORT}
             />
           </nav>
