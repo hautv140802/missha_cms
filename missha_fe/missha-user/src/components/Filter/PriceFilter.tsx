@@ -1,16 +1,23 @@
-import { Slider } from "antd";
+import { Input, Slider } from "antd";
+import { useState } from "react";
 
 const PriceFilterComponent = () => {
+  const [minPrice, setMinPrice] = useState(5000);
+  const [maxPrice, setMaxPrice] = useState(200000);
   const onChange = (value: number[]) => {
     console.log(value);
+    setMinPrice(value[0]);
+    setMaxPrice(value[1]);
   };
   return (
     <div>
-      <div>Giá sản phẩm</div>
+      <div className="text-[1.6rem] font-[600] m-[0.4rem] pb-[0.8rem]">
+        Giá sản phẩm
+      </div>
       <Slider
         min={0}
-        max={5000000}
-        value={[5000, 2000000]}
+        max={500000}
+        value={[minPrice, maxPrice]}
         range
         onChange={onChange}
         styles={{
@@ -21,6 +28,10 @@ const PriceFilterComponent = () => {
           },
         }}
       />
+      <div className="flex justify-between items-center gap-[1.2rem] mt-[1.8rem]">
+        <Input value={minPrice} disabled />
+        <Input value={maxPrice} disabled />
+      </div>
     </div>
   );
 };

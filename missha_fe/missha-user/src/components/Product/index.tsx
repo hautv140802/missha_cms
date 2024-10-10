@@ -6,7 +6,7 @@ import CartCustom from "../../assets/svgs/Custom/CartCustom";
 const ProductComponent = () => {
   return (
     <div className="w-[16rem] relative h-fit flex flex-col gap-[0.8rem] group">
-      <div className="w-[16rem] h-[16rem] rounded-[1.6rem] border-[0.4rem] border-solid border-[#3F0] cursor-pointer">
+      <div className="w-[16rem] h-[16rem] rounded-[1.6rem] border-[0.4rem] border-solid border-[#FF9800] cursor-pointer">
         <img
           src={images.cate_1}
           className="w-full h-full object-cover rounded-[1.2rem] cursor-pointer"
@@ -26,7 +26,7 @@ const ProductComponent = () => {
             Ampoule dưỡng trắng, săn chắc da Silk Collagen Glow Ampoule 30ml
           </p>
           <div className="flex justify-start items-center gap-[1.2rem]">
-            <span className="text-[1.6rem] font-[600] text-wrap text-[500] text-[#33ff00]">
+            <span className="text-[1.6rem] font-[600] text-wrap text-[500] text-[#FF9800">
               800.000đ
             </span>
             <span className="text-[1.2rem] text-red-600 font-[500] text-wrap line-through">
@@ -35,7 +35,7 @@ const ProductComponent = () => {
           </div>
         </div>
       </Link>
-      <button className="group/button border border-solid rounded-[0.4rem] border-black p-[0.4rem_1.2rem] text-[1.4rem] flex justify-between items-center hover:bg-[#33ff00] hover:text-white hover:border-[#33ff00]">
+      <button className="group/button border border-solid rounded-[0.4rem] border-black p-[0.4rem_1.2rem] text-[1.4rem] flex justify-between items-center hover:bg-[#FF9800] hover:text-white hover:border-[#FF9800]">
         Thêm vào giỏ
         <div className="w-[3rem] h-[3rem] ">
           <CartCustom className="w-full h-full group-hover/button:animate-bounce" />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import svgs from "../../assets/svgs";
 import { Checkbox, Divider, Drawer } from "antd";
 import PriceFilterComponent from "./PriceFilter";
+import FooterFilter from "./FooterFilter";
 
 const dataFilter = [
   { value: 1, label: "Filter 1" },
@@ -25,8 +26,15 @@ const MenuFilterComponent = () => {
         title={
           <div className="flex justify-between items-center">
             <p>Bộ lộc</p>
-            <div className="w-[2rem] h-[2rem]">
-              <img src={svgs.arrowLeft} alt="arrow-left" />
+            <div
+              className="w-[4rem] h-[4rem] p-[1rem] cursor-pointer hover:bg-[rgba(0,0,0,0.3)] hover:rounded-full"
+              onClick={() => setOpenMenuFilter(false)}
+            >
+              <img
+                src={svgs.arrowLeft}
+                alt="arrow-left"
+                className="w-full h-full"
+              />
             </div>
           </div>
         }
@@ -34,19 +42,25 @@ const MenuFilterComponent = () => {
         open={openMenuFilter}
         onClose={() => setOpenMenuFilter(false)}
         placement="left"
-        footer={
-          <div className="flex justify-between items-center p-[1.2rem_2rem]">
-            <button>Hủy</button>
-            <button>Xem kết quả</button>
-          </div>
-        }
+        footer={<FooterFilter />}
+        styles={{
+          footer: {
+            backgroundColor: "#F7F7F7",
+          },
+        }}
       >
         <div className="flex flex-col">
           <div>
-            <div>Đặc tính da</div>
+            <div className="text-[1.6rem] font-[600] m-[0.4rem] pb-[0.8rem]">
+              Đặc tính da
+            </div>
             <Checkbox.Group className="flex flex-col justify-start items-start gap-[0.8rem]">
               {dataFilter.map((item, index) => (
-                <Checkbox key={index} value={item.value}>
+                <Checkbox
+                  key={index}
+                  value={item.value}
+                  className="text-[1.6rem] font-[400]"
+                >
                   {item.label}
                 </Checkbox>
               ))}
@@ -54,10 +68,16 @@ const MenuFilterComponent = () => {
           </div>
           <Divider />
           <div>
-            <div>Dòng sản phẩm</div>
+            <div className="text-[1.6rem] font-[600] m-[0.4rem] pb-[0.8rem]">
+              Dòng sản phẩm
+            </div>
             <Checkbox.Group className="flex flex-col justify-start items-start gap-[0.8rem]">
               {dataFilter.map((item, index) => (
-                <Checkbox key={index} value={item.value}>
+                <Checkbox
+                  key={index}
+                  value={item.value}
+                  className="text-[1.6rem] font-[400]"
+                >
                   {item.label}
                 </Checkbox>
               ))}

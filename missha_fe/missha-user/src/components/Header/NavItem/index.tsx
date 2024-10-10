@@ -12,7 +12,7 @@ const NavItem = (props: INavItemProps) => {
   return (
     <Link
       className={clsx(
-        active ? "border-b-[0.2rem] border-[#F79900] border-solid" : ""
+        active ? "border-b-[0.2rem] border-[#FF9800] border-solid" : ""
       )}
       to={link}
     >
@@ -20,7 +20,7 @@ const NavItem = (props: INavItemProps) => {
         className={clsx(
           "text-[1.6rem] font-[500]",
           className,
-          active ? "text-[#F79900] font-[600]" : ""
+          active ? "text-[#FF9800] font-[600]" : ""
         )}
       >
         {name}
