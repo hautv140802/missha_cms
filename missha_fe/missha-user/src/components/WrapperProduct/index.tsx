@@ -14,7 +14,7 @@ const WrapperProductComponent = (props: IWrapperProductComponentProps) => {
         {Array.from({
           length: 6,
         }).map((_, index) => (
-          <ProductComponent key={index} />
+          <ProductComponent key={index} page="product" />
         ))}
       </div>
     </div>

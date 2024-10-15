@@ -9,18 +9,24 @@ import percent from "./percent.svg";
 import freeShip from "./freeShip.svg";
 import filter from "./filter.svg";
 import arrowLeft from "./arrowLeft.svg";
+import minus from "./minus.svg";
+import plus from "./plus.svg";
+import trash from "./trash.svg";
 const svgs = {
-  search: search,
-  cart: cart,
-  facebook: facebook,
-  instagram: instagram,
-  zalo: zalo,
-  tiktok: tiktok,
+  search,
+  cart,
+  facebook,
+  instagram,
+  zalo,
+  tiktok,
   returnIcon,
   percent,
   freeShip,
   filter,
   arrowLeft,
+  minus,
+  plus,
+  trash,
 };
 
 export default svgs;

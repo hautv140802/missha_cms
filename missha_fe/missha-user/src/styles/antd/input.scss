@@ -1,0 +1,44 @@
+.input-container {
+  position: relative;
+}
+
+.input-container .label-container {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-20%);
+  transition: 0.3s ease;
+  pointer-events: none;
+
+  opacity: 0;
+}
+
+.input-container input:focus + .label-container,
+.input-container input:not(:placeholder-shown) + .label-container {
+  top: -10px;
+  opacity: 1;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.ant-input-number-handler-wrap {
+  display: none !important;
+}
+
+.input-container .input-filter-price:focus + .label-container,
+.input-container
+  .input-filter-price:not(:placeholder-shown)
+  + .label-container {
+  top: -10px;
+  opacity: 1;
+}
+
+.input-container .input-filter-price {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}

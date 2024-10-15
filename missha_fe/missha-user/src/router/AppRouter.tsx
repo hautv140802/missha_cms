@@ -8,6 +8,7 @@ import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Support from "../pages/Support";
+import Cart from "../pages/Carts/Cart";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: paths.SUPPORT,
         element: <Support />,
+      },
+      {
+        path: paths.CART,
+        element: <Cart />,
       },
     ],
   },

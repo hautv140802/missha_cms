@@ -1,5 +1,8 @@
-import { Input, Slider } from "antd";
 import { useState } from "react";
+import InputComponent from "../Input";
+import { InputNumber, Slider } from "antd";
+import clsx from "clsx";
+import { replace } from "react-router-dom";
 
 const PriceFilterComponent = () => {
   const [minPrice, setMinPrice] = useState(5000);
@@ -29,8 +32,46 @@ const PriceFilterComponent = () => {
         }}
       />
       <div className="flex justify-between items-center gap-[1.2rem] mt-[1.8rem]">
-        <Input value={minPrice} disabled />
-        <Input value={maxPrice} disabled />
+        <div className="input-container flex flex-col justify-center items-center">
+          <InputNumber<number>
+            className="input-filter-price"
+            value={minPrice}
+            formatter={(value) =>
+              `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value?.replace(",", "") as unknown as number}
+            disabled
+          />
+          <div className="label-container rounded-full bg-[#FFFFFF] px-[0.4rem] py-[0.1rem]">
+            <label
+              className={clsx(
+                "font-[500] text-[1.2rem] leading-[2rem] text-[#9999]"
+              )}
+            >
+              {"Từ"}
+            </label>
+          </div>
+        </div>
+        <div className="input-container flex flex-col justify-center items-center">
+          <InputNumber<number>
+            className="input-filter-price"
+            value={maxPrice}
+            formatter={(value) =>
+              `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value?.replace(",", "") as unknown as number}
+            disabled
+          />
+          <div className="label-container rounded-full bg-[#FFFFFF] px-[0.4rem] py-[0.1rem]">
+            <label
+              className={clsx(
+                "font-[500] text-[1.2rem] leading-[2rem] text-[#9999]"
+              )}
+            >
+              {"Đến"}
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   );

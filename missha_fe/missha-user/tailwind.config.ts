@@ -21,6 +21,10 @@ export default {
       animation: {
         shake: "shake 0.5s ease-in-out",
       },
+      boxShadow: {
+        activeColor: "inset 0 0 0 3px white, 0 0 0 1.5px #FF9800",
+        notActiveColor: "inset 0 0 0 3px white, 0 0 0 1px #ccc",
+      },
     },
   },
   plugins: [

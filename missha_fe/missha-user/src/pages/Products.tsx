@@ -18,7 +18,7 @@ const Products = () => {
           {Array.from({
             length: 10,
           }).map((_, index) => (
-            <ProductComponent key={index} />
+            <ProductComponent key={index} page="product" />
           ))}
         </div>
       </div>
