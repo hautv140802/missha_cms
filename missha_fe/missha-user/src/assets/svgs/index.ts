@@ -12,6 +12,7 @@ import arrowLeft from "./arrowLeft.svg";
 import minus from "./minus.svg";
 import plus from "./plus.svg";
 import trash from "./trash.svg";
+import arrowLongRight from "./arrowLongRight.svg";
 const svgs = {
   search,
   cart,
@@ -27,6 +28,7 @@ const svgs = {
   minus,
   plus,
   trash,
+  arrowLongRight,
 };
 
 export default svgs;

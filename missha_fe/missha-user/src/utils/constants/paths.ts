@@ -7,6 +7,7 @@ const paths = {
   LOGIN: "/login",
   REGISTER: "/register",
   SUPPORT: "/support",
+  BOOKING: "/booking",
 };
 
 export default paths;
