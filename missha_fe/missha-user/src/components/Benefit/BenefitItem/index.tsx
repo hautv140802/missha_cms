@@ -10,7 +10,7 @@ const BenefitItemComponent = (props: IBenefitItemComponentProps) => {
       <div className="w-[4rem] h-[4rem]">
         <img src={icon} alt="icon" />
       </div>
-      <p className="text-[2rem] font-[500]">{text}</p>
+      <p className="text-[2rem]">{text}</p>
     </div>
   );
 };

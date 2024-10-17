@@ -10,6 +10,7 @@ import Register from "../pages/Register";
 import Support from "../pages/Support";
 import Cart from "../pages/Carts/Cart";
 import Booking from "../pages/Booking";
+import ProductDetail from "../pages/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: paths.BOOKING,
         element: <Booking />,
+      },
+      {
+        path: `${paths.PRODUCTS}/:slug`,
+        element: <ProductDetail />,
       },
     ],
   },

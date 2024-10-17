@@ -1,76 +1,13 @@
 import images from "../assets/images";
 import svgs from "../assets/svgs";
 import BannerBooking from "../components/Pages/Booking/BannerBooking";
+import TreatmentComponent from "../components/Treatments";
 const Booking = () => {
   return (
     <div className="w-ful mt-[0.4rem] pt-[1.2rem] pb-[3.2rem] bg-white">
       <BannerBooking />
 
-      <div className="max-w-[140rem] mx-auto mt-[10rem]">
-        <p className="text-[2rem]">Popular treatments</p>
-        <div className="mt-[2rem] flex justify-start items-center gap-[1.6rem]">
-          <div className="relative w-[31.6rem] h-[35.2rem] border">
-            <img
-              src={images.treatment_1}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm">
-              <p className="text-[1.6rem] text-black font-[500]">Facial</p>
-            </div>
-          </div>
-
-          <div className="h-[35.2rem] grid grid-rows-[57%_38.5%] gap-[1.6rem]">
-            <div className="relative w-[34.5rem] h-full border">
-              <img
-                src={images.treatment_2}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm">
-                <p className="text-[1.6rem] text-black font-[500]">Facial</p>
-              </div>
-            </div>
-            <div className="relative w-[34.5rem] h-full border">
-              <img
-                src={images.treatment_3}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm">
-                <p className="text-[1.6rem] text-black font-[500]">Facial</p>
-              </div>
-            </div>
-          </div>
-          <div className="relative w-[34.5rem] h-[35.2rem] border">
-            <img
-              src={images.treatment_2}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm">
-              <p className="text-[1.6rem] text-black font-[500]">Facial</p>
-            </div>
-          </div>
-
-          <div className="h-[35.2rem] grid grid-rows-[38.5%_57%] gap-[1.6rem]">
-            <div className="relative w-[34.5rem] h-full border">
-              <img
-                src={images.treatment_3}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm">
-                <p className="text-[1.6rem] text-black font-[500]">Facial</p>
-              </div>
-            </div>
-            <div className="relative w-[34.5rem] h-full border">
-              <img
-                src={images.treatment_1}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm">
-                <p className="text-[1.6rem] text-black font-[500]">Facial</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TreatmentComponent page="booking" />
 
       <div className="max-w-[140rem] mx-auto mt-[5rem]">
         <p className="text-[2rem]">Top treatments</p>
