@@ -14,6 +14,8 @@ import plus from "./plus.svg";
 import trash from "./trash.svg";
 import arrowLongRight from "./arrowLongRight.svg";
 import questionCircle from "./questionCircle.svg";
+import chevonDobuleUp from "./chervon-dobule-up.svg";
+import chevonDobuleDown from "./chervon-dobule-down.svg";
 const svgs = {
   search,
   cart,
@@ -31,6 +33,8 @@ const svgs = {
   trash,
   arrowLongRight,
   questionCircle,
+  chevonDobuleUp,
+  chevonDobuleDown,
 };
 
 export default svgs;

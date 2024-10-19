@@ -15,7 +15,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
   const { pathname } = location;
 
   return (
-    <div className="w-full shadow-md">
+    <div className="w-full shadow-md fixed top-0 bg-white opacity-100 z-[1000]">
       <div className={clsx("w-[120rem] mx-auto py-[1.2rem]", className)}>
         <div className="w-full flex justify-between items-center">
           <div className="w-[3.2rem] h-[3.2rem] container-image p-[0.1rem]">
@@ -57,9 +57,20 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
                 active={pathname === paths.BOOKING}
               />
               <NavItem
-                link={paths.PROFILE}
+                link={paths.PROFILE_INFORMATION}
                 name="CÁ NHÂN"
-                active={pathname === paths.PROFILE}
+                active={[
+                  paths.PROFILE_INFORMATION,
+                  paths.PROFILE_BOOKINGS,
+                  paths.PROFILE_ORDERS,
+                  paths.PROFILE_ORDERS_ALL,
+                  paths.PROFILE_ORDERS_WAITING_CONFIRM,
+                  paths.PROFILE_ORDERS_CONFIRM,
+                  paths.PROFILE_ORDERS_DELIVERING,
+                  paths.PROFILE_ORDERS_COMPLETE,
+                  paths.PROFILE_ORDERS_RETURN,
+                  paths.PROFILE_ORDERS_CANCEL,
+                ].includes(pathname)}
               />
               <NavItem
                 link={paths.SUPPORT}

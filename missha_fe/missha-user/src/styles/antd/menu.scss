@@ -1,0 +1,13 @@
+.profile-menu.ant-menu.ant-menu-root.ant-menu-inline {
+  .ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child {
+    background-color: #ff9900;
+    color: white;
+    border-radius: 0;
+    font-weight: bold;
+  }
+  .ant-menu-item.ant-menu-item-only-child {
+    color: black;
+    font-size: 1.6rem;
+    border-radius: 0;
+  }
+}

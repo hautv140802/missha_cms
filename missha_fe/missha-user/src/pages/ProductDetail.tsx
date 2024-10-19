@@ -7,13 +7,12 @@ import ButtonComponent from "../components/Button";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useState } from "react";
-import swiper from "swiper";
 import svgs from "../assets/svgs";
 import ProductComponent from "../components/Product";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const itemBreadcrumbs = [
     {
       href: paths.HOME,
@@ -221,7 +220,7 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <div className="w-[40rem] bg-white p-[2.4rem]">
+        <div className="w-[40rem] bg-white p-[3.2rem]">
           <div className="w-full bg-[#fafafa] p-[1.5rem_2rem] rounded-md">
             <p className="text-[1.8rem] font-[500] uppercase">
               Sản phẩm bán chạy

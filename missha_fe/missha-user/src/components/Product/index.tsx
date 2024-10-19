@@ -50,7 +50,7 @@ const ProductComponent = (props: IProductComponentProps) => {
 
           {/* Discount badge */}
           {discountPercent > 0 && (
-            <div className="absolute top-2 left-2 bg-red-600 text-white text-sm p-[0.4rem_0.8rem] rounded-lg">
+            <div className="absolute top-2 left-2 bg-[#ff9000] text-white text-sm p-[0.4rem_0.8rem] rounded-lg">
               <p className="text-[1.2rem]"> -{discountPercent}%</p>
             </div>
           )}
@@ -72,7 +72,7 @@ const ProductComponent = (props: IProductComponentProps) => {
           <div className="text-gray-500 text-[1.1rem] line-through">
             {price.toLocaleString()}
           </div>
-          <div className="text-red-500 text-[1.4rem] font-bold">
+          <div className="text-[#ff9900] text-[1.4rem] font-bold">
             {promotionPrice.toLocaleString()}
           </div>
         </div>

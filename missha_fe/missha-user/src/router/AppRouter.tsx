@@ -4,13 +4,16 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import AboutUs from "../pages/AboutUs";
-import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Support from "../pages/Support";
 import Cart from "../pages/Carts/Cart";
 import Booking from "../pages/Booking";
 import ProductDetail from "../pages/ProductDetail";
+import ProfileLayout from "../layouts/ProfileLayout";
+import Information from "../pages/Profiles/Information";
+import Orders from "../pages/Profiles/Orders";
+import Bookings from "../pages/Profiles/Bookings";
 
 const router = createBrowserRouter([
   {
@@ -33,10 +36,7 @@ const router = createBrowserRouter([
         path: paths.ABOUT_US,
         element: <AboutUs />,
       },
-      {
-        path: paths.PROFILE,
-        element: <Profile />,
-      },
+
       {
         path: paths.SUPPORT,
         element: <Support />,
@@ -52,6 +52,28 @@ const router = createBrowserRouter([
       {
         path: `${paths.PRODUCTS}/:slug`,
         element: <ProductDetail />,
+      },
+    ],
+  },
+  {
+    path: paths.PROFILE,
+    element: <ProfileLayout />,
+    children: [
+      {
+        path: paths.PROFILE_INFORMATION,
+        element: <Information />,
+      },
+      {
+        path: paths.PROFILE_ORDERS,
+        element: <Orders />,
+      },
+      {
+        path: `${paths.PROFILE_ORDERS}/:status`,
+        element: <Orders />,
+      },
+      {
+        path: paths.PROFILE_BOOKINGS,
+        element: <Bookings />,
       },
     ],
   },
