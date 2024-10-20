@@ -57,7 +57,7 @@ const BannerComponent = (props: IBannerComponentProps) => {
               <img
                 src={banner.url}
                 alt={banner.name}
-                className="w-full h-[390px] md:h-auto aspect-[1560/390] md:aspect-[1440/500] object-cover"
+                className="w-full h-[250px] md:h-auto aspect-[1560/250] md:aspect-[1440/250] object-cover"
                 loading="eager"
               />
               {/* </Link> */}

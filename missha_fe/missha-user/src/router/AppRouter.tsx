@@ -14,6 +14,7 @@ import ProfileLayout from "../layouts/ProfileLayout";
 import Information from "../pages/Profiles/Information";
 import Orders from "../pages/Profiles/Orders";
 import Bookings from "../pages/Profiles/Bookings";
+import OrderDetail from "../pages/Profiles/OrderDetail";
 
 const router = createBrowserRouter([
   {
@@ -68,8 +69,8 @@ const router = createBrowserRouter([
         element: <Orders />,
       },
       {
-        path: `${paths.PROFILE_ORDERS}/:status`,
-        element: <Orders />,
+        path: `${paths.PROFILE_ORDERS}/:orderCode`,
+        element: <OrderDetail />,
       },
       {
         path: paths.PROFILE_BOOKINGS,

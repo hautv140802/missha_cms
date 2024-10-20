@@ -2,20 +2,31 @@ import { Divider } from "antd";
 import OrderItem from "./OrderItem";
 import { useState } from "react";
 import svgs from "../../../../assets/svgs";
-
-const OrderList = () => {
+import { useNavigate } from "react-router-dom";
+import paths from "../../../../utils/constants/paths";
+interface IOrderListProps {
+  showHeader?: boolean;
+}
+const OrderList = (props: IOrderListProps) => {
+  const { showHeader } = props;
+  const navigate = useNavigate();
   const [showAll, setShowAll] = useState<boolean>(false);
   return (
     <div className="bg-white p-[2.4rem]">
-      <div className="flex justify-between items-center">
-        <p className="text-[1.6rem]">
-          Mã đơn hàng:{" "}
-          <span className="text-[1.6rem] font-[500]">ABCXYAZ1</span>
-        </p>
-        <p className="text-[#26AA96] text-[1.6rem]">Đang giao hàng</p>
-      </div>
+      {showHeader && (
+        <div className="flex justify-between items-center">
+          <p className="text-[1.6rem]">
+            Mã đơn hàng:{" "}
+            <span className="text-[1.6rem] font-[500]">ABCXYAZ1</span>
+          </p>
+          <p className="text-[#26AA96] text-[1.6rem]">Đang giao hàng</p>
+        </div>
+      )}
       <Divider className="my-[1.2rem]" />
-      <div className="bg-white flex flex-col gap-[1.2rem]">
+      <div
+        className="bg-white flex flex-col gap-[1.2rem] cursor-pointer"
+        onClick={() => navigate(`${paths.PROFILE_ORDERS}/2410202FS1QJQ9`)}
+      >
         {Array.from({ length: showAll ? 3 : 1 }).map((_, index) => (
           <OrderItem key={index} />
         ))}

@@ -1,16 +1,26 @@
-.ant-select.ant-select-borderless.ant-select-single.ant-select-show-arrow {
+.ant-select {
   .ant-select-selector {
-    .ant-select-selection-search {
-      input {
-        font-size: 1.6rem;
-        font-weight: 500;
-      }
-    }
-    .ant-select-selection-placeholder,
+    min-height: 4.2rem;
+  }
+
+  .ant-select-arrow {
+    margin-top: 0;
+  }
+
+  .ant-select-selection-item {
+    color: black;
+    font-weight: 500;
+  }
+}
+
+.ant-select.ant-select-multiple {
+  .ant-select-arrow {
+    margin-top: -0.6rem;
+  }
+  .ant-select-selection-overflow-item {
     .ant-select-selection-item {
-      font-size: 1.6rem;
-      font-weight: 500;
       color: black;
+      font-weight: 500;
     }
   }
 }

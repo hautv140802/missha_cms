@@ -5,16 +5,16 @@ import SortPriceComponent from "../components/SortPrice";
 
 const Products = () => {
   return (
-    <div>
+    <div className="mt-[10rem] bg-[#F7F7F7]">
       <div className="h-[0.8rem] w-full bg-[#F7F7F7]"></div>
       <QuickFilterComponent />
-      <div className="h-[0.8rem] w-full bg-[#F7F7F7]"></div>
-      <div className="max-w-[144rem] mx-auto p-[3.2rem_16rem]">
-        <div className="flex justify-between items-center">
+      <div className="h-[1.6rem] w-full bg-[#F7F7F7]"></div>
+      <div className="w-[140rem] p-[2.4rem] bg-white mx-auto">
+        <div className="w-full flex justify-between items-center pr-[10rem]">
           <MenuFilterComponent />
           <SortPriceComponent />
         </div>
-        <div className="flex flex-wrap justify-start items-center gap-[3.2rem] mt-[2.4rem]">
+        <div className="flex flex-wrap justify-between items-center gap-[3.2rem] mt-[2.4rem] ">
           {Array.from({
             length: 10,
           }).map((_, index) => (
@@ -22,6 +22,7 @@ const Products = () => {
           ))}
         </div>
       </div>
+      <div className="h-[1.6rem] w-full bg-[#F7F7F7]"></div>
     </div>
   );
 };

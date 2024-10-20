@@ -4,12 +4,13 @@ import BannerBooking from "../components/Pages/Booking/BannerBooking";
 import TreatmentComponent from "../components/Treatments";
 const Booking = () => {
   return (
-    <div className="w-ful mt-[0.4rem] pt-[1.2rem] pb-[3.2rem] bg-white">
+    <div className="w-ful pt-[1.2rem] pb-[3.2rem] bg-[#f7f7f7] mt-[10rem]">
       <BannerBooking />
+      <div className="mb-[1.6rem] w-[140rem] mx-auto bg-white p-[8rem_2.4rem_2.4rem]">
+        <TreatmentComponent page="booking" />
+      </div>
 
-      <TreatmentComponent page="booking" />
-
-      <div className="max-w-[140rem] mx-auto mt-[5rem]">
+      <div className="max-w-[140rem] mx-auto bg-white p-[2.4rem]">
         <p className="text-[2rem]">Top treatments</p>
         <div className="mt-[2rem] flex justify-start items-center gap-[1.6rem]">
           {Array.from({ length: 6 }).map((_, index) => (

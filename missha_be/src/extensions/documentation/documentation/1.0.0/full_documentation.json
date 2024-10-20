@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-20T00:10:05.799Z"
+    "x-generation-date": "2024-10-20T13:19:25.739Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -119,17 +119,6 @@
                 "type": "string",
                 "format": "date-time"
               },
-<<<<<<< HEAD
-              "services": {
-                "type": "string",
-                "enum": [
-                  "Tổng hợp",
-                  "Nặn mụn",
-                  "Lăn mụn"
-                ]
-              },
-=======
->>>>>>> d612282 (feat: update)
               "status": {
                 "type": "string",
                 "enum": [
@@ -138,8 +127,6 @@
                   "Hoàn thành",
                   "Huỷ"
                 ]
-<<<<<<< HEAD
-=======
               },
               "service": {
                 "oneOf": [
@@ -151,7 +138,6 @@
                   }
                 ],
                 "example": "string or id"
->>>>>>> d612282 (feat: update)
               }
             }
           }
@@ -686,13 +672,10 @@
                           "USER",
                           "ADMIN"
                         ]
-<<<<<<< HEAD
-=======
                       },
                       "birthday": {
                         "type": "string",
                         "format": "date"
->>>>>>> d612282 (feat: update)
                       },
                       "createdAt": {
                         "type": "string",
@@ -755,17 +738,6 @@
             "type": "string",
             "format": "date-time"
           },
-<<<<<<< HEAD
-          "services": {
-            "type": "string",
-            "enum": [
-              "Tổng hợp",
-              "Nặn mụn",
-              "Lăn mụn"
-            ]
-          },
-=======
->>>>>>> d612282 (feat: update)
           "status": {
             "type": "string",
             "enum": [
@@ -774,8 +746,6 @@
               "Hoàn thành",
               "Huỷ"
             ]
-<<<<<<< HEAD
-=======
           },
           "service": {
             "type": "object",
@@ -1220,7 +1190,6 @@
                 }
               }
             }
->>>>>>> d612282 (feat: update)
           },
           "createdAt": {
             "type": "string",
@@ -3806,13 +3775,10 @@
                           "USER",
                           "ADMIN"
                         ]
-<<<<<<< HEAD
-=======
                       },
                       "birthday": {
                         "type": "string",
                         "format": "date"
->>>>>>> d612282 (feat: update)
                       },
                       "createdAt": {
                         "type": "string",
@@ -4679,13 +4645,10 @@
                           "USER",
                           "ADMIN"
                         ]
-<<<<<<< HEAD
-=======
                       },
                       "birthday": {
                         "type": "string",
                         "format": "date"
->>>>>>> d612282 (feat: update)
                       },
                       "createdAt": {
                         "type": "string",
@@ -6887,13 +6850,10 @@
                                       "USER",
                                       "ADMIN"
                                     ]
-<<<<<<< HEAD
-=======
                                   },
                                   "birthday": {
                                     "type": "string",
                                     "format": "date"
->>>>>>> d612282 (feat: update)
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -11080,13 +11040,10 @@
                           "USER",
                           "ADMIN"
                         ]
-<<<<<<< HEAD
-=======
                       },
                       "birthday": {
                         "type": "string",
                         "format": "date"
->>>>>>> d612282 (feat: update)
                       },
                       "createdAt": {
                         "type": "string",
@@ -13983,13 +13940,10 @@
                           "USER",
                           "ADMIN"
                         ]
-<<<<<<< HEAD
-=======
                       },
                       "birthday": {
                         "type": "string",
                         "format": "date"
->>>>>>> d612282 (feat: update)
                       },
                       "createdAt": {
                         "type": "string",

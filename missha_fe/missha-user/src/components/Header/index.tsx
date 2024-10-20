@@ -59,18 +59,11 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
               <NavItem
                 link={paths.PROFILE_INFORMATION}
                 name="CÁ NHÂN"
-                active={[
-                  paths.PROFILE_INFORMATION,
-                  paths.PROFILE_BOOKINGS,
-                  paths.PROFILE_ORDERS,
-                  paths.PROFILE_ORDERS_ALL,
-                  paths.PROFILE_ORDERS_WAITING_CONFIRM,
-                  paths.PROFILE_ORDERS_CONFIRM,
-                  paths.PROFILE_ORDERS_DELIVERING,
-                  paths.PROFILE_ORDERS_COMPLETE,
-                  paths.PROFILE_ORDERS_RETURN,
-                  paths.PROFILE_ORDERS_CANCEL,
-                ].includes(pathname)}
+                active={
+                  pathname.includes(paths.PROFILE_ORDERS) ||
+                  pathname.includes(paths.PROFILE_INFORMATION) ||
+                  pathname.includes(paths.PROFILE_BOOKINGS)
+                }
               />
               <NavItem
                 link={paths.SUPPORT}

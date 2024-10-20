@@ -10,9 +10,9 @@ const Orders = () => {
       </div>
       <div className="w-full h-[1.6rem] bg-[#F7F7F7]"></div>
       <div className="flex flex-col gap-[1.2rem] bg-[#F7F7F7]">
-        <OrderList />
-        <OrderList />
-        <OrderList />
+        <OrderList showHeader />
+        <OrderList showHeader />
+        <OrderList showHeader />
       </div>
     </div>
   );

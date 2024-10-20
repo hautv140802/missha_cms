@@ -58,7 +58,7 @@ const QuickFilterComponent = () => {
   // };
 
   return (
-    <div className="w-full quick-filter px-[6.4rem] bg-white max-w-[144rem] mx-auto">
+    <div className="w-[140rem] mx-auto quick-filter px-[6.4rem] bg-white p-[2.4rem]">
       <Swiper
         observer={true}
         observeParents={true}

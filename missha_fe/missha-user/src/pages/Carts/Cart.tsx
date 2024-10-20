@@ -2,7 +2,7 @@ import DividerComponent from "../../components/Divider";
 import paths from "../../utils/constants/paths";
 import BreadcrumbComponent from "../../components/Breadcrumb";
 import CartItemComponent from "../../components/CartItem";
-import { Divider, Select } from "antd";
+import { Divider } from "antd";
 import ButtonComponent from "../../components/Button";
 import ScrollbarComponent from "../../components/Scrollbar";
 import VoucherComponent from "../../components/Voucher";
@@ -20,15 +20,18 @@ const breadcrumb = [
 ];
 const Cart = () => {
   return (
-    <div className="max-w-[120rem] mx-auto py-[1.2rem]">
-      <BreadcrumbComponent items={breadcrumb} />
-      <div className="mt-[2.4rem]">
+    <div className="py-[1.2rem] mt-[10rem] bg-[#f7f7f7]">
+      <div className="w-[140rem] mx-auto">
+        <BreadcrumbComponent items={breadcrumb} />
+      </div>
+
+      <div className="w-[140rem] mx-auto p-[2.4rem]">
         <p className="text-[2.4rem] font-[600] uppercase text-center">
           Giỏ hàng
         </p>
       </div>
-      <div className="w-full flex justify-between items-start gap-[1.2rem] p-[2.4rem]">
-        <div className="w-[60%] shadow-md border rounded-[1.2rem] p-[1.2rem]  bg-white">
+      <div className="w-[140rem] mx-auto flex justify-between items-start gap-[1.2rem]">
+        <div className="w-[60%] shadow-md bg-white p-[2.4rem]">
           <div className="w-full flex justify-between items-center  ">
             <span className="w-[60%] text-[1.6rem] font-[500] text-black">
               Sản phẩm
@@ -60,7 +63,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="w-[40%] flex flex-col gap-[1.6rem]">
-          <div className="shadow-md border rounded-[1.2rem] p-[1.8rem]  bg-white">
+          <div className="shadow-md p-[2.4rem]  bg-white">
             <p className="text-[2rem] font-[500] uppercase text-center">
               Vouchers
             </p>
@@ -77,19 +80,18 @@ const Cart = () => {
                 <ButtonComponent
                   type="text"
                   text="Không sử dụng"
-                  className="border border-solid border-gray-500 md:py-[1.8rem]"
-                  textClassName="text-[1.6rem] font-[500] uppercase"
+                  className="border border-solid border-gray-500"
+                  textClassName="text-[1.6rem] uppercase"
                 />
                 <ButtonComponent
                   type="primary"
                   text="Áp dụng"
-                  className="md:py-[1.8rem]"
-                  textClassName="text-[1.6rem] font-[500] uppercase text-white"
+                  textClassName="text-[1.6rem] uppercase text-white"
                 />
               </div>
             </div>
           </div>
-          <div className="shadow-md border rounded-[1.2rem] p-[1.8rem]  bg-white">
+          <div className="shadow-md p-[2.4rem]  bg-white">
             <p className="text-[2rem] font-[500] uppercase text-center">
               Phương thức giao hàng
             </p>
@@ -111,7 +113,7 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className="shadow-md border rounded-[1.2rem] p-[1.8rem]  bg-white">
+          <div className="shadow-md p-[2.4rem]  bg-white">
             <p className="text-[2rem] font-[500] uppercase text-center">
               Thông tin đơn hàng
             </p>
@@ -142,7 +144,7 @@ const Cart = () => {
                 <ButtonComponent
                   type="primary"
                   text="Thanh toán"
-                  className="md:py-[1.8rem] mt-[1.2rem]"
+                  className="mt-[1.2rem]"
                   textClassName="text-[1.6rem] font-[500] uppercase text-white"
                 />
               </div>
