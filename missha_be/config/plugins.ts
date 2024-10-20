@@ -44,6 +44,13 @@ export default ({env}) => ({
           options: {
             locale: 'vi',
           },
+        },
+        "service": {
+          field: 'slug',
+          references: 'title',
+          options: {
+            locale: 'vi',
+          },
         }
       },
     },

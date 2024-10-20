@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "order"
+    "displayName": "order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -46,7 +47,9 @@
         "Chờ xác nhận",
         "Xác nhận",
         "Đang vận chuyển",
-        "Hoàn thành"
+        "Hoàn thành",
+        "Huỷ",
+        "Trả hàng"
       ]
     },
     "user": {
@@ -69,6 +72,9 @@
         "uuid-format": "^[A-Z]{4}[0-9]{6}$"
       },
       "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "reason": {
+      "type": "string"
     }
   }
 }

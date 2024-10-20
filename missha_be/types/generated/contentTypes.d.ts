@@ -809,11 +809,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    address: Attribute.JSON;
+    address: Attribute.Text;
     full_name: Attribute.String;
     phone: Attribute.String;
     gender: Attribute.Enumeration<['male', 'female']>;
     type: Attribute.Enumeration<['USER', 'ADMIN']>;
+    birthday: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -852,9 +853,6 @@ export interface ApiBookingBooking extends Schema.CollectionType {
     customer_full_name: Attribute.String;
     customer_phone: Attribute.String;
     date: Attribute.DateTime;
-    services: Attribute.Enumeration<
-      ['T\u1ED5ng h\u1EE3p', 'N\u1EB7n m\u1EE5n', 'L\u0103n m\u1EE5n']
-    >;
     status: Attribute.Enumeration<
       [
         'Ch\u1EDD x\u00E1c nh\u1EADn',
@@ -862,6 +860,11 @@ export interface ApiBookingBooking extends Schema.CollectionType {
         'Ho\u00E0n th\u00E0nh',
         'Hu\u1EF7'
       ]
+    >;
+    service: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'api::service.service'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -965,6 +968,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     singularName: 'order';
     pluralName: 'orders';
     displayName: 'order';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -985,7 +989,9 @@ export interface ApiOrderOrder extends Schema.CollectionType {
         'Ch\u1EDD x\u00E1c nh\u1EADn',
         'X\u00E1c nh\u1EADn',
         '\u0110ang v\u1EADn chuy\u1EC3n',
-        'Ho\u00E0n th\u00E0nh'
+        'Ho\u00E0n th\u00E0nh',
+        'Hu\u1EF7',
+        'Tr\u1EA3 h\u00E0ng'
       ]
     >;
     user: Attribute.Relation<
@@ -1012,6 +1018,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
           'uuid-format': '^[A-Z]{4}[0-9]{6}$';
         }
       >;
+    reason: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1199,6 +1206,40 @@ export interface ApiRoomRoom extends Schema.CollectionType {
   };
 }
 
+export interface ApiServiceService extends Schema.CollectionType {
+  collectionName: 'services';
+  info: {
+    singularName: 'service';
+    pluralName: 'services';
+    displayName: 'Service';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    banner: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    short_description: Attribute.Text;
+    price: Attribute.BigInteger;
+    slug: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSkinPropertySkinProperty extends Schema.CollectionType {
   collectionName: 'skin_properties';
   info: {
@@ -1336,6 +1377,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::product-line.product-line': ApiProductLineProductLine;
       'api::room.room': ApiRoomRoom;
+      'api::service.service': ApiServiceService;
       'api::skin-property.skin-property': ApiSkinPropertySkinProperty;
       'api::user-voucher.user-voucher': ApiUserVoucherUserVoucher;
       'api::voucher.voucher': ApiVoucherVoucher;

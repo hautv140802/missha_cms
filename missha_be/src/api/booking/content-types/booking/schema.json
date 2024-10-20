@@ -29,14 +29,6 @@
     "date": {
       "type": "datetime"
     },
-    "services": {
-      "type": "enumeration",
-      "enum": [
-        "Tổng hợp",
-        "Nặn mụn",
-        "Lăn mụn"
-      ]
-    },
     "status": {
       "type": "enumeration",
       "enum": [
@@ -45,6 +37,11 @@
         "Hoàn thành",
         "Huỷ"
       ]
+    },
+    "service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service.service"
     }
   }
 }
