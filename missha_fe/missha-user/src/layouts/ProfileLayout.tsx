@@ -13,6 +13,7 @@ const items: MenuItem[] = [
   { key: paths.PROFILE_INFORMATION, label: "Thông tin cá nhân" },
   { key: paths.PROFILE_ORDERS, label: "Đơn hàng" },
   { key: paths.PROFILE_BOOKINGS, label: "Bookings" },
+  { key: paths.PROFILE_VOUCHERS, label: "Vouchers" },
 ];
 export default function ProfileLayout() {
   const navigate = useNavigate();

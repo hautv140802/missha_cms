@@ -15,6 +15,7 @@ import Information from "../pages/Profiles/Information";
 import Orders from "../pages/Profiles/Orders";
 import Bookings from "../pages/Profiles/Bookings";
 import OrderDetail from "../pages/Profiles/OrderDetail";
+import Vouchers from "../pages/Profiles/Vouchers";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
         path: `${paths.PRODUCTS}/:slug`,
         element: <ProductDetail />,
       },
+      {
+        path: `${paths.LOGIN}`,
+        element: <Login />,
+      },
+      {
+        path: paths.REGISTER,
+        element: <Register />,
+      },
     ],
   },
   {
@@ -76,15 +85,11 @@ const router = createBrowserRouter([
         path: paths.PROFILE_BOOKINGS,
         element: <Bookings />,
       },
+      {
+        path: paths.PROFILE_VOUCHERS,
+        element: <Vouchers />,
+      },
     ],
-  },
-  {
-    path: paths.LOGIN,
-    element: <Login />,
-  },
-  {
-    path: paths.REGISTER,
-    element: <Register />,
   },
 ]);
 

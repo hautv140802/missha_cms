@@ -1,10 +1,13 @@
-import constants from "../../../../utils/constants/constants";
-import orderStatus from "../../../../utils/constants/orderStatus";
-import paths from "../../../../utils/constants/paths";
-import Status from "./Status";
+import constants from "../../../utils/constants/constants";
+import Status from "./Orders/Status";
 import { useSearchParams } from "react-router-dom";
 
-const WrapperStatus = () => {
+interface IWrapperStatusProps {
+  status: Record<string, string>;
+  path: string;
+}
+const WrapperStatus = (props: IWrapperStatusProps) => {
+  const { status, path } = props;
   const [searchParams] = useSearchParams();
 
   //   {
@@ -44,12 +47,12 @@ const WrapperStatus = () => {
   //     path: `${paths.PROFILE_ORDERS}?status=CANCEL`,
   //   },
   // ];
-  const statusItems = Object.entries(orderStatus).map(([key, label]) => ({
+  const statusItems = Object.entries(status).map(([key, label]) => ({
     active:
       searchParams.get(constants.STATUS) === key ||
       (key === "ALL" && !searchParams.get(constants.STATUS)),
     label,
-    path: `${paths.PROFILE_ORDERS}?status=${key}`,
+    path: `${path}?status=${key}`,
   }));
 
   return (

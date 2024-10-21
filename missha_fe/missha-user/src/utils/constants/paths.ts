@@ -14,6 +14,7 @@ const paths = {
   PROFILE_ORDERS_CANCEL: "/profile/orders/cancel",
   PROFILE_ORDERS_RETURN: "/profile/orders/return",
   PROFILE_BOOKINGS: "/profile/booking",
+  PROFILE_VOUCHERS: "/profile/vouchers",
   LOGIN: "/login",
   REGISTER: "/register",
   SUPPORT: "/support",

@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Scrollbars from "rc-scrollbars";
 import AppRouter from "./router/AppRouter";
 import { ConfigProvider } from "antd";
+import { Toaster } from "react-hot-toast";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -27,6 +28,21 @@ function App() {
           >
             <AppRouter />
             {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+            <Toaster
+              position="top-right"
+              reverseOrder={false}
+              toastOptions={{
+                className: "",
+                style: {
+                  // border: "none",
+                  // borderRadius: 0,
+                  // padding: "12px 16px",
+                  // color: "#EAEDE9",
+                  // background: "#2A4826",
+                  fontSize: "1.4rem",
+                },
+              }}
+            />
           </Scrollbars>
         </QueryClientProvider>
       </ConfigProvider>

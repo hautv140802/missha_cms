@@ -6,7 +6,7 @@ export default function RootLayout() {
   return (
     <div className="container-fluid p-0 flex flex-col min-h-screen relative">
       <HeaderComponent />
-      <div className="h-full">
+      <div className="h-full bg-[#f7f7f7]">
         <Outlet
 
         //   context={{ setIsLoadingDone } satisfies RootLayoutContextType}

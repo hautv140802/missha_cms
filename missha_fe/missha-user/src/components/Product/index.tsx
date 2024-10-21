@@ -16,9 +16,9 @@ const ProductComponent = (props: IProductComponentProps) => {
   if (page === "cart")
     return (
       <div className="flex justify-start items-start gap-[1.2rem]">
-        <div className="w-[12rem] h-[12rem] min-w-[12rem] rounded-[0.2rem] cursor-pointer">
+        <div className="w-[12rem] h-[12rem] min-w-[12rem] rounded-[0.2rem] cursor-pointer border">
           <img
-            src={images.cate_1}
+            src={images.product}
             className="w-full h-full object-cover rounded-[0.6rem] cursor-pointer"
           />
         </div>
@@ -43,7 +43,7 @@ const ProductComponent = (props: IProductComponentProps) => {
         <div className="relative">
           {/* Hình ảnh sản phẩm */}
           <img
-            src={images.treatment_1}
+            src={images.product}
             alt={"treatment_1"}
             className="w-full h-64 object-cover"
           />

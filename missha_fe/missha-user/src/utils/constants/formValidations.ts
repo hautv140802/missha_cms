@@ -18,10 +18,10 @@ const formValidation = {
   },
   birthday: {
     required: "Ngày sinh không được để trống",
-    pattern: {
-      value: /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/,
-      message: "Ngày sinh không hợp lệ",
-    },
+    // pattern: {
+    //   value: /^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/,
+    //   message: "Ngày sinh không hợp lệ",
+    // },
   },
   city: { required: "Tỉnh/Thành phố không được để trống" },
   district: { required: "Quận/huyện không được để trống" },
@@ -55,6 +55,7 @@ const formValidation = {
   total: { required: "Tổng tiền không được để trống" },
   full_name: { required: "Họ và tên không được để trống" },
   gender: { required: "Giới tính không được để trống" },
+  identifier: { required: "Tài khoản không được để trống" },
 };
 
 export default formValidation;
