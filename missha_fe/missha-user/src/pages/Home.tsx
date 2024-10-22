@@ -7,14 +7,26 @@ import WrapperProductComponent from "../components/WrapperProduct";
 import BenefitComponent from "../components/Benefit";
 import TreatmentComponent from "../components/Treatments";
 import WelcomeComponent from "../components/Welcome";
+import { useQueryCategories } from "../hooks/queries/categories.query";
+import { useQueryProducts } from "../hooks/queries/products.query";
 const Home = () => {
+  const { data: dataCategories } = useQueryCategories({
+    populate: "deep, 3",
+  });
+
+  const { data: dataProductBestSale } = useQueryProducts({
+    populate: "deep, 3",
+    sort: "total_purchase:desc",
+  });
+
+  console.log("dataProductBestSale", dataProductBestSale);
   return (
     <div className="w-ful py-[0.8rem] pb-[3.2rem] bg-[#F7F7F7] mt-[10rem]">
       <BannerComponent />
       <div className="h-[0.8rem] w-full bg-[#F7F7F7]"></div>
       <WelcomeComponent />
       <BenefitComponent />
-      <QuickFilterComponent />
+      <QuickFilterComponent categories={dataCategories} />
       <div className="h-[1.6rem] w-full bg-[#F7F7F7]"></div>
       <div className="bg-[#F7F7F7]">
         <div className="mb-[1.2rem] w-[140rem] mx-auto bg-white p-[2.4rem]">
