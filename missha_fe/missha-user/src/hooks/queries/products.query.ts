@@ -4,7 +4,7 @@ import productsApis from "../../apis/productApis";
 
 export function useQueryProducts(params?: BaseRequest) {
   const { data, isLoading, isFetched } = useQuery({
-    queryKey: ["products_getAll"],
+    queryKey: ["products_getAll", params],
     queryFn: () => productsApis.getAll(params),
   });
 

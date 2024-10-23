@@ -50,6 +50,7 @@ const BannerComponent = (props: IBannerComponentProps) => {
         pagination={{
           clickable: true,
         }}
+        speed={3000}
       >
         {bannerData.map((banner, index) => (
           <SwiperSlide key={index}>

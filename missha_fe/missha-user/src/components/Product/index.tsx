@@ -1,18 +1,27 @@
-import { Link } from "react-router-dom";
 import images from "../../assets/images";
 import CartCustom from "../../assets/svgs/Custom/CartCustom";
-import svgs from "../../assets/svgs";
+import { BaseData } from "../../types/base/baseData";
+import { ProductType } from "../../types/response/product";
+import formatUrl from "../../utils/functions/formatUrl";
+import clsx from "clsx";
+import { formatPrice } from "../../utils/functions/formatPrice";
+import { Link } from "react-router-dom";
+import paths from "../../utils/constants/paths";
 
 interface IProductComponentProps {
   page?: "product" | "cart";
+  product: BaseData<ProductType>;
 }
 const ProductComponent = (props: IProductComponentProps) => {
-  const { page } = props;
-  const discountPercent = 30;
-  const name =
-    " Ampoule dưỡng trắng, săn chắc da Silk Collagen Glow Ampoule 30ml";
-  const price = "500.000 đ";
-  const promotionPrice = "350.000 đ";
+  const { page, product } = props;
+
+  const isSale =
+    product?.attributes?.sale_price > 0 &&
+    product?.attributes?.sale_price < product?.attributes?.price;
+
+  const percentDiscount =
+    ((product?.attributes?.price - product?.attributes?.sale_price) * 100) /
+    product?.attributes?.price;
   if (page === "cart")
     return (
       <div className="flex justify-start items-start gap-[1.2rem]">
@@ -39,19 +48,22 @@ const ProductComponent = (props: IProductComponentProps) => {
     );
   if (page === "product")
     return (
-      <div className="relative w-[24rem] p-4 border rounded-lg shadow-lg group">
+      <div className="relative w-[24rem] p-4 border rounded-lg shadow-md group">
         <div className="relative">
           {/* Hình ảnh sản phẩm */}
           <img
-            src={images.product}
-            alt={"treatment_1"}
+            src={formatUrl(product?.attributes?.avatar?.data?.attributes?.url)}
+            alt={product?.attributes?.name || ""}
             className="w-full h-64 object-cover"
           />
 
           {/* Discount badge */}
-          {discountPercent > 0 && (
+
+          {isSale && (
             <div className="absolute top-2 left-2 bg-[#ff9000] text-white text-sm p-[0.4rem_0.8rem] rounded-lg">
-              <p className="text-[1.2rem]"> -{discountPercent}%</p>
+              <p className="text-[1.2rem]">
+                -{Number(percentDiscount.toFixed(2))}%
+              </p>
             </div>
           )}
 
@@ -65,17 +77,30 @@ const ProductComponent = (props: IProductComponentProps) => {
         </div>
 
         {/* Thông tin sản phẩm */}
-        <div className="mt-4 text-center">
-          <h3 className="text-[1.4rem] text-center font-semibold line-clamp-2">
-            {name}
-          </h3>
-          <div className="text-gray-500 text-[1.1rem] line-through">
-            {price.toLocaleString()}
+        <Link to={`${paths.PRODUCTS}/${product?.attributes?.slug}`}>
+          <div className="mt-4 text-center">
+            <h3 className="text-[1.4rem] text-center font-semibold line-clamp-2">
+              {product?.attributes?.name}
+            </h3>
+
+            <div
+              className={clsx(
+                "text-gray-500 text-[1.1rem] line-through",
+                isSale ? "visible" : "invisible"
+              )}
+            >
+              {formatPrice(product?.attributes?.price)}
+            </div>
+
+            <div className="text-[#ff9900] text-[1.4rem] font-bold">
+              {formatPrice(
+                isSale
+                  ? product?.attributes?.sale_price
+                  : product?.attributes?.price
+              )}
+            </div>
           </div>
-          <div className="text-[#ff9900] text-[1.4rem] font-bold">
-            {promotionPrice.toLocaleString()}
-          </div>
-        </div>
+        </Link>
       </div>
     );
   return null;

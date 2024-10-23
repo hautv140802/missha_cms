@@ -26,7 +26,7 @@ const ProductDetail = () => {
   ];
 
   return (
-    <div className="bg-[#F7F7F7]">
+    <div className="bg-[#F7F7F7] mt-[10rem]">
       <div className="max-w-[120rem] mx-auto">
         <BreadcrumbComponent items={itemBreadcrumbs} />
       </div>
