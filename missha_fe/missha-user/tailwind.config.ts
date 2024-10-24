@@ -25,7 +25,13 @@ export default {
         activeColor: "inset 0 0 0 3px white, 0 0 0 1.5px #FF9800",
         notActiveColor: "inset 0 0 0 3px white, 0 0 0 1px #ccc",
       },
+      colors: {
+        background: "#F8F8FC",
+      },
     },
+    colors: ({ colors }) => ({
+      ...colors,
+    }),
   },
   plugins: [
     // require("tw-elements/dist/plugin.cjs"),

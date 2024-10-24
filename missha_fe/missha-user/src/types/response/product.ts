@@ -10,7 +10,7 @@ export type ProductType = {
   price: number;
   sale_price: number;
   total_purchase: number;
-  description: string;
+  descripton: string;
   gallery: {
     data: BaseData<MediaType>[];
   };

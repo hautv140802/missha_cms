@@ -39,7 +39,7 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                   )}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm">
+                <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-sm ">
                   <p className="text-[1.6rem] text-black font-[500]">
                     {treatments?.[1]?.attributes?.title}
                   </p>

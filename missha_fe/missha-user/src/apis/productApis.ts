@@ -14,6 +14,12 @@ const productsApis = {
 
     return axiosClient.get<BaseResponse<BaseData<ProductType>[]>>(url);
   },
+
+  getBySlug(slug?: string) {
+    return axiosClient.get<BaseResponse<BaseData<ProductType>>>(
+      `${urls.PRODUCT_BY_SLUG}/${slug}?populate=deep, 3`
+    );
+  },
 };
 
 export default productsApis;

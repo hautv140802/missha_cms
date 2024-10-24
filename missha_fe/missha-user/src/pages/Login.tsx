@@ -9,13 +9,18 @@ import userApis from "../apis/userApis";
 import variables from "../utils/constants/variables";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import paths from "../utils/constants/paths";
 import { getAccessToken } from "../utils/functions/getUserInfo";
 import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { search } = useLocation();
+
+  const queryParams = new URLSearchParams(search);
+  const redirectUrl = queryParams.get(variables.REDIRECT_URL);
+
   const access_token = getAccessToken();
 
   const {
@@ -38,9 +43,12 @@ const Login = () => {
         );
       }
       toast.success("Đăng nhập thành công, chuyển trang sau 3s!");
-      setTimeout(() => {
+
+      if (redirectUrl) {
+        navigate(redirectUrl);
+      } else {
         navigate(paths.HOME);
-      }, 3000);
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Error message:", error);
@@ -97,7 +105,6 @@ const Login = () => {
                 className="text-[#ff9900] cursor-pointer font-[500]"
                 onClick={() => navigate(paths.REGISTER)}
               >
-                {" "}
                 Đăng ký ngay!
               </span>
             </p>

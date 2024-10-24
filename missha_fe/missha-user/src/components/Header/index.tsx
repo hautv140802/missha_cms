@@ -4,6 +4,7 @@ import { Badge } from "antd";
 import paths from "../../utils/constants/paths";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavItem from "./NavItem";
+import useCartStore from "../../stores/useCartStore";
 
 interface IHeaderComponentProps {
   className?: string;
@@ -14,6 +15,9 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
   const { className } = props;
   const { pathname } = location;
 
+  const { getTotalQuantity } = useCartStore();
+
+  const totalQuantity = getTotalQuantity();
   return (
     <div className="w-full shadow-md fixed top-0 bg-white opacity-100 z-[1000]">
       <div className={clsx("w-[120rem] mx-auto py-[1.2rem]", className)}>
@@ -29,7 +33,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
             <p className="uppercase text-[2.4rem] font-bold">Missha</p>
           </div>
           <Badge
-            count={5}
+            count={totalQuantity}
             className="cart container-image cursor-pointer"
             onClick={() => navigate(paths.CART)}
           >

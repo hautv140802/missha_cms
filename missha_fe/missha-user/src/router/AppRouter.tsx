@@ -7,7 +7,7 @@ import AboutUs from "../pages/AboutUs";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Support from "../pages/Support";
-import Cart from "../pages/Carts/Cart";
+import Cart from "../pages/Cart";
 import Booking from "../pages/Booking";
 import ProductDetail from "../pages/ProductDetail";
 import ProfileLayout from "../layouts/ProfileLayout";

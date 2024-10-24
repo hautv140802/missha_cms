@@ -25,7 +25,7 @@ export type ProductResponseType = {
   price: number;
   sale_price: number;
   total_purchase: number;
-  descripton: RawDraftContentState;
+  descripton: string;
   gallery: {
     data: BaseData<ImageType>[];
   };

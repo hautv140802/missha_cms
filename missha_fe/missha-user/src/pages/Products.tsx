@@ -5,7 +5,7 @@ import SortPriceComponent from "../components/SortPrice";
 
 const Products = () => {
   return (
-    <div className="mt-[10rem] bg-[#F7F7F7]">
+    <div className="mt-[10rem] bg-background">
       <div className="h-[0.8rem] w-full bg-[#F7F7F7]"></div>
       <QuickFilterComponent />
       <div className="h-[1.6rem] w-full bg-[#F7F7F7]"></div>

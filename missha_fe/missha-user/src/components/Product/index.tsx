@@ -7,6 +7,8 @@ import clsx from "clsx";
 import { formatPrice } from "../../utils/functions/formatPrice";
 import { Link } from "react-router-dom";
 import paths from "../../utils/constants/paths";
+import { addToCart } from "../../utils/functions/addToCart";
+import toast from "react-hot-toast";
 
 interface IProductComponentProps {
   page?: "product" | "cart";
@@ -15,6 +17,19 @@ interface IProductComponentProps {
 const ProductComponent = (props: IProductComponentProps) => {
   const { page, product } = props;
 
+  const handleAddToCart = () => {
+    addToCart({
+      id: product?.id,
+      name: product?.attributes?.name,
+      price: product?.attributes?.price,
+      sale_price: product?.attributes?.sale_price,
+      slug: product?.attributes?.slug,
+      avatar:
+        formatUrl(product?.attributes?.avatar?.data?.attributes?.url) || "",
+      quantity: 1,
+    });
+    toast.success("Thêm sản phẩm vào giỏ hàng thành công");
+  };
   const isSale =
     product?.attributes?.sale_price > 0 &&
     product?.attributes?.sale_price < product?.attributes?.price;
@@ -69,7 +84,10 @@ const ProductComponent = (props: IProductComponentProps) => {
 
           {/* Icon add to cart khi hover */}
 
-          <div className="absolute inset-0 bg-black bg-opacity-30  items-center justify-center hidden group-hover:flex">
+          <div
+            className="absolute inset-0 bg-black bg-opacity-30  items-center justify-center hidden group-hover:flex cursor-pointer"
+            onClick={handleAddToCart}
+          >
             <div className="w-[5rem] h-[5rem]">
               <CartCustom stroke="#FFFFFF" className="w-full h-full" />
             </div>

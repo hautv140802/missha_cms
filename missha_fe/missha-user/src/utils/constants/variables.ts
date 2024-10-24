@@ -4,6 +4,7 @@ const variables = {
   USER: "USER",
   PROFILE: "profile",
   ROLE: "role",
+  REDIRECT_URL: "redirect_url",
 };
 
 export default variables;

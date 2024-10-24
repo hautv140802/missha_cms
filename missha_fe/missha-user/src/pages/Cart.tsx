@@ -1,12 +1,17 @@
-import DividerComponent from "../../components/Divider";
-import paths from "../../utils/constants/paths";
-import BreadcrumbComponent from "../../components/Breadcrumb";
-import CartItemComponent from "../../components/CartItem";
+import { useNavigate } from "react-router-dom";
+import paths from "../utils/constants/paths";
+import useCartStore from "../stores/useCartStore";
+import { useState } from "react";
+import BreadcrumbComponent from "../components/Breadcrumb";
+import ReceivedInformation from "../components/Pages/Cart/ReceivedInformation";
 import { Divider } from "antd";
-import ButtonComponent from "../../components/Button";
-import ScrollbarComponent from "../../components/Scrollbar";
-import VoucherComponent from "../../components/Voucher";
-import SelectComponent from "../../components/Select";
+import ScrollbarComponent from "../components/Scrollbar";
+import CartItemComponent from "../components/CartItem";
+import DividerComponent from "../components/Divider";
+import WrapperVoucher from "../components/Pages/Cart/WrapperVoucher";
+import { formatPrice } from "../utils/functions/formatPrice";
+import ButtonComponent from "../components/Button";
+import SelectComponent from "../components/Select";
 
 const breadcrumb = [
   {
@@ -19,8 +24,14 @@ const breadcrumb = [
   },
 ];
 const Cart = () => {
+  const navigate = useNavigate();
+  const { items, getTotalPrice, getTotalSaveMoney } = useCartStore();
+  const [isReceivedInformation, setIsReceivedInformation] = useState(false);
+
+  const totalPrice = getTotalPrice();
+  const totalSaveMoney = getTotalSaveMoney();
   return (
-    <div className="py-[1.2rem] mt-[10rem] bg-[#f7f7f7]">
+    <div className="py-[1.2rem] mt-[10rem] bg-background">
       <div className="w-[140rem] mx-auto">
         <BreadcrumbComponent items={breadcrumb} />
       </div>
@@ -30,6 +41,10 @@ const Cart = () => {
           Giỏ hàng
         </p>
       </div>
+
+      <ReceivedInformation
+        setIsReceivedInformation={setIsReceivedInformation}
+      />
       <div className="w-[140rem] mx-auto flex justify-between items-start gap-[1.2rem]">
         <div className="w-[60%] shadow-md bg-white p-[2.4rem]">
           <div className="w-full flex justify-between items-center  ">
@@ -49,48 +64,35 @@ const Cart = () => {
           <Divider />
           <div className="flex flex-col gap-[1.2rem] mt-[1.2rem]">
             <ScrollbarComponent height="67.6rem">
-              <div className="w-[99%]">
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <div key={index}>
-                    <div className="py-[0.8rem]">
-                      <CartItemComponent />
+              {items?.length > 0 ? (
+                <div className="w-[99%]">
+                  {items?.map((item, index) => (
+                    <div key={index}>
+                      <div className="py-[0.8rem]">
+                        <CartItemComponent cart={item} />
+                      </div>
+                      <DividerComponent />
                     </div>
-                    <DividerComponent />
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="w-full h-[67.6rem] flex flex-col justify-center items-center gap-[1.6rem]">
+                  <p className="text-center text-[2rem]">
+                    Không có sản phẩm trong giỏ hàng
+                  </p>
+                  <p
+                    className="text-center text-[2.4rem] text-[#ff9900] font-[500] underline cursor-pointer"
+                    onClick={() => navigate(paths.HOME)}
+                  >
+                    Tiếp tục mua hàng!
+                  </p>
+                </div>
+              )}
             </ScrollbarComponent>
           </div>
         </div>
         <div className="w-[40%] flex flex-col gap-[1.6rem]">
-          <div className="shadow-md p-[2.4rem]  bg-white">
-            <p className="text-[2rem] font-[500] uppercase text-center">
-              Vouchers
-            </p>
-            <Divider className="my-[0.8rem]" />
-            <div className="flex flex-col gap-[1.2rem]">
-              <ScrollbarComponent height="200px">
-                <div className="flex flex-col gap-[1.2rem] w-[98%]">
-                  {Array.from({ length: 4 }).map((_, index) => (
-                    <VoucherComponent isActive={index === 1} />
-                  ))}
-                </div>
-              </ScrollbarComponent>
-              <div className="flex justify-between items-center gap-[1.2rem]">
-                <ButtonComponent
-                  type="text"
-                  text="Không sử dụng"
-                  className="border border-solid border-gray-500"
-                  textClassName="text-[1.6rem] uppercase"
-                />
-                <ButtonComponent
-                  type="primary"
-                  text="Áp dụng"
-                  textClassName="text-[1.6rem] uppercase text-white"
-                />
-              </div>
-            </div>
-          </div>
+          <WrapperVoucher />
           <div className="shadow-md p-[2.4rem]  bg-white">
             <p className="text-[2rem] font-[500] uppercase text-center">
               Phương thức giao hàng
@@ -122,11 +124,15 @@ const Cart = () => {
               <div className="flex flex-col gap-[0.4rem]">
                 <div className="flex justify-between items-center">
                   <p className="text-[1.4rem] font-[500]">Tạm tính:</p>
-                  <p className="text-[1.6rem] font-[600]">544.000 đ</p>
+                  <p className="text-[1.6rem] font-[600]">
+                    {formatPrice(totalPrice)}
+                  </p>
                 </div>
                 <div className="flex justify-between items-center">
                   <p className="text-[1.4rem] font-[500]">Tiết kiệm:</p>
-                  <p className="text-[1.6rem] font-[600]">94.000 đ</p>
+                  <p className="text-[1.6rem] font-[600]">
+                    {formatPrice(totalSaveMoney)}
+                  </p>
                 </div>
                 <div className="flex justify-between items-center">
                   <p className="text-[1.4rem] font-[500]">Phí vận chuyển:</p>
@@ -139,7 +145,9 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-between items-center mt-[0.4rem]">
                   <p className="text-[1.8rem] font-[600]">Tổng thanh toán:</p>
-                  <p className="text-[1.8rem] font-[600]">588.000 đ</p>
+                  <p className="text-[1.8rem] font-[600]">
+                    {formatPrice(totalPrice)}
+                  </p>
                 </div>
                 <ButtonComponent
                   type="primary"

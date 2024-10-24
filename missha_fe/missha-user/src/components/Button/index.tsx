@@ -10,7 +10,10 @@ const ButtonComponent = (props: IButtonComponentProps) => {
   const { className, textClassName, text, ...rest } = props;
   return (
     <Button
-      className={clsx("w-full [1.2rem_2rem] rounded-[8rem] h-full", className)}
+      className={clsx(
+        "w-full [1.2rem_2.4rem] rounded-[8rem] h-[4.2rem]",
+        className
+      )}
       {...rest}
     >
       <p

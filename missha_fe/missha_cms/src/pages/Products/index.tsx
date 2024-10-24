@@ -123,8 +123,8 @@ const Products = () => {
       render: (categories: BaseData<CategoryResponseType>[], index) => (
         <MultiLabel
           arrayItem={categories.map(product => ({
-            id: product.id,
-            title: product.attributes.name || product.id,
+            id: product?.id,
+            title: product?.attributes?.name || product?.id,
           }))}
           index={index}
           lastIndex={categories?.length - 1 || 0}
@@ -156,11 +156,11 @@ const Products = () => {
     {
       title: 'Mô tả',
       dataIndex: ['attributes', 'descripton'],
-      render: (descripton: string) => (
+      render: (description: string) => (
         <div
           className="max-w-[25rem] h-[5rem] overflow-y-auto"
           dangerouslySetInnerHTML={{
-            __html: descripton,
+            __html: description,
           }}
         />
       ),
@@ -198,7 +198,7 @@ const Products = () => {
             setOpenTime(new Date().toString());
           }}
           onHandleDelete={async () => {
-            const categoryRes = await useDeleteProduct(record.id);
+            const categoryRes = await useDeleteProduct(record?.id);
             if (categoryRes && categoryRes.data.id) {
               toast.success('Xóa thông tin thành công!');
               mutate();
@@ -300,8 +300,8 @@ const Products = () => {
 
               <SettingColumn
                 options={columns.map(item => ({
-                  label: item.title?.toString() || '',
-                  value: item.key || '',
+                  label: item?.title?.toString() || '',
+                  value: item?.key || '',
                 }))}
                 onChange={handleChangeCheckedList}
                 checkedList={checkedList}
