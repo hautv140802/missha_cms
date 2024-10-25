@@ -4,10 +4,11 @@
   "info": {
     "singularName": "order-detail",
     "pluralName": "order-details",
-    "displayName": "order-detail"
+    "displayName": "order-detail",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -18,8 +19,9 @@
     },
     "order": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::order.order"
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "order_details"
     },
     "unit_price": {
       "type": "biginteger"

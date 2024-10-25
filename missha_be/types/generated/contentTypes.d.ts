@@ -971,7 +971,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     customer_email: Attribute.String;
@@ -1019,9 +1019,13 @@ export interface ApiOrderOrder extends Schema.CollectionType {
         }
       >;
     reason: Attribute.String;
+    order_details: Attribute.Relation<
+      'api::order.order',
+      'oneToMany',
+      'api::order-detail.order-detail'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::order.order',
       'oneToOne',
@@ -1043,9 +1047,10 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
     singularName: 'order-detail';
     pluralName: 'order-details';
     displayName: 'order-detail';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     product: Attribute.Relation<
@@ -1055,14 +1060,13 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
     >;
     order: Attribute.Relation<
       'api::order-detail.order-detail',
-      'oneToOne',
+      'manyToOne',
       'api::order.order'
     >;
     unit_price: Attribute.BigInteger;
     quantity: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::order-detail.order-detail',
       'oneToOne',

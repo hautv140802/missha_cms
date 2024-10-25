@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -75,6 +75,12 @@
     },
     "reason": {
       "type": "string"
+    },
+    "order_details": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-detail.order-detail",
+      "mappedBy": "order"
     }
   }
 }
