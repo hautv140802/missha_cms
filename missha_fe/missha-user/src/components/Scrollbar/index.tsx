@@ -12,7 +12,7 @@ const ScrollbarComponent = (props: IScrollbarComponentProps) => {
       style={{ maxWidth: "100%", height: height }}
       autoHide
       renderTrackVertical={(props) => (
-        <div {...props} className="track-vertical z-[9999] pl-[0.3rem]" />
+        <div {...props} className="track-vertical z-[999] pl-[0.3rem]" />
       )}
     >
       {children}

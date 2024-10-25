@@ -1,8 +1,12 @@
+import queryString from "query-string";
 import axiosClient from ".";
+import { BaseRequest } from "../types/base/baseRequest";
 import { UserType } from "../types/common/user";
 import { RegisterType, UserLoginType } from "../types/request/user";
-import { UserLoginResponseType } from "../types/response/user";
+import { UserLoginResponseType, UserVoucherType } from "../types/response/user";
 import urls from "../utils/constants/urls";
+import { BaseResponse } from "../types/base/baseResponse";
+import { BaseData } from "../types/base/baseData";
 
 const userApis = {
   login(body: UserLoginType) {
@@ -15,6 +19,14 @@ const userApis = {
 
   myProfile() {
     return axiosClient.get<UserType>(urls.MY_PROFILE);
+  },
+
+  getUserVoucher(params: BaseRequest) {
+    const url = queryString.stringifyUrl({
+      url: `${urls.USER_VOUCHERS}`,
+      query: params,
+    });
+    return axiosClient.get<BaseResponse<BaseData<UserVoucherType>[]>>(url);
   },
 };
 

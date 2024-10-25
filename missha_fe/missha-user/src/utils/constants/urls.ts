@@ -6,8 +6,9 @@ const urls = {
   SERVICES: "/services",
   MY_PROFILE: "/users/me",
   VOUCHERS: "/vouchers",
-  USER_VOUCHERS: "/user_vouchers",
+  USER_VOUCHERS: "/user-vouchers",
   PRODUCT_BY_SLUG: "/slugify/slugs/product",
+  ORDERS: "orders",
 };
 
 export default urls;

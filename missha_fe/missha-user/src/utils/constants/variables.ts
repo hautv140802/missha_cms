@@ -5,6 +5,7 @@ const variables = {
   PROFILE: "profile",
   ROLE: "role",
   REDIRECT_URL: "redirect_url",
+  UNUSED: "UNUSED",
 };
 
 export default variables;

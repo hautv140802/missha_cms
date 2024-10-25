@@ -1,3 +1,5 @@
+import { BaseRequest } from "../base/baseRequest";
+
 export type UserLoginType = {
   identifier: string;
   password: string;
@@ -11,4 +13,9 @@ export type RegisterType = {
   birthday: Date;
   phone: string;
   address: string;
+};
+
+export type UserVoucherRequestType = BaseRequest & {
+  "filters[user]"?: number;
+  "filters[status]"?: string;
 };

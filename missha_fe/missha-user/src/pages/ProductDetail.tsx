@@ -15,6 +15,7 @@ import "react-quill/dist/quill.snow.css";
 import { useQueryProducts } from "../hooks/queries/products.query";
 import { addToCart } from "../utils/functions/addToCart";
 import toast from "react-hot-toast";
+import clsx from "clsx";
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
 
@@ -60,9 +61,11 @@ const ProductDetail = () => {
     }
   };
   const handleIncrease = () => {
-    // if (quantity < dataProduct?.attributes?.) {
-    setQuantity((prev) => prev + 1);
-    // }
+    if (quantity < Number(dataProduct?.attributes?.quantity)) {
+      setQuantity((prev) => prev + 1);
+    } else {
+      toast.error("Không đủ hàng");
+    }
   };
 
   const handleAddToCart = () => {
@@ -215,7 +218,12 @@ const ProductDetail = () => {
               <div className="border">
                 <div className="flex justify-start items-center">
                   <div
-                    className="w-[4rem] h-[4rem] cursor-pointer border-r hover:bg-[#f79900] p-[1rem]"
+                    className={clsx(
+                      "w-[4rem] h-[4rem] border-r p-[1rem]",
+                      quantity > 1
+                        ? "hover:bg-[#f79900] cursor-pointer"
+                        : "bg-[#BFBFBF] cursor-not-allowed"
+                    )}
                     onClick={handleDecrease}
                   >
                     <img src={svgs.minus} className="w-full h-full" />
@@ -225,7 +233,12 @@ const ProductDetail = () => {
                     className="w-[8rem] h-[4rem] text-center rounded-none border-none text-[1.6rem] font-[500]"
                   />
                   <div
-                    className="w-[4rem] h-[4rem] cursor-pointer border-l hover:bg-[#f79900] p-[1rem]"
+                    className={clsx(
+                      "w-[4rem] h-[4rem] cursor-pointer border-l hover:bg-[#f79900] p-[1rem]",
+                      quantity < Number(dataProduct?.attributes?.quantity)
+                        ? "hover:bg-[#f79900] cursor-pointer"
+                        : "bg-[#BFBFBF] cursor-not-allowed"
+                    )}
                     onClick={handleIncrease}
                   >
                     <img src={svgs.plus} className="w-full h-full" />
@@ -258,14 +271,14 @@ const ProductDetail = () => {
           <div className="w-full bg-background p-[1.5rem_2rem] rounded-md">
             <p className="text-[1.8rem] font-[500] uppercase">Mô tả sản phẩm</p>
           </div>
-          {dataProduct?.attributes?.descripton && (
+          {dataProduct?.attributes?.description && (
             <div className="overflow-y-auto max-h-[120rem]">
               <div
                 className="ql-editor my-[2.4rem] text-[1.4rem] text-justify"
                 dangerouslySetInnerHTML={{
                   __html: showAll
-                    ? dataProduct?.attributes?.descripton || ""
-                    : dataProduct?.attributes?.descripton?.slice(0, 800) || "",
+                    ? dataProduct?.attributes?.description || ""
+                    : dataProduct?.attributes?.description?.slice(0, 800) || "",
                 }}
               />
               <div className="flex justify-center items-center">

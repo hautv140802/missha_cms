@@ -12,6 +12,8 @@ import WrapperVoucher from "../components/Pages/Cart/WrapperVoucher";
 import { formatPrice } from "../utils/functions/formatPrice";
 import ButtonComponent from "../components/Button";
 import SelectComponent from "../components/Select";
+import { VoucherType } from "../types/response/voucher";
+import { BaseData } from "../types/base/baseData";
 
 const breadcrumb = [
   {
@@ -27,9 +29,17 @@ const Cart = () => {
   const navigate = useNavigate();
   const { items, getTotalPrice, getTotalSaveMoney } = useCartStore();
   const [isReceivedInformation, setIsReceivedInformation] = useState(false);
+  const [selectedVoucher, setSelectedVoucher] = useState<
+    BaseData<VoucherType> | undefined
+  >();
 
   const totalPrice = getTotalPrice();
   const totalSaveMoney = getTotalSaveMoney();
+  const discountValue = Number(
+    selectedVoucher?.attributes?.amount_decrease || 0
+  );
+  const feeShip = 35000;
+
   return (
     <div className="py-[1.2rem] mt-[10rem] bg-background">
       <div className="w-[140rem] mx-auto">
@@ -92,7 +102,10 @@ const Cart = () => {
           </div>
         </div>
         <div className="w-[40%] flex flex-col gap-[1.6rem]">
-          <WrapperVoucher />
+          <WrapperVoucher
+            selectedVoucher={selectedVoucher}
+            setSelectedVoucher={setSelectedVoucher}
+          />
           <div className="shadow-md p-[2.4rem]  bg-white">
             <p className="text-[2rem] font-[500] uppercase text-center">
               Phương thức giao hàng
@@ -141,12 +154,14 @@ const Cart = () => {
 
                 <div className="flex justify-between items-center">
                   <p className="text-[1.4rem] font-[500]">Giảm giá:</p>
-                  <p className="text-[1.6rem] font-[600]">-45.000 đ</p>
+                  <p className="text-[1.6rem] font-[600]">
+                    - {formatPrice(discountValue)}
+                  </p>
                 </div>
                 <div className="flex justify-between items-center mt-[0.4rem]">
                   <p className="text-[1.8rem] font-[600]">Tổng thanh toán:</p>
                   <p className="text-[1.8rem] font-[600]">
-                    {formatPrice(totalPrice)}
+                    {formatPrice(totalPrice + feeShip - discountValue)}
                   </p>
                 </div>
                 <ButtonComponent
@@ -154,6 +169,7 @@ const Cart = () => {
                   text="Thanh toán"
                   className="mt-[1.2rem]"
                   textClassName="text-[1.6rem] font-[500] uppercase text-white"
+                  disabled={!isReceivedInformation}
                 />
               </div>
             </div>
