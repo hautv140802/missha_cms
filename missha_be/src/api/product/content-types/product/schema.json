@@ -71,8 +71,15 @@
       "target": "api::skin-property.skin-property",
       "mappedBy": "products"
     },
-    "descripton": {
+    "description": {
       "type": "text"
+    },
+    "quan": {
+      "type": "integer"
+    },
+    "quantity": {
+      "type": "integer",
+      "default": 100
     }
   }
 }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-24T15:15:50.446Z"
+    "x-generation-date": "2024-10-25T02:02:35.879Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2703,8 +2703,14 @@
                             }
                           }
                         },
-                        "descripton": {
+                        "description": {
                           "type": "string"
+                        },
+                        "quan": {
+                          "type": "integer"
+                        },
+                        "quantity": {
+                          "type": "integer"
                         },
                         "createdAt": {
                           "type": "string",
@@ -6518,8 +6524,14 @@
                           }
                         }
                       },
-                      "descripton": {
+                      "description": {
                         "type": "string"
+                      },
+                      "quan": {
+                        "type": "integer"
+                      },
+                      "quantity": {
+                        "type": "integer"
                       },
                       "createdAt": {
                         "type": "string",
@@ -7350,8 +7362,14 @@
                   "example": "string or id"
                 }
               },
-              "descripton": {
+              "description": {
                 "type": "string"
+              },
+              "quan": {
+                "type": "integer"
+              },
+              "quantity": {
+                "type": "integer"
               }
             }
           }
@@ -8567,8 +8585,14 @@
                                           }
                                         }
                                       },
-                                      "descripton": {
+                                      "description": {
                                         "type": "string"
+                                      },
+                                      "quan": {
+                                        "type": "integer"
+                                      },
+                                      "quantity": {
+                                        "type": "integer"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -8999,8 +9023,14 @@
               }
             }
           },
-          "descripton": {
+          "description": {
             "type": "string"
+          },
+          "quan": {
+            "type": "integer"
+          },
+          "quantity": {
+            "type": "integer"
           },
           "createdAt": {
             "type": "string",
@@ -10360,8 +10390,14 @@
                             }
                           }
                         },
-                        "descripton": {
+                        "description": {
                           "type": "string"
+                        },
+                        "quan": {
+                          "type": "integer"
+                        },
+                        "quantity": {
+                          "type": "integer"
                         },
                         "createdAt": {
                           "type": "string",
@@ -13247,8 +13283,14 @@
                             }
                           }
                         },
-                        "descripton": {
+                        "description": {
                           "type": "string"
+                        },
+                        "quan": {
+                          "type": "integer"
+                        },
+                        "quantity": {
+                          "type": "integer"
                         },
                         "createdAt": {
                           "type": "string",

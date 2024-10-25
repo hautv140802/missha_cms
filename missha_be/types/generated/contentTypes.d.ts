@@ -1112,7 +1112,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::skin-property.skin-property'
     >;
-    descripton: Attribute.Text;
+    description: Attribute.Text;
+    quan: Attribute.Integer;
+    quantity: Attribute.Integer & Attribute.DefaultTo<100>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
