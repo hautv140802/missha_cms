@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { BaseRequest } from "../../types/base/baseRequest";
-import categoryApis from "../../apis/categoryApi";
 
-export function useQueryCategories(params: BaseRequest) {
+import productLineApis from "../../apis/productLineApis";
+export function useQueryProductLines(params: BaseRequest) {
   const { data, isLoading, isFetched } = useQuery({
-    queryKey: ["categories_getAll"],
-    queryFn: () => categoryApis.getAll(params),
+    queryKey: ["productLines_getAll"],
+    queryFn: () => productLineApis.getAll(params),
   });
 
   return {

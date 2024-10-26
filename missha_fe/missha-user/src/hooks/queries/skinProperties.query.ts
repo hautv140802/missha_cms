@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { BaseRequest } from "../../types/base/baseRequest";
-import categoryApis from "../../apis/categoryApi";
 
-export function useQueryCategories(params: BaseRequest) {
+import skinPropertyApis from "../../apis/skinPropertyApis";
+export function useQuerySkinProperties(params: BaseRequest) {
   const { data, isLoading, isFetched } = useQuery({
-    queryKey: ["categories_getAll"],
-    queryFn: () => categoryApis.getAll(params),
+    queryKey: ["skinProperties_getAll"],
+    queryFn: () => skinPropertyApis.getAll(params),
   });
 
   return {

@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")!).render(
       <ConfigProvider
         theme={{
           token: {
-            marginXS: 2,
+            // marginXS: 2,
           },
         }}
       >

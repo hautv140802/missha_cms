@@ -6,7 +6,7 @@ import { CategoryType } from "../types/response/category";
 import urls from "../utils/constants/urls";
 import queryString from "query-string";
 const categoryApis = {
-  getAll(params?: BaseRequest) {
+  getAll(params: BaseRequest) {
     const url = queryString.stringifyUrl({
       url: `${urls.CATEGORIES}`,
       query: params,

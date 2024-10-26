@@ -14,6 +14,13 @@ import ButtonComponent from "../components/Button";
 import SelectComponent from "../components/Select";
 import { VoucherType } from "../types/response/voucher";
 import { BaseData } from "../types/base/baseData";
+import orderDetailApis from "../apis/orderDetailApis";
+
+import orderApis from "../apis/orderApis";
+import { ReceivedInformationType } from "../types/common/receivedInformation";
+import { getUserProfile } from "../utils/functions/getUserInfo";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const breadcrumb = [
   {
@@ -27,19 +34,83 @@ const breadcrumb = [
 ];
 const Cart = () => {
   const navigate = useNavigate();
-  const { items, getTotalPrice, getTotalSaveMoney } = useCartStore();
-  const [isReceivedInformation, setIsReceivedInformation] = useState(false);
+  const { items, getTotalPrice, getTotalSaveMoney, clearCart } = useCartStore();
+  const [information, setInformation] = useState<ReceivedInformationType>();
   const [selectedVoucher, setSelectedVoucher] = useState<
     BaseData<VoucherType> | undefined
   >();
 
   const totalPrice = getTotalPrice();
   const totalSaveMoney = getTotalSaveMoney();
+
   const discountValue = Number(
     selectedVoucher?.attributes?.amount_decrease || 0
   );
   const feeShip = 35000;
 
+  const isInformation =
+    information?.full_name &&
+    information?.email &&
+    information?.phone &&
+    information?.address;
+
+  const handleCreateOrderDetail = async () => {
+    const orderDetailId: number[] = [];
+
+    for (const item of items || []) {
+      try {
+        const resOrderDetail = await orderDetailApis.create({
+          product: item?.id,
+          quantity: item?.quantity,
+          unit_price: item?.price?.toString(),
+        });
+
+        if (resOrderDetail) {
+          orderDetailId.push(resOrderDetail?.data?.data?.id);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    return orderDetailId;
+  };
+
+  const handleCheckout = async () => {
+    const orderDetails = await handleCreateOrderDetail();
+    const user = getUserProfile();
+    try {
+      const resOrder = await orderApis.create({
+        customer_email: information?.email || "",
+        customer_full_name: information?.full_name || "",
+        customer_phone: information?.phone || "",
+        shipping_address: information?.address || "",
+        order_details: orderDetails,
+        payment_method: "COD",
+        shipping_method: "Giao qua đối tác",
+        status: "Chờ xác nhận",
+        user: user?.id,
+        reason: "",
+        total: (totalPrice + feeShip - discountValue).toString(),
+        transport_fee: "35000",
+        voucher: selectedVoucher?.id,
+      });
+
+      if (resOrder) {
+        toast.success("Đặt hàng thành công!");
+        clearCart();
+      }
+    } catch (error) {
+      console.log(error);
+      if (axios.isAxiosError(error)) {
+        toast.error(
+          `Đặt hàng thất bại: ${error?.response?.data?.error?.message}`
+        );
+      } else {
+        toast.error(`Đặt hàng thất bại: ${error}`);
+      }
+    }
+  };
   return (
     <div className="py-[1.2rem] mt-[10rem] bg-background">
       <div className="w-[140rem] mx-auto">
@@ -53,7 +124,9 @@ const Cart = () => {
       </div>
 
       <ReceivedInformation
-        setIsReceivedInformation={setIsReceivedInformation}
+        setInformation={setInformation}
+        isInformation={!!isInformation}
+        information={information}
       />
       <div className="w-[140rem] mx-auto flex justify-between items-start gap-[1.2rem]">
         <div className="w-[60%] shadow-md bg-white p-[2.4rem]">
@@ -169,7 +242,8 @@ const Cart = () => {
                   text="Thanh toán"
                   className="mt-[1.2rem]"
                   textClassName="text-[1.6rem] font-[500] uppercase text-white"
-                  disabled={!isReceivedInformation}
+                  disabled={!isInformation}
+                  onClick={handleCheckout}
                 />
               </div>
             </div>

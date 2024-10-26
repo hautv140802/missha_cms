@@ -1,16 +1,38 @@
-import { useState } from "react";
-import InputComponent from "../Input";
+import { useEffect, useState } from "react";
 import { InputNumber, Slider } from "antd";
 import clsx from "clsx";
-import { replace } from "react-router-dom";
+import productsApis from "../../apis/productApis";
 
-const PriceFilterComponent = () => {
-  const [minPrice, setMinPrice] = useState(5000);
-  const [maxPrice, setMaxPrice] = useState(200000);
+interface iPriceFilterComponentProps {
+  onchangeValues: (_values: string[]) => void;
+}
+const PriceFilterComponent = (props: iPriceFilterComponentProps) => {
+  const { onchangeValues } = props;
+
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000000);
+  const [max, setMax] = useState(1000000);
+
+  useEffect(() => {
+    const fetchMaxPrice = async () => {
+      try {
+        const res = await productsApis.getMaxPrice();
+        const data = res.data.data;
+        if (data && data?.length > 0) {
+          setMaxPrice(data?.[0].attributes?.price);
+          setMax(data?.[0].attributes?.price);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMaxPrice();
+  }, []);
   const onChange = (value: number[]) => {
-    console.log(value);
     setMinPrice(value[0]);
     setMaxPrice(value[1]);
+    onchangeValues(value.map((item) => item.toString()));
   };
   return (
     <div>
@@ -19,7 +41,7 @@ const PriceFilterComponent = () => {
       </div>
       <Slider
         min={0}
-        max={500000}
+        max={max}
         value={[minPrice, maxPrice]}
         range
         onChange={onChange}

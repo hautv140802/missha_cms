@@ -9,10 +9,12 @@ import { ReceivedInformationType } from "../../../types/common/receivedInformati
 import ModalInformation from "../../ModalInformation";
 
 interface IReceivedInformationProps {
-  setIsReceivedInformation: (_isReceivedInformation: boolean) => void;
+  setInformation: (_info: ReceivedInformationType) => void;
+  information?: ReceivedInformationType;
+  isInformation: boolean;
 }
 const ReceivedInformation = (props: IReceivedInformationProps) => {
-  const { setIsReceivedInformation } = props;
+  const { setInformation, isInformation, information } = props;
   const navigate = useNavigate();
   const location = useLocation();
   const { data: dataMyProfile, isLoading: isLoadingMyProfile } =
@@ -20,7 +22,6 @@ const ReceivedInformation = (props: IReceivedInformationProps) => {
 
   const access_token = getAccessToken();
 
-  const [information, setInformation] = useState<ReceivedInformationType>();
   const [openFormInformation, setOpenFormInformation] = useState(false);
 
   const handleCancelFormInfo = () => {
@@ -37,15 +38,6 @@ const ReceivedInformation = (props: IReceivedInformationProps) => {
       });
     }
   }, [isLoadingMyProfile]);
-  const isInformation =
-    information?.full_name &&
-    information?.email &&
-    information?.phone &&
-    information?.address;
-
-  useEffect(() => {
-    setIsReceivedInformation(!!isInformation);
-  }, [isInformation]);
 
   if (!access_token)
     return (

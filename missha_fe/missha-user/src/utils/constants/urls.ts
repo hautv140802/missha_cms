@@ -9,6 +9,9 @@ const urls = {
   USER_VOUCHERS: "/user-vouchers",
   PRODUCT_BY_SLUG: "/slugify/slugs/product",
   ORDERS: "orders",
+  PRODUCT_LINES: "/product-lines",
+  SKIN_PROPERTIES: "/skin-properties",
+  ORDER_DETAILS: "/order-details",
 };
 
 export default urls;

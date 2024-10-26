@@ -3,16 +3,44 @@ import svgs from "../../assets/svgs";
 import { Checkbox, Divider, Drawer } from "antd";
 import PriceFilterComponent from "./PriceFilter";
 import FooterFilter from "./FooterFilter";
+import { useQueryProductLines } from "../../hooks/queries/productLines.query";
+import { useQuerySkinProperties } from "../../hooks/queries/skinProperties.query";
 
-const dataFilter = [
-  { value: 1, label: "Filter 1" },
-  { value: 2, label: "Filter 2" },
-  { value: 3, label: "Filter 3" },
-  { value: 4, label: "Filter 4" },
-  { value: 5, label: "Filter 5" },
-];
-const MenuFilterComponent = () => {
+interface IMenuFilterComponentProps {
+  handleApply: () => void;
+  countFilterProduct: number;
+  handleCancelApply: () => void;
+  setFilterParams: (
+    _filterParams: Record<string, string[] | string | undefined>
+  ) => void;
+  searchParams: URLSearchParams;
+  filterParams: Record<string, string[] | string | undefined>;
+}
+const MenuFilterComponent = (props: IMenuFilterComponentProps) => {
+  const {
+    handleApply,
+    countFilterProduct,
+    handleCancelApply,
+    setFilterParams,
+    searchParams,
+    filterParams,
+  } = props;
   const [openMenuFilter, setOpenMenuFilter] = useState(false);
+
+  const { data: dataProductLines } = useQueryProductLines({
+    "sort[0]": "id:desc",
+    populate: "deep, 1",
+    "fields[0]": "name",
+    "fields[1]": "slug",
+  });
+
+  const { data: dataSkinProperties } = useQuerySkinProperties({
+    "sort[0]": "id:desc",
+    populate: "deep, 1",
+    "fields[0]": "name",
+    "fields[1]": "slug",
+  });
+
   return (
     <div className="flex justify-start items-center gap-[0.8rem]">
       <div
@@ -42,7 +70,13 @@ const MenuFilterComponent = () => {
         open={openMenuFilter}
         onClose={() => setOpenMenuFilter(false)}
         placement="left"
-        footer={<FooterFilter />}
+        footer={
+          <FooterFilter
+            handleApply={handleApply}
+            countFilterProduct={countFilterProduct}
+            handleCancel={handleCancelApply}
+          />
+        }
         styles={{
           footer: {
             backgroundColor: "#F7F7F7",
@@ -54,14 +88,23 @@ const MenuFilterComponent = () => {
             <div className="text-[1.6rem] font-[600] m-[0.4rem] pb-[0.8rem]">
               Đặc tính da
             </div>
-            <Checkbox.Group className="flex flex-col justify-start items-start gap-[0.8rem]">
-              {dataFilter.map((item, index) => (
+            <Checkbox.Group
+              className="flex flex-col justify-start items-start gap-[0.8rem]"
+              value={searchParams.getAll("skin_properties") || []}
+              onChange={(values: string[]) => {
+                setFilterParams({
+                  ...filterParams,
+                  skin_properties: values,
+                });
+              }}
+            >
+              {dataSkinProperties.map((item, index) => (
                 <Checkbox
                   key={index}
-                  value={item.value}
+                  value={item?.attributes?.slug}
                   className="text-[1.6rem] font-[400]"
                 >
-                  {item.label}
+                  {item?.attributes?.name}
                 </Checkbox>
               ))}
             </Checkbox.Group>
@@ -71,20 +114,37 @@ const MenuFilterComponent = () => {
             <div className="text-[1.6rem] font-[600] m-[0.4rem] pb-[0.8rem]">
               Dòng sản phẩm
             </div>
-            <Checkbox.Group className="flex flex-col justify-start items-start gap-[0.8rem]">
-              {dataFilter.map((item, index) => (
+            <Checkbox.Group
+              className="flex flex-col justify-start items-start gap-[0.8rem]"
+              value={searchParams.getAll("product_lines")}
+              onChange={(values: string[]) => {
+                setFilterParams({
+                  ...filterParams,
+                  product_lines: values,
+                });
+              }}
+            >
+              {dataProductLines.map((item, index) => (
                 <Checkbox
                   key={index}
-                  value={item.value}
+                  value={item?.attributes?.slug}
                   className="text-[1.6rem] font-[400]"
                 >
-                  {item.label}
+                  {item?.attributes?.name}
                 </Checkbox>
               ))}
             </Checkbox.Group>
           </div>
           <Divider />
-          <PriceFilterComponent />
+          <PriceFilterComponent
+            onchangeValues={(values) => {
+              setFilterParams({
+                ...filterParams,
+                min_price: values?.[0],
+                max_price: values?.[1],
+              });
+            }}
+          />
         </div>
       </Drawer>
     </div>
