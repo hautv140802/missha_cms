@@ -62,7 +62,11 @@ const Cart = () => {
         const resOrderDetail = await orderDetailApis.create({
           product: item?.id,
           quantity: item?.quantity,
-          unit_price: item?.price?.toString(),
+          unit_price:
+            Number(item?.sale_price) > 0 &&
+            Number(item?.sale_price) < Number(item?.price)
+              ? item?.sale_price?.toString()
+              : item?.price?.toString(),
         });
 
         if (resOrderDetail) {
