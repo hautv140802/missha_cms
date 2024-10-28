@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-27T13:16:41.180Z"
+    "x-generation-date": "2024-10-28T03:08:00.304Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5111,6 +5111,13 @@
                       "title": {
                         "type": "string"
                       },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "USED",
+                          "UNUSED"
+                        ]
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -8099,6 +8106,13 @@
                                   },
                                   "title": {
                                     "type": "string"
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "USED",
+                                      "UNUSED"
+                                    ]
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -15548,6 +15562,13 @@
                       "title": {
                         "type": "string"
                       },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "USED",
+                          "UNUSED"
+                        ]
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -15707,6 +15728,13 @@
               },
               "title": {
                 "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "USED",
+                  "UNUSED"
+                ]
               }
             }
           }
@@ -16393,6 +16421,13 @@
           },
           "title": {
             "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "USED",
+              "UNUSED"
+            ]
           },
           "createdAt": {
             "type": "string",
