@@ -17,17 +17,17 @@ const Home = () => {
 
   const { data: dataProductBestSale } = useQueryProducts({
     populate: "deep, 3",
-    sort: "total_purchase:desc",
+    "sort[0]": "total_purchase:desc",
   });
 
   const { data: dataNewProduct } = useQueryProducts({
     populate: "deep, 3",
-    sort: "createdAt:desc",
+    "sort[0]": "createdAt:desc",
   });
 
   const { data: dateServices } = useQueryServices({
     populate: "deep, 3",
-    sort: "createdAt:desc",
+    "sort[0]": "createdAt:desc",
   });
 
   return (

@@ -15,7 +15,7 @@ import SelectComponent from "../Select";
 import { Divider } from "antd";
 import ButtonComponent from "../Button";
 import { ReceivedInformationType } from "../../types/common/receivedInformation";
-type FormInformationType = {
+export type FormInformationType = {
   full_name: string;
   phone: string;
   email: string;
