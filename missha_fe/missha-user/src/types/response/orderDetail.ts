@@ -9,4 +9,6 @@ export type OrderDetailType = {
   order: {
     data: BaseData<OrderType>;
   };
+  unit_price: number;
+  quantity: number;
 };

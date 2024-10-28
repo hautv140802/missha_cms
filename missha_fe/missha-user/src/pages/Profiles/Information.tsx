@@ -17,6 +17,7 @@ import toast from "react-hot-toast";
 import userApis from "../../apis/userApis";
 import axios from "axios";
 import dayjs from "dayjs";
+import variables from "../../utils/constants/variables";
 
 type FormUserType = {
   username: string;
@@ -64,7 +65,6 @@ const Information = () => {
   useEffect(() => {
     const { address, ward, district, city } = sliptAddress(user.address);
 
-    console.log({ address, ward, district, city });
     reset({
       ...user,
       city: city,
@@ -113,6 +113,7 @@ const Information = () => {
 
       if (resUser?.data) {
         toast.success("Cập nhật thông tin cá nhân thành công!");
+        localStorage.setItem(variables.PROFILE, JSON.stringify(resUser?.data));
       }
     } catch (error) {
       console.log(error);

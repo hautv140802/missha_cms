@@ -14,6 +14,7 @@ const urls = {
   ORDER_DETAILS: "/order-details",
   BOOKINGS: "/bookings",
   USERS: "/users",
+  ORDER_BY_SLUG: "/slugify/slugs/oder",
 };
 
 export default urls;

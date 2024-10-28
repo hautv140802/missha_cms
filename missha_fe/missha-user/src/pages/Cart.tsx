@@ -103,6 +103,7 @@ const Cart = () => {
       if (resOrder) {
         toast.success("Đặt hàng thành công!");
         clearCart();
+        navigate(paths.PROFILE_ORDERS);
       }
     } catch (error) {
       console.log(error);

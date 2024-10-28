@@ -1,6 +1,7 @@
 import { BaseData } from "../base/baseData";
 import { UserType } from "../common/user";
 import { OrderDetailType } from "./orderDetail";
+import { VoucherType } from "./voucher";
 
 export type OrderType = {
   customer_email: string;
@@ -14,11 +15,15 @@ export type OrderType = {
   user: {
     data: BaseData<UserType>;
   };
-  voucher: string;
+  voucher: {
+    data: BaseData<VoucherType>;
+  };
   transport_fee: string;
   reason: string;
   order_code: string;
   order_details: {
-    data: BaseData<OrderDetailType>;
+    data: BaseData<OrderDetailType>[];
   };
+  createdAt: string;
+  updatedAt: string;
 };
