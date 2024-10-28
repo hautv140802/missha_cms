@@ -57,7 +57,7 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
               />
               <NavItem
                 link={paths.BOOKING}
-                name="BOOKING"
+                name="ĐẶT LỊCH SPA"
                 active={pathname === paths.BOOKING}
               />
               <NavItem

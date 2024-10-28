@@ -186,7 +186,7 @@ const BookingForm = (props: IBookingFormProps) => {
       />
       <div className="flex flex-col gap-[1.2rem]">
         <SelectComponent
-          label="Dịch dụ"
+          label="Dịch vụ"
           name="service"
           placeholder="Dịch vụ"
           control={control}

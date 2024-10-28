@@ -3,7 +3,7 @@ const bookingStatus: Record<string, string> = {
   WAITING_CONFIRM: "Chờ xác nhận",
   CONFIRM: "Xác nhận",
   COMPLETE: "Hoàn thành",
-  CANCEL: "Hủy",
+  CANCEL: "Huỷ",
 };
 
 export default bookingStatus;

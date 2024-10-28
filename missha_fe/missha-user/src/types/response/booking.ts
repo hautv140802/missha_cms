@@ -14,4 +14,6 @@ export type BookingType = {
   service: {
     data: BaseData<ServiceType>;
   };
+  updatedAt: string;
+  createdAt: string;
 };

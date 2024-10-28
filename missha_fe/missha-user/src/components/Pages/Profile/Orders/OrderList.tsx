@@ -104,24 +104,25 @@ const OrderList = (props: IOrderListProps) => {
         </div>
       )}
       <Divider className="my-[1.2rem]" />
-      <div
-        className="bg-white flex flex-col gap-[1.2rem] cursor-pointer"
-        onClick={() =>
-          navigate(`${paths.PROFILE_ORDERS}/${order?.attributes?.order_code}`)
-        }
-      >
-        {newOrderDetail?.map((order_detail, index) => (
-          <OrderItem key={index} order_detail={order_detail} />
-        ))}
+      <div className="bg-white flex flex-col gap-[1.2rem] cursor-pointer">
+        <div
+          onClick={() =>
+            navigate(`${paths.PROFILE_ORDERS}/${order?.attributes?.order_code}`)
+          }
+        >
+          {newOrderDetail?.map((order_detail, index) => (
+            <OrderItem key={index} order_detail={order_detail} />
+          ))}
+        </div>
 
-        {newOrderDetail?.length > 3 && (
+        {order?.attributes?.order_details?.data?.length > 3 && (
           <div
             className="flex justify-start items-center gap-[1.2rem] mt-[1.2rem] cursor-pointer"
             onClick={() => setShowAll(!showAll)}
           >
             <p className="text-[1.4rem] text-[rgba(0,0,0,0.54)]">
-              {showAll ? "Thu gọn" : "Xem thêm"} {newOrderDetail.length - 3} sản
-              phẩm
+              {showAll ? "Thu gọn" : "Xem thêm"}{" "}
+              {order?.attributes?.order_details?.data?.length - 3} sản phẩm
             </p>
             <div className="w-[1.2rem] h-[1.2rem]">
               <img
