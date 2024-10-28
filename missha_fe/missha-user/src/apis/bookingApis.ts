@@ -23,6 +23,17 @@ const bookingApis = {
 
     return axiosClient.get<BaseResponse<BaseData<BookingType>[]>>(url);
   },
+
+  updateStatus(id: number, status: string) {
+    return axiosClient.put<BaseResponse<BaseData<BookingType>>>(
+      `${urls.BOOKINGS}/${id}`,
+      {
+        data: {
+          status: status,
+        },
+      }
+    );
+  },
 };
 
 export default bookingApis;

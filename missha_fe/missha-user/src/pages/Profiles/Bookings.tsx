@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import BookingItem from "../../components/Pages/Profile/Booking.tsx/BookingItem";
 import WrapperStatus from "../../components/Pages/Profile/WrapperStatus";
 import { useQueryBookings } from "../../hooks/queries/bookings.query";
 import bookingStatus from "../../utils/constants/booking";
 import paths from "../../utils/constants/paths";
+import { Pagination } from "antd";
+import WrapperListBooking from "../../components/Pages/Profile/Booking/WrapperListBooking";
 
 const Bookings = () => {
   const [searchParams] = useSearchParams();
@@ -14,7 +15,11 @@ const Bookings = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [status]);
-  const { data: dataBookings } = useQueryBookings({
+  const {
+    data: dataBookings,
+    isLoading: isLoadingBookings,
+    pagination: paginationBookings,
+  } = useQueryBookings({
     populate: "deep, 3",
     "filters[status]":
       status === "ALL" || status === undefined
@@ -30,12 +35,19 @@ const Bookings = () => {
         <p className="text-[1.6rem] font-[500] uppercase">Đơn hàng</p>
         <WrapperStatus status={bookingStatus} path={paths.PROFILE_BOOKINGS} />
       </div>
-      <div className="w-full h-[1.6rem] bg-[#F7F7F7]"></div>
+      <div className="w-full h-[1.6rem] bg-background"></div>
 
-      <div className="flex flex-col gap-[1.2rem] bg-[#F7F7F7]">
-        {dataBookings?.map((booking, index) => (
-          <BookingItem key={index} booking={booking} />
-        ))}
+      <WrapperListBooking
+        dataBookings={dataBookings}
+        isLoading={isLoadingBookings}
+      />
+      <div className="bg-background flex justify-end items-center py-[1.2rem]">
+        <Pagination
+          current={paginationBookings?.page || 1}
+          total={paginationBookings?.total || 0}
+          pageSize={paginationBookings?.pageSize || 5}
+          onChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export function useQueryBookings(params: BaseRequest) {
 
   return {
     data: data?.data?.data || [],
-    pagination: data?.data?.meta?.pagination || {},
+    pagination: data?.data?.meta?.pagination || null,
     isLoading,
     isFetched,
   };

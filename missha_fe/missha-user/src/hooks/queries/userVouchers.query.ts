@@ -4,13 +4,13 @@ import userApis from "../../apis/userApis";
 
 export function useQueryUserVouchers(params: UserVoucherRequestType) {
   const { data, isLoading, isFetched } = useQuery({
-    queryKey: ["user_vouchers"],
+    queryKey: ["user_vouchers", params],
     queryFn: () => userApis.getUserVoucher(params),
   });
 
   return {
     data: data?.data?.data || [],
-    pagination: data?.data?.meta?.pagination || {},
+    pagination: data?.data?.meta?.pagination || null,
     isLoading,
     isFetched,
   };

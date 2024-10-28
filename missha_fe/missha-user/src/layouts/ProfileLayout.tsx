@@ -30,7 +30,7 @@ export default function ProfileLayout() {
       title: "Trang chủ",
     },
     {
-      href: paths.PROFILE,
+      href: paths.PROFILE_INFORMATION,
       title: "Hồ sơ",
     },
     {

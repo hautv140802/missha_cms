@@ -9,14 +9,13 @@ interface IVoucherComponentProps {
   isActive?: boolean;
   page: "cart" | "profile";
   userVoucher: BaseData<UserVoucherType>;
-  setSelectedVoucher: (_selectedVoucher?: BaseData<VoucherType>) => void;
+  setSelectedVoucher?: (_selectedVoucher?: BaseData<VoucherType>) => void;
 }
 const VoucherComponent = (props: IVoucherComponentProps) => {
   const { isActive, page, userVoucher, setSelectedVoucher } = props;
-  console.log("userVoucher", userVoucher);
 
   const handleSelectedVoucher = () => {
-    setSelectedVoucher(userVoucher?.attributes?.voucher.data);
+    setSelectedVoucher?.(userVoucher?.attributes?.voucher.data);
     toast.success("Bạn đã chọn thành công 1 voucher");
   };
   if (page === "profile")
