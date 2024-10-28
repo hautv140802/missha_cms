@@ -8,7 +8,6 @@ import paths from "../utils/constants/paths";
 import { useNavigate } from "react-router-dom";
 import { RegisterType } from "../types/request/user";
 import dayjs from "dayjs";
-import { format } from "path";
 import userApis from "../apis/userApis";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -43,7 +42,7 @@ const Register = () => {
     console.log("data", data);
     const convertData: RegisterType = {
       ...data,
-      birthday: dayjs(data?.birthday, { format: "MM/DD/YYYY" }).toDate(),
+      birthday: dayjs(data?.birthday).format("YYYY-MM-DD"),
     };
 
     try {

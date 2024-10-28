@@ -12,7 +12,7 @@ import paths from "../utils/constants/paths";
 import CartCustom from "../assets/svgs/Custom/CartCustom";
 import { ServiceType } from "../types/response/service";
 import { BaseData } from "../types/base/baseData";
-import ClipBoardCustom from "../assets/svgs/Custom/ClipBoardCustom";
+import ClipBoardCustom from "../assets/svgs/Custom/ClipBoard";
 import { Tooltip } from "antd";
 const Booking = () => {
   const navigate = useNavigate();

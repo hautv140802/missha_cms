@@ -28,6 +28,10 @@ const userApis = {
     });
     return axiosClient.get<BaseResponse<BaseData<UserVoucherType>[]>>(url);
   },
+
+  update(id: number, body: RegisterType) {
+    return axiosClient.put<UserType>(`${urls.USERS}/${id}`, body);
+  },
 };
 
 export default userApis;

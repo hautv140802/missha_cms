@@ -3,7 +3,7 @@ import { BaseData } from "../../types/base/baseData";
 import { ServiceType } from "../../types/response/service";
 import formatUrl from "../../utils/functions/formatUrl";
 import paths from "../../utils/constants/paths";
-import ClipBoardCustom from "../../assets/svgs/Custom/ClipBoardCustom";
+import ClipBoardCustom from "../../assets/svgs/Custom/ClipBoard";
 interface ITreatmentComponentProps {
   page?: "product" | "booking";
   treatments: BaseData<ServiceType>[];

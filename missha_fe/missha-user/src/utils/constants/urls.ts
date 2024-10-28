@@ -13,6 +13,7 @@ const urls = {
   SKIN_PROPERTIES: "/skin-properties",
   ORDER_DETAILS: "/order-details",
   BOOKINGS: "/bookings",
+  USERS: "/users",
 };
 
 export default urls;

@@ -7,7 +7,7 @@ const sliptAddress = (address?: string) => {
       city: undefined,
     };
 
-  const [ward, district, city, ...restOfAddress] = address
+  const [city, district, ward, ...restOfAddress] = address
     .split(", ")
     .reverse();
 

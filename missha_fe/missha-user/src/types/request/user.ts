@@ -8,9 +8,9 @@ export type UserLoginType = {
 export type RegisterType = {
   username: string;
   email: string;
-  password: string;
+  password?: string;
   gender: string;
-  birthday: Date;
+  birthday: string;
   phone: string;
   address: string;
 };

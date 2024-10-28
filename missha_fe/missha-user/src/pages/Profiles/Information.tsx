@@ -4,6 +4,19 @@ import DatePickerComponent from "../../components/DateTimePicker";
 import InputComponent from "../../components/Input";
 import SelectComponent from "../../components/Select";
 import formValidation from "../../utils/constants/formValidations";
+import { getUserProfile } from "../../utils/functions/getUserInfo";
+import { useEffect, useState } from "react";
+import sliptAddress from "../../utils/functions/sliptAddress";
+import addressApis from "../../apis/addressApis";
+import {
+  AddressType,
+  DistrictType,
+  WardType,
+} from "../../types/response/address";
+import toast from "react-hot-toast";
+import userApis from "../../apis/userApis";
+import axios from "axios";
+import dayjs from "dayjs";
 
 type FormUserType = {
   username: string;
@@ -18,16 +31,101 @@ type FormUserType = {
   address: string;
 };
 const Information = () => {
+  const user = getUserProfile() || {};
+  const [dataAddress, setDataAddress] = useState<AddressType>([]);
+  const [dataDistricts, setDataDistricts] = useState<DistrictType[]>([]);
+  const [dataWards, setDataWards] = useState<WardType[]>([]);
+  useEffect(() => {
+    const fetchAddress = async () => {
+      try {
+        const resAddress = await addressApis.getAddress();
+
+        if (resAddress) {
+          setDataAddress(resAddress);
+        }
+      } catch (error) {
+        toast.error("Lỗi, không thể lấy được danh sách địa chỉ");
+        console.log(error);
+      }
+    };
+
+    fetchAddress();
+  }, []);
   const {
     control,
     handleSubmit,
+    reset,
+    watch,
     formState: { errors },
   } = useForm<FormUserType>({
     mode: "onChange",
   });
+  const [city, district] = watch(["city", "district"]);
+  useEffect(() => {
+    const { address, ward, district, city } = sliptAddress(user.address);
+
+    console.log({ address, ward, district, city });
+    reset({
+      ...user,
+      city: city,
+      district: district,
+      ward: ward,
+      address: address,
+    });
+  }, []);
+
+  useEffect(() => {
+    const findIndex = dataAddress?.findIndex((item) => item?.Name === city);
+
+    if (findIndex !== -1) {
+      setDataDistricts(dataAddress?.[findIndex]?.Districts);
+    } else {
+      setDataDistricts([]);
+    }
+  }, [city, dataAddress?.length]);
+
+  useEffect(() => {
+    const findIndex = dataDistricts?.findIndex(
+      (item) => item?.Name === district
+    );
+
+    if (findIndex !== -1 && findIndex !== undefined) {
+      setDataWards(dataDistricts?.[findIndex]?.Wards);
+    } else {
+      setDataWards([]);
+    }
+  }, [district, dataAddress?.length]);
 
   const onSubmit: SubmitHandler<FormUserType> = async (data) => {
-    console.log("form user data", data);
+    if (!user?.id) {
+      return;
+    }
+    try {
+      const address = [data?.address, data?.ward, data?.district, data?.city]
+        .filter((item) => item)
+        .join(", ");
+
+      const resUser = await userApis.update(user?.id, {
+        ...data,
+        address: address,
+        birthday: dayjs(data?.birthday).format("YYYY-MM-DD"),
+      });
+
+      if (resUser?.data) {
+        toast.success("Cập nhật thông tin cá nhân thành công!");
+      }
+    } catch (error) {
+      console.log(error);
+      if (axios.isAxiosError(error)) {
+        toast.error(
+          `Cập nhật thông tin thất bại: ${
+            error?.response?.data?.error?.message || error?.message
+          }`
+        );
+      } else {
+        toast.error(`Cập nhật thông tin thất bại: ${error}`);
+      }
+    }
   };
   return (
     <div className="w-ful p-[2.4rem] bg-white">
@@ -81,6 +179,7 @@ const Information = () => {
             isRequired
             errors={errors.birthday}
             rules={formValidation.birthday}
+            showTime={false}
           />
           <SelectComponent
             control={control}
@@ -93,7 +192,7 @@ const Information = () => {
               },
               {
                 value: "male",
-                label: "Name",
+                label: "Nam",
               },
             ]}
             placeholder="Giới tính"
@@ -106,7 +205,10 @@ const Information = () => {
               control={control}
               name="city"
               label="Tỉnh/TP"
-              options={[]}
+              options={dataAddress?.map((item) => ({
+                value: item?.Name,
+                label: item?.Name,
+              }))}
               placeholder="Tỉnh/TP"
               isRequired
               errors={errors.city}
@@ -116,7 +218,10 @@ const Information = () => {
               control={control}
               name="district"
               label="Quận/Huyện"
-              options={[]}
+              options={dataDistricts?.map((item) => ({
+                value: item?.Name,
+                label: item?.Name,
+              }))}
               placeholder="Quận/Huyện"
               isRequired
               errors={errors.district}
@@ -126,7 +231,10 @@ const Information = () => {
               control={control}
               name="ward"
               label="Phường/Xã"
-              options={[]}
+              options={dataWards?.map((item) => ({
+                value: item?.Name,
+                label: item?.Name,
+              }))}
               placeholder="Phường/Xã"
               isRequired
               errors={errors.ward}
