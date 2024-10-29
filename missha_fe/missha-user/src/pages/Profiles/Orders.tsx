@@ -5,8 +5,10 @@ import orderStatus from "../../utils/constants/orderStatus";
 import paths from "../../utils/constants/paths";
 import { useEffect, useState } from "react";
 import WrapperListOrder from "../../components/Pages/Profile/Orders/WrapperListOrder";
+import { getUserProfile } from "../../utils/functions/getUserInfo";
 
 const Orders = () => {
+  const user = getUserProfile() || {};
   const [searchParams] = useSearchParams();
   const status = searchParams.get("status") || undefined;
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -28,6 +30,7 @@ const Orders = () => {
         : orderStatus[status],
     "pagination[pageSize]": 5,
     "pagination[page]": currentPage,
+    "filters[user]": user?.id?.toString(),
   });
   return (
     <div className="w-ful bg-white">

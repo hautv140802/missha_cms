@@ -9,4 +9,5 @@ export type BaseRequest = {
   "fields[2]"?: string;
   "filters[status]"?: string;
   "filters[order_code]"?: string;
+  "filters[user]"?: string;
 };

@@ -6,8 +6,10 @@ import bookingStatus from "../../utils/constants/booking";
 import paths from "../../utils/constants/paths";
 import { Pagination } from "antd";
 import WrapperListBooking from "../../components/Pages/Profile/Booking/WrapperListBooking";
+import { getUserProfile } from "../../utils/functions/getUserInfo";
 
 const Bookings = () => {
+  const user = getUserProfile() || {};
   const [searchParams] = useSearchParams();
   const status = searchParams.get("status") || undefined;
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -28,6 +30,7 @@ const Bookings = () => {
     "pagination[pageSize]": 5,
     "pagination[page]": currentPage,
     "sort[0]": "updatedAt:desc",
+    "filters[user]": user?.id?.toString(),
   });
   return (
     <div className="w-ful bg-white">
