@@ -12,7 +12,6 @@ import { BookingStatus } from '@/utils/constants/bookingStatus';
 import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
 import formValidation from '@/utils/constants/formValidation';
-import { OrderStatus } from '@/utils/constants/orderStatus';
 import { getUserProfile } from '@/utils/functions/getAccessToken';
 import { DefaultOptionType } from 'antd/es/select';
 import { useEffect, useState } from 'react';

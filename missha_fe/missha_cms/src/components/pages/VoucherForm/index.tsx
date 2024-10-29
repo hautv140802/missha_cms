@@ -64,7 +64,6 @@ const VoucherForm = (props: IVoucherFormProps) => {
   const uploadImageVoucher = async () => {
     if (imageVoucherFile && imageVoucherFile.originFileObj) {
       const response = await usePostUploadFile(imageVoucherFile.originFileObj);
-      console.log('response', response);
       if (response && response[0]?.id) {
         return response[0]?.id;
       }

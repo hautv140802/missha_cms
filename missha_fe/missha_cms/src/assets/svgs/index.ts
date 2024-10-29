@@ -24,6 +24,12 @@ import editorImage from './editor-image.svg';
 import editorEraser from './editor-eraser.svg';
 import editorUndo from './editor-undo.svg';
 import editorRedo from './editor-redo.svg';
+import calender from './calender.svg';
+import userGroup from './user-group.svg';
+import voucher from './voucher.svg';
+import productLine from './product-line.svg';
+import category from './category.svg';
+import skinProperty from './skin-property.svg';
 const svgs = {
   logo,
   menuOrder,
@@ -51,6 +57,12 @@ const svgs = {
   editorEraser,
   editorUndo,
   editorRedo,
+  calender,
+  userGroup,
+  voucher,
+  productLine,
+  category,
+  skinProperty,
 };
 
 export default svgs;

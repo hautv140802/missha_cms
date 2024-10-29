@@ -187,7 +187,7 @@ const Categories = () => {
         </p>
         <div className="flex justify-between items-center mb-[1.8rem] mt-[2.4rem]">
           <div className="max-w-[20rem]">
-            <Search placeholder="Nhập từ khóa tìm kiếm" enterButton />
+            {/* <Search placeholder="Nhập từ khóa tìm kiếm" enterButton /> */}
           </div>
           <div className="flex justify-between items-center gap-[1.8rem]">
             <ButtonComponent

@@ -33,23 +33,43 @@ const items: MenuItem[] = [
   getItem(
     'Quản lý đơn hàng',
     paths.ORDERS,
-    <img src={svgs.menuOrder} className="w-[24px] h-[24px]" />
+    <img src={svgs.menuOrder} className="w-[1.8rem] h-[1.8rem]" />
   ),
-  getItem('Quản lý lịch SPA', paths.BOOKINGS, <PieChartOutlined />),
+  getItem(
+    'Quản lý lịch SPA',
+    paths.BOOKINGS,
+    <img src={svgs.calender} className="w-[1.8rem] h-[1.8rem]" />
+  ),
   // getItem('Quản lý sản phẩm', 'PRODUCT', <ProductOutlined />, [
   //   getItem('Sản phẩm chính', 'MAIN_PRODUCT', <ProductOutlined />),
   //   getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
   // ]),
-  getItem('Quản lý danh mục sản phẩm', paths.CATEGORIES, <UserOutlined />),
-  getItem('Quản lý dòng sản phẩm', paths.PRODUCT_LINES, <DesktopOutlined />),
+  getItem(
+    'Quản lý danh mục',
+    paths.CATEGORIES,
+    <img src={svgs.category} className="w-[1.8rem] h-[1.8rem]" />
+  ),
+  getItem(
+    'Quản lý dòng sản phẩm',
+    paths.PRODUCT_LINES,
+    <img src={svgs.productLine} className="w-[1.8rem] h-[1.8rem]" />
+  ),
   getItem(
     'Quản lý đặc tính của da',
     paths.SKIN_PROPERTIES,
-    <DesktopOutlined />
+    <img src={svgs.skinProperty} className="w-[1.8rem] h-[1.8rem]" />
   ),
   getItem('Quản lý sản phẩm', paths.PRODUCTS, <DesktopOutlined />),
-  getItem('Quản lý khách hàng', paths.CUSTOMERS, <DesktopOutlined />),
-  getItem('Quản lý Vouchers', paths.VOUCHERS, <PieChartOutlined />),
+  getItem(
+    'Quản lý khách hàng',
+    paths.CUSTOMERS,
+    <img src={svgs.userGroup} className="w-[1.8rem] h-[1.8rem]" />
+  ),
+  getItem(
+    'Quản lý Vouchers',
+    paths.VOUCHERS,
+    <img src={svgs.voucher} className="w-[1.8rem] h-[1.8rem]" />
+  ),
   getItem('Quản lý dịch vụ', paths.SERVICES, <PieChartOutlined />),
   // getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
 ];

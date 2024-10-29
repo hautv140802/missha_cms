@@ -7,3 +7,15 @@
     }
   }
 }
+
+.ant-layout-sider.ant-layout-sider-light.ant-layout-sider-has-trigger {
+  flex: 0 0 25rem !important;
+  max-width: 25rem !important;
+  width: 25rem !important;
+}
+
+.ant-layout-sider.ant-layout-sider-light.ant-layout-sider-collapsed.ant-layout-sider-has-trigger {
+  flex: 0 0 8rem !important;
+  max-width: 8rem !important;
+  width: 8rem !important;
+}
