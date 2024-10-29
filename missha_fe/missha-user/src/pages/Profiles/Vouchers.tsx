@@ -24,7 +24,7 @@ const Vouchers = () => {
   return (
     <>
       <div className="w-ful bg-white p-[2.4rem]">
-        <p className="text-[1.6rem] font-[500] uppercase">Đơn hàng</p>
+        <p className="text-[1.6rem] font-[500] uppercase">Vouchers</p>
         <WrapperVouchers
           dataVouchers={dataUserVouchers}
           isLoading={isLoadingUserVouchers}

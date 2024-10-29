@@ -17,17 +17,27 @@ const WrapperVoucher = (props: IWrapperVoucher) => {
   const { selectedVoucher, setSelectedVoucher } = props;
   const user = getUserProfile() || {};
 
-  const { data: dataUserVouchers } = useQueryUserVouchers({
-    populate: "deep, 3",
-    "filters[user]": user?.id,
-    "filters[status]": variables.UNUSED,
-  });
+  const { data: dataUserVouchers, isLoading: isLoadingVouchers } =
+    useQueryUserVouchers({
+      populate: "deep, 3",
+      "filters[user]": user?.id,
+      "filters[status]": variables.UNUSED,
+    });
 
   const handleNotApply = () => {
     setSelectedVoucher();
   };
+
+  if (!isLoadingVouchers && dataUserVouchers.length === 0)
+    return (
+      <div className="shadow-md p-[2.4rem] bg-white">
+        <p className="text-[2rem] font-[500] uppercase text-center">Vouchers</p>
+        <Divider className="my-[0.8rem]" />
+        <p className="text-[1.4rem] text-center">Không có vouchers!</p>
+      </div>
+    );
   return (
-    <div className="shadow-md p-[2.4rem]  bg-white">
+    <div className="shadow-md p-[2.4rem] bg-white">
       <p className="text-[2rem] font-[500] uppercase text-center">Vouchers</p>
       <Divider className="my-[0.8rem]" />
       <div className="flex flex-col gap-[1.2rem]">

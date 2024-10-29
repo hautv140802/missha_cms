@@ -18,7 +18,7 @@ const data = [
 
 const BenefitComponent = () => {
   return (
-    <div className="flex justify-center items-center gap-[2.4rem] py-[3.2rem] bg-[#F9F9F9]">
+    <div className="flex justify-center items-center gap-[2.4rem] py-[3.2rem] bg-background">
       {data.map((item, index) => (
         <BenefitItemComponent key={index} icon={item.icon} text={item.text} />
       ))}

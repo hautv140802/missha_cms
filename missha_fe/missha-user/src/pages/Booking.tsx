@@ -59,7 +59,7 @@ const Booking = () => {
 
       <WrapperTreatments treatments={dateServices} />
 
-      <div className="max-w-[140rem] mx-auto bg-white p-[2.4rem]">
+      <div className="max-w-[140rem] mx-auto bg-white p-[2.4rem] mt-[1.6rem]">
         <p className="text-[2rem]">Phương pháp trị liệu mới</p>
         <div className="mt-[2rem] flex justify-start items-center gap-[1.6rem]">
           {dataNewServices?.map((newServices, index) => (
@@ -91,12 +91,12 @@ const Booking = () => {
               </div>
 
               <div className="mt-[0.8rem] p-[0.8rem_0.8rem_0_0.8rem]">
-                <p className="text-[1.6rem] font-[500]">
+                <p className="text-[1.6rem] font-[500] line-clamp-1">
                   {newServices?.attributes?.title}
                 </p>
               </div>
               <div className="flex justify-between items-center p-[0.8rem]">
-                <p className="text-[1.6rem] font-[600]">
+                <p className="text-[1.6rem] font-[600] text-[#ff9900]">
                   {formatPrice(newServices?.attributes?.price)}
                 </p>
                 <div className="w-[2.4rem] h-[2.4rem]">

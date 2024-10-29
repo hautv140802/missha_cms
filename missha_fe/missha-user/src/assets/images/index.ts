@@ -1,9 +1,11 @@
-import banner_1 from "./banner_1.png";
-import banner_2 from "./banner_2.png";
+import banner_1 from "./banner_1.jpg";
+import banner_2 from "./banner_2.jpg";
+import banner_3 from "./banner_3.jpg";
+import banner_4 from "./banner_4.jpg";
 import cate_1 from "./cate_1.jpg";
 import cate_2 from "./cate_2.jpeg";
 import cate_3 from "./cate_3.png";
-import banner_booking from "./bannerBooking.png";
+import banner_booking from "./banner_spa.png";
 import treatment_1 from "./treatment_1.jpg";
 import treatment_2 from "./treatment_2.jpeg";
 import treatment_3 from "./treatment_3.png";
@@ -17,6 +19,8 @@ import product from "./product.jpg";
 const images = {
   banner_1,
   banner_2,
+  banner_3,
+  banner_4,
   cate_1,
   cate_2,
   cate_3,

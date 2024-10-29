@@ -31,9 +31,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                   treatments?.[0]?.attributes?.banner?.data?.attributes?.url
                 )}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                <p className="text-[1.6rem] text-white font-[500]">
+                <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                   {treatments?.[0]?.attributes?.title}
                 </p>
               </div>
@@ -57,9 +58,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[1]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[1]?.attributes?.title}
                   </p>
                 </div>
@@ -83,9 +85,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[2]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[2]?.attributes?.title}
                   </p>
                 </div>
@@ -110,9 +113,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                   treatments?.[3]?.attributes?.banner?.data?.attributes?.url
                 )}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg ">
-                <p className="text-[1.6rem] text-white font-[500]">
+                <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                   {treatments?.[3]?.attributes?.title}
                 </p>
               </div>
@@ -135,9 +139,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[4]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[4]?.attributes?.title}
                   </p>
                 </div>
@@ -161,9 +166,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[5]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg ">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[5]?.attributes?.title}
                   </p>
                 </div>
@@ -197,9 +203,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                   treatments?.[0]?.attributes?.banner?.data?.attributes?.url
                 )}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                <p className="text-[1.6rem] text-white font-[500]">
+                <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                   {treatments?.[0]?.attributes?.title}
                 </p>
               </div>
@@ -221,9 +228,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[1]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[1]?.attributes?.title}
                   </p>
                 </div>
@@ -247,9 +255,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[2]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[2]?.attributes?.title}
                   </p>
                 </div>
@@ -274,9 +283,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                   treatments?.[3]?.attributes?.banner?.data?.attributes?.url
                 )}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                <p className="text-[1.6rem] text-white font-[500]">
+                <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                   {treatments?.[3]?.attributes?.title}
                 </p>
               </div>
@@ -299,9 +309,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[4]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[4]?.attributes?.title}
                   </p>
                 </div>
@@ -325,9 +336,10 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
                     treatments?.[5]?.attributes?.banner?.data?.attributes?.url
                   )}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-[1.2rem] left-[1.2rem] p-[0.8rem_1.2rem] border border-solid border-white backdrop-blur-lg">
-                  <p className="text-[1.6rem] text-white font-[500]">
+                  <p className="text-[1.6rem] text-white font-[500] max-w-[20rem] line-clamp-2">
                     {treatments?.[5]?.attributes?.title}
                   </p>
                 </div>

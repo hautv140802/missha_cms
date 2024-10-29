@@ -19,7 +19,7 @@ const WrapperTreatments = (props: IWrapperTreatmentsProps) => {
 
   const chunkTreatment = chunkArray(treatments, 6);
   return (
-    <div className="w-[140rem] mx-auto quick-filter bg-white p-[2.4rem]">
+    <div className="w-[140rem] mx-auto quick-filter bg-white p-[2.4rem] mt-[5.6rem]">
       <Swiper
         observer={true}
         observeParents={true}

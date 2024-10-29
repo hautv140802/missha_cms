@@ -134,7 +134,7 @@ const Cart = () => {
         information={information}
       />
       {items?.length > 0 ? (
-        <div className="w-[140rem] mx-auto flex justify-between items-start gap-[1.2rem]">
+        <div className="w-[140rem] mx-auto flex justify-between items-start gap-[1.6rem]">
           <div className="w-[60%] shadow-md bg-white p-[2.4rem]">
             <div className="w-full flex justify-between items-center  ">
               <span className="w-[60%] text-[1.6rem] font-[500] text-black">
@@ -151,7 +151,7 @@ const Cart = () => {
             </div>
 
             <Divider />
-            <div className="flex flex-col gap-[1.2rem] mt-[1.2rem]">
+            <div className="flex flex-col gap-[1.2rem] mt-[1.6rem]">
               <ScrollbarComponent height="67.6rem">
                 {items?.length > 0 ? (
                   <div className="w-[99%]">
@@ -199,7 +199,7 @@ const Cart = () => {
                     options={[
                       {
                         value: "GHTC",
-                        label: "Giao hàng tiêu chuẩn (35.000 đ)",
+                        label: "Giao hàng qua đối tác (35.000 đ)",
                       },
                     ]}
                   />
@@ -221,21 +221,27 @@ const Cart = () => {
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
-                    <p className="text-[1.4rem] font-[500]">Tiết kiệm:</p>
+                    <p className="text-[1.6rem] font-[500]">Tiết kiệm:</p>
                     <p className="text-[1.6rem] font-[600]">
                       {formatPrice(totalSaveMoney)}
                     </p>
                   </div>
                   <div className="flex justify-between items-center">
-                    <p className="text-[1.4rem] font-[500]">Phí vận chuyển:</p>
+                    <p className="text-[1.6rem] font-[500]">Phí vận chuyển:</p>
                     <p className="text-[1.6rem] font-[600]">35.000 đ</p>
                   </div>
 
                   <div className="flex justify-between items-center">
-                    <p className="text-[1.4rem] font-[500]">Giảm giá:</p>
+                    <p className="text-[1.6rem] font-[500]">Giảm giá:</p>
                     <p className="text-[1.6rem] font-[600]">
                       - {formatPrice(discountValue)}
                     </p>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="text-[1.6rem] font-[500]">
+                      Phương thức thanh toán:
+                    </p>
+                    <p className="text-[1.6rem] font-[600]">COD</p>
                   </div>
                   <div className="flex justify-between items-center mt-[0.4rem]">
                     <p className="text-[1.8rem] font-[600]">Tổng thanh toán:</p>

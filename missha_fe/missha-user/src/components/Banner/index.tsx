@@ -23,19 +23,11 @@ const bannerData = [
   },
   {
     name: "banner_2",
-    url: images.banner_2,
+    url: images.banner_3,
   },
   {
     name: "banner_1",
-    url: images.banner_1,
-  },
-  {
-    name: "banner_1",
-    url: images.banner_1,
-  },
-  {
-    name: "banner_1",
-    url: images.banner_1,
+    url: images.banner_4,
   },
 ];
 const BannerComponent = (props: IBannerComponentProps) => {
@@ -58,10 +50,9 @@ const BannerComponent = (props: IBannerComponentProps) => {
               <img
                 src={banner.url}
                 alt={banner.name}
-                className="w-full h-[250px] md:h-auto aspect-[1560/250] md:aspect-[1440/250] object-cover"
-                loading="eager"
+                className="w-full h-[30rem] md:h-auto aspect-[1024/300] md:aspect-[1024/300] object-cover"
+                loading="lazy"
               />
-              {/* </Link> */}
             </div>
           </SwiperSlide>
         ))}
