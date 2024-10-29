@@ -28,7 +28,7 @@ const OrderForm = (props: IOrderFormProps) => {
   useEffect(() => {
     reset({
       ...record?.attributes,
-      voucher: record?.attributes.voucher.data.attributes.code,
+      voucher: record?.attributes?.voucher?.data?.attributes?.code,
     });
   }, [record?.id, openTime]);
 

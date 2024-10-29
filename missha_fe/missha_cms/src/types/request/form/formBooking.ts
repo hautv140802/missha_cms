@@ -3,7 +3,7 @@ export type FormBookingType = {
   customer_full_name: string;
   customer_phone: string;
   date: string;
-  services: string;
+  service: number;
   status: string;
   user: number;
 };

@@ -35,7 +35,7 @@ const items: MenuItem[] = [
     paths.ORDERS,
     <img src={svgs.menuOrder} className="w-[24px] h-[24px]" />
   ),
-  getItem('Quản lý bookings', paths.BOOKINGS, <PieChartOutlined />),
+  getItem('Quản lý lịch SPA', paths.BOOKINGS, <PieChartOutlined />),
   // getItem('Quản lý sản phẩm', 'PRODUCT', <ProductOutlined />, [
   //   getItem('Sản phẩm chính', 'MAIN_PRODUCT', <ProductOutlined />),
   //   getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
@@ -50,6 +50,7 @@ const items: MenuItem[] = [
   getItem('Quản lý sản phẩm', paths.PRODUCTS, <DesktopOutlined />),
   getItem('Quản lý khách hàng', paths.CUSTOMERS, <DesktopOutlined />),
   getItem('Quản lý Vouchers', paths.VOUCHERS, <PieChartOutlined />),
+  getItem('Quản lý dịch vụ', paths.SERVICES, <PieChartOutlined />),
   // getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
 ];
 

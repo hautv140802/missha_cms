@@ -12,6 +12,7 @@ import Products from '@/pages/Products';
 import Customers from '@/pages/Customers';
 import Vouchers from '@/pages/Vouchers';
 import Bookings from '@/pages/Bookings';
+import Services from '@/pages/Services';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
       { path: paths.CUSTOMERS, element: <Customers /> },
       { path: paths.VOUCHERS, element: <Vouchers /> },
       { path: paths.BOOKINGS, element: <Bookings /> },
+      { path: paths.SERVICES, element: <Services /> },
     ],
   },
 ]);

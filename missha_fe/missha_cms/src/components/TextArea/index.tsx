@@ -1,9 +1,9 @@
-import { DatePicker, DatePickerProps } from 'antd';
+import { TextAreaProps } from 'antd/es/input';
+import TextArea from 'antd/es/input/TextArea';
 import clsx from 'clsx';
-import dayjs from 'dayjs';
 import { Controller, FieldError, RegisterOptions } from 'react-hook-form';
 
-interface DatePickerComponentProps extends DatePickerProps {
+interface ITextAreaComponentProps extends TextAreaProps {
   name: string;
   rules?: RegisterOptions;
   errors?: FieldError;
@@ -16,7 +16,8 @@ interface DatePickerComponentProps extends DatePickerProps {
   label?: string;
   isRequired?: boolean;
 }
-const DatePickerComponent = (props: DatePickerComponentProps) => {
+
+const TextAreaComponent = (props: ITextAreaComponentProps) => {
   const {
     name,
     rules,
@@ -35,6 +36,7 @@ const DatePickerComponent = (props: DatePickerComponentProps) => {
     <div
       className={clsx('w-auto flex flex-col gap-[0.6rem]', containerClassName)}
     >
+      {/* Label Section */}
       {!!label && (
         <div className="flex items-center gap-[0.8rem]">
           <label
@@ -43,7 +45,7 @@ const DatePickerComponent = (props: DatePickerComponentProps) => {
               labelClassName
             )}
           >
-            {label}:
+            {label}
           </label>
           <div
             className={clsx(
@@ -55,38 +57,38 @@ const DatePickerComponent = (props: DatePickerComponentProps) => {
           </div>
         </div>
       )}
-      {!control ? (
-        <DatePicker
-          {...rest}
-          className={clsx('text-[1.6rem] font-[500]', className)}
-        />
-      ) : (
-        <Controller
-          name={name}
-          control={control}
-          rules={rules}
-          render={({ field: { onChange, onBlur, value, ref } }) => (
-            <DatePicker
-              className={clsx('text-[1.6rem] font-[500]', className)}
-              onChange={date => {
-                onChange(date ? dayjs(date).toISOString() : undefined);
-              }}
-              onBlur={onBlur}
-              value={value ? dayjs(value) : null}
-              ref={ref}
-              showTime
-              {...rest}
-            />
-          )}
-        />
-      )}
+
+      {/* TextArea Section with Controller */}
+      <Controller
+        name={name}
+        control={control}
+        rules={rules}
+        render={({ field: { onChange, onBlur, value, ref } }) => (
+          <TextArea
+            className={clsx(
+              'min-h-[4.2rem] font-[500] text-[1.4rem] leading-[2rem]',
+              className
+            )}
+            rows={4}
+            onChange={onChange}
+            onBlur={onBlur}
+            value={value}
+            ref={ref}
+            {...rest}
+          />
+        )}
+      />
+
+      {/* Helper Text */}
       {helpText && (
         <p className="text-[1.4rem] text-[#667085] leading-[2rem] font-[500]">
           {helpText}
         </p>
       )}
+
+      {/* Error Message */}
       {errors && (
-        <p className="text-[1.4rem] text-red-500 leading-[2rem] font-[500]">
+        <p className="text-[1.4rem] text-red-500 leading-[2rem] font-[500] text-left">
           {errors.message}
         </p>
       )}
@@ -94,4 +96,4 @@ const DatePickerComponent = (props: DatePickerComponentProps) => {
   );
 };
 
-export default DatePickerComponent;
+export default TextAreaComponent;

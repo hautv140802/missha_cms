@@ -4,7 +4,6 @@ const ModalComponent = (props: ModalProps) => {
   const { ...rest } = props;
   return (
     <Modal
-      {...rest}
       footer={null}
       closeIcon={null}
       classNames={{
@@ -13,6 +12,7 @@ const ModalComponent = (props: ModalProps) => {
       }}
       centered
       maskClosable
+      {...rest}
     />
   );
 };

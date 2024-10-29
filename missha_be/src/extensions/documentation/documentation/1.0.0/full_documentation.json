@@ -14,11 +14,14 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-29T03:26:23.137Z"
+    "x-generation-date": "2024-10-29T06:36:47.904Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
-    "plugins": ["upload", "users-permissions"]
+    "plugins": [
+      "upload",
+      "users-permissions"
+    ]
   },
   "servers": [
     {
@@ -46,7 +49,9 @@
     "schemas": {
       "Error": {
         "type": "object",
-        "required": ["error"],
+        "required": [
+          "error"
+        ],
         "properties": {
           "data": {
             "nullable": true,
@@ -83,7 +88,9 @@
       },
       "BookingRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -114,7 +121,12 @@
               },
               "status": {
                 "type": "string",
-                "enum": ["Chờ xác nhận", "Xác nhận", "Hoàn thành", "Huỷ"]
+                "enum": [
+                  "Chờ xác nhận",
+                  "Xác nhận",
+                  "Hoàn thành",
+                  "Huỷ"
+                ]
               },
               "service": {
                 "oneOf": [
@@ -649,11 +661,17 @@
                       },
                       "gender": {
                         "type": "string",
-                        "enum": ["male", "female"]
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
                       },
                       "type": {
                         "type": "string",
-                        "enum": ["USER", "ADMIN"]
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "birthday": {
                         "type": "string",
@@ -722,7 +740,12 @@
           },
           "status": {
             "type": "string",
-            "enum": ["Chờ xác nhận", "Xác nhận", "Hoàn thành", "Huỷ"]
+            "enum": [
+              "Chờ xác nhận",
+              "Xác nhận",
+              "Hoàn thành",
+              "Huỷ"
+            ]
           },
           "service": {
             "type": "object",
@@ -1240,7 +1263,9 @@
       },
       "CategoryRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -2804,7 +2829,9 @@
       },
       "MessageRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -3743,11 +3770,17 @@
                       },
                       "gender": {
                         "type": "string",
-                        "enum": ["male", "female"]
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
                       },
                       "type": {
                         "type": "string",
-                        "enum": ["USER", "ADMIN"]
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "birthday": {
                         "type": "string",
@@ -3963,7 +3996,9 @@
       },
       "OrderRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -3982,11 +4017,16 @@
               },
               "shipping_method": {
                 "type": "string",
-                "enum": ["Giao qua đối tác"]
+                "enum": [
+                  "Giao qua đối tác"
+                ]
               },
               "payment_method": {
                 "type": "string",
-                "enum": ["VNPAY", "COD"]
+                "enum": [
+                  "VNPAY",
+                  "COD"
+                ]
               },
               "total": {
                 "type": "string",
@@ -4118,11 +4158,16 @@
           },
           "shipping_method": {
             "type": "string",
-            "enum": ["Giao qua đối tác"]
+            "enum": [
+              "Giao qua đối tác"
+            ]
           },
           "payment_method": {
             "type": "string",
-            "enum": ["VNPAY", "COD"]
+            "enum": [
+              "VNPAY",
+              "COD"
+            ]
           },
           "total": {
             "type": "string",
@@ -4609,11 +4654,17 @@
                       },
                       "gender": {
                         "type": "string",
-                        "enum": ["male", "female"]
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
                       },
                       "type": {
                         "type": "string",
-                        "enum": ["USER", "ADMIN"]
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "birthday": {
                         "type": "string",
@@ -5935,11 +5986,16 @@
                                     },
                                     "shipping_method": {
                                       "type": "string",
-                                      "enum": ["Giao qua đối tác"]
+                                      "enum": [
+                                        "Giao qua đối tác"
+                                      ]
                                     },
                                     "payment_method": {
                                       "type": "string",
-                                      "enum": ["VNPAY", "COD"]
+                                      "enum": [
+                                        "VNPAY",
+                                        "COD"
+                                      ]
                                     },
                                     "total": {
                                       "type": "string",
@@ -6195,7 +6251,9 @@
       },
       "OrderDetailRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -7568,11 +7626,16 @@
                       },
                       "shipping_method": {
                         "type": "string",
-                        "enum": ["Giao qua đối tác"]
+                        "enum": [
+                          "Giao qua đối tác"
+                        ]
                       },
                       "payment_method": {
                         "type": "string",
-                        "enum": ["VNPAY", "COD"]
+                        "enum": [
+                          "VNPAY",
+                          "COD"
+                        ]
                       },
                       "total": {
                         "type": "string",
@@ -7807,11 +7870,17 @@
                                   },
                                   "gender": {
                                     "type": "string",
-                                    "enum": ["male", "female"]
+                                    "enum": [
+                                      "male",
+                                      "female"
+                                    ]
                                   },
                                   "type": {
                                     "type": "string",
-                                    "enum": ["USER", "ADMIN"]
+                                    "enum": [
+                                      "USER",
+                                      "ADMIN"
+                                    ]
                                   },
                                   "birthday": {
                                     "type": "string",
@@ -8315,7 +8384,9 @@
       },
       "ProductRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -10141,7 +10212,9 @@
       },
       "ProductLineRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -11555,7 +11628,9 @@
       },
       "RoomRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -12102,11 +12177,17 @@
                       },
                       "gender": {
                         "type": "string",
-                        "enum": ["male", "female"]
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
                       },
                       "type": {
                         "type": "string",
-                        "enum": ["USER", "ADMIN"]
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "birthday": {
                         "type": "string",
@@ -12235,7 +12316,9 @@
       },
       "ServiceRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -13022,7 +13105,9 @@
       },
       "SkinPropertyRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -14440,7 +14525,9 @@
       },
       "UserVoucherRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -14469,7 +14556,10 @@
               },
               "status": {
                 "type": "string",
-                "enum": ["USED", "UNUSED"]
+                "enum": [
+                  "USED",
+                  "UNUSED"
+                ]
               }
             }
           }
@@ -14993,11 +15083,17 @@
                       },
                       "gender": {
                         "type": "string",
-                        "enum": ["male", "female"]
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
                       },
                       "type": {
                         "type": "string",
-                        "enum": ["USER", "ADMIN"]
+                        "enum": [
+                          "USER",
+                          "ADMIN"
+                        ]
                       },
                       "birthday": {
                         "type": "string",
@@ -15494,7 +15590,10 @@
           },
           "status": {
             "type": "string",
-            "enum": ["USED", "UNUSED"]
+            "enum": [
+              "USED",
+              "UNUSED"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -15568,7 +15667,9 @@
       },
       "VoucherRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -16619,7 +16720,9 @@
             }
           }
         },
-        "tags": ["Booking"],
+        "tags": [
+          "Booking"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -16789,7 +16892,9 @@
             }
           }
         },
-        "tags": ["Booking"],
+        "tags": [
+          "Booking"
+        ],
         "parameters": [],
         "operationId": "post/bookings",
         "requestBody": {
@@ -16868,7 +16973,9 @@
             }
           }
         },
-        "tags": ["Booking"],
+        "tags": [
+          "Booking"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -16946,7 +17053,9 @@
             }
           }
         },
-        "tags": ["Booking"],
+        "tags": [
+          "Booking"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17035,7 +17144,9 @@
             }
           }
         },
-        "tags": ["Booking"],
+        "tags": [
+          "Booking"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17115,7 +17226,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -17285,7 +17398,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [],
         "operationId": "post/categories",
         "requestBody": {
@@ -17364,7 +17479,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17442,7 +17559,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17531,7 +17650,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17611,7 +17732,9 @@
             }
           }
         },
-        "tags": ["Message"],
+        "tags": [
+          "Message"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -17781,7 +17904,9 @@
             }
           }
         },
-        "tags": ["Message"],
+        "tags": [
+          "Message"
+        ],
         "parameters": [],
         "operationId": "post/messages",
         "requestBody": {
@@ -17860,7 +17985,9 @@
             }
           }
         },
-        "tags": ["Message"],
+        "tags": [
+          "Message"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17938,7 +18065,9 @@
             }
           }
         },
-        "tags": ["Message"],
+        "tags": [
+          "Message"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18027,7 +18156,9 @@
             }
           }
         },
-        "tags": ["Message"],
+        "tags": [
+          "Message"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18107,7 +18238,9 @@
             }
           }
         },
-        "tags": ["Order"],
+        "tags": [
+          "Order"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -18277,7 +18410,9 @@
             }
           }
         },
-        "tags": ["Order"],
+        "tags": [
+          "Order"
+        ],
         "parameters": [],
         "operationId": "post/orders",
         "requestBody": {
@@ -18356,7 +18491,9 @@
             }
           }
         },
-        "tags": ["Order"],
+        "tags": [
+          "Order"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18434,7 +18571,9 @@
             }
           }
         },
-        "tags": ["Order"],
+        "tags": [
+          "Order"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18523,7 +18662,9 @@
             }
           }
         },
-        "tags": ["Order"],
+        "tags": [
+          "Order"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18603,7 +18744,9 @@
             }
           }
         },
-        "tags": ["Order-detail"],
+        "tags": [
+          "Order-detail"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -18773,7 +18916,9 @@
             }
           }
         },
-        "tags": ["Order-detail"],
+        "tags": [
+          "Order-detail"
+        ],
         "parameters": [],
         "operationId": "post/order-details",
         "requestBody": {
@@ -18852,7 +18997,9 @@
             }
           }
         },
-        "tags": ["Order-detail"],
+        "tags": [
+          "Order-detail"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18930,7 +19077,9 @@
             }
           }
         },
-        "tags": ["Order-detail"],
+        "tags": [
+          "Order-detail"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19019,7 +19168,9 @@
             }
           }
         },
-        "tags": ["Order-detail"],
+        "tags": [
+          "Order-detail"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19099,7 +19250,9 @@
             }
           }
         },
-        "tags": ["Product"],
+        "tags": [
+          "Product"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -19269,7 +19422,9 @@
             }
           }
         },
-        "tags": ["Product"],
+        "tags": [
+          "Product"
+        ],
         "parameters": [],
         "operationId": "post/products",
         "requestBody": {
@@ -19348,7 +19503,9 @@
             }
           }
         },
-        "tags": ["Product"],
+        "tags": [
+          "Product"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19426,7 +19583,9 @@
             }
           }
         },
-        "tags": ["Product"],
+        "tags": [
+          "Product"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19515,7 +19674,9 @@
             }
           }
         },
-        "tags": ["Product"],
+        "tags": [
+          "Product"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19595,7 +19756,9 @@
             }
           }
         },
-        "tags": ["Product-line"],
+        "tags": [
+          "Product-line"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -19765,7 +19928,9 @@
             }
           }
         },
-        "tags": ["Product-line"],
+        "tags": [
+          "Product-line"
+        ],
         "parameters": [],
         "operationId": "post/product-lines",
         "requestBody": {
@@ -19844,7 +20009,9 @@
             }
           }
         },
-        "tags": ["Product-line"],
+        "tags": [
+          "Product-line"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19922,7 +20089,9 @@
             }
           }
         },
-        "tags": ["Product-line"],
+        "tags": [
+          "Product-line"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20011,7 +20180,9 @@
             }
           }
         },
-        "tags": ["Product-line"],
+        "tags": [
+          "Product-line"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20091,7 +20262,9 @@
             }
           }
         },
-        "tags": ["Room"],
+        "tags": [
+          "Room"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -20261,7 +20434,9 @@
             }
           }
         },
-        "tags": ["Room"],
+        "tags": [
+          "Room"
+        ],
         "parameters": [],
         "operationId": "post/rooms",
         "requestBody": {
@@ -20340,7 +20515,9 @@
             }
           }
         },
-        "tags": ["Room"],
+        "tags": [
+          "Room"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20418,7 +20595,9 @@
             }
           }
         },
-        "tags": ["Room"],
+        "tags": [
+          "Room"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20507,7 +20686,9 @@
             }
           }
         },
-        "tags": ["Room"],
+        "tags": [
+          "Room"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20587,7 +20768,9 @@
             }
           }
         },
-        "tags": ["Service"],
+        "tags": [
+          "Service"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -20757,7 +20940,9 @@
             }
           }
         },
-        "tags": ["Service"],
+        "tags": [
+          "Service"
+        ],
         "parameters": [],
         "operationId": "post/services",
         "requestBody": {
@@ -20836,7 +21021,9 @@
             }
           }
         },
-        "tags": ["Service"],
+        "tags": [
+          "Service"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20914,7 +21101,9 @@
             }
           }
         },
-        "tags": ["Service"],
+        "tags": [
+          "Service"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21003,7 +21192,9 @@
             }
           }
         },
-        "tags": ["Service"],
+        "tags": [
+          "Service"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21083,7 +21274,9 @@
             }
           }
         },
-        "tags": ["Skin-property"],
+        "tags": [
+          "Skin-property"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -21253,7 +21446,9 @@
             }
           }
         },
-        "tags": ["Skin-property"],
+        "tags": [
+          "Skin-property"
+        ],
         "parameters": [],
         "operationId": "post/skin-properties",
         "requestBody": {
@@ -21332,7 +21527,9 @@
             }
           }
         },
-        "tags": ["Skin-property"],
+        "tags": [
+          "Skin-property"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21410,7 +21607,9 @@
             }
           }
         },
-        "tags": ["Skin-property"],
+        "tags": [
+          "Skin-property"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21499,7 +21698,9 @@
             }
           }
         },
-        "tags": ["Skin-property"],
+        "tags": [
+          "Skin-property"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21579,7 +21780,9 @@
             }
           }
         },
-        "tags": ["User-voucher"],
+        "tags": [
+          "User-voucher"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -21749,7 +21952,9 @@
             }
           }
         },
-        "tags": ["User-voucher"],
+        "tags": [
+          "User-voucher"
+        ],
         "parameters": [],
         "operationId": "post/user-vouchers",
         "requestBody": {
@@ -21828,7 +22033,9 @@
             }
           }
         },
-        "tags": ["User-voucher"],
+        "tags": [
+          "User-voucher"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21906,7 +22113,9 @@
             }
           }
         },
-        "tags": ["User-voucher"],
+        "tags": [
+          "User-voucher"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21995,7 +22204,9 @@
             }
           }
         },
-        "tags": ["User-voucher"],
+        "tags": [
+          "User-voucher"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -22075,7 +22286,9 @@
             }
           }
         },
-        "tags": ["Voucher"],
+        "tags": [
+          "Voucher"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -22245,7 +22458,9 @@
             }
           }
         },
-        "tags": ["Voucher"],
+        "tags": [
+          "Voucher"
+        ],
         "parameters": [],
         "operationId": "post/vouchers",
         "requestBody": {
@@ -22324,7 +22539,9 @@
             }
           }
         },
-        "tags": ["Voucher"],
+        "tags": [
+          "Voucher"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -22402,7 +22619,9 @@
             }
           }
         },
-        "tags": ["Voucher"],
+        "tags": [
+          "Voucher"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -22491,7 +22710,9 @@
             }
           }
         },
-        "tags": ["Voucher"],
+        "tags": [
+          "Voucher"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -22526,14 +22747,18 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "requestBody": {
           "description": "Upload files",
           "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
-                "required": ["files"],
+                "required": [
+                  "files"
+                ],
                 "type": "object",
                 "properties": {
                   "path": {
@@ -22596,7 +22821,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "requestBody": {
           "description": "Upload files",
           "required": true,
@@ -22632,7 +22859,9 @@
     },
     "/upload/files": {
       "get": {
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "responses": {
           "200": {
             "description": "Get a list of files",
@@ -22664,7 +22893,9 @@
             }
           }
         ],
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "responses": {
           "200": {
             "description": "Get a specific file",
@@ -22691,7 +22922,9 @@
             }
           }
         ],
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "responses": {
           "200": {
             "description": "Delete a file",
@@ -22720,7 +22953,9 @@
             }
           }
         ],
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Login with a provider",
         "description": "Redirects to provider login before being redirect to /auth/{provider}/callback",
         "responses": {
@@ -22742,7 +22977,9 @@
     },
     "/auth/local": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Local login",
         "description": "Returns a jwt token and user info",
         "requestBody": {
@@ -22793,7 +23030,9 @@
     },
     "/auth/local/register": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Register a user",
         "description": "Returns a jwt token and user info",
         "requestBody": {
@@ -22848,7 +23087,9 @@
     },
     "/auth/{provider}/callback": {
       "get": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Default Callback from provider auth",
         "parameters": [
           {
@@ -22887,7 +23128,9 @@
     },
     "/auth/forgot-password": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Send rest password email",
         "requestBody": {
           "required": true,
@@ -22917,7 +23160,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -22939,7 +23184,9 @@
     },
     "/auth/reset-password": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Rest user password",
         "requestBody": {
           "required": true,
@@ -22993,7 +23240,9 @@
     },
     "/auth/change-password": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Update user's own password",
         "requestBody": {
           "required": true,
@@ -23047,7 +23296,9 @@
     },
     "/auth/email-confirmation": {
       "get": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Confirm user email",
         "parameters": [
           {
@@ -23078,7 +23329,9 @@
     },
     "/auth/send-email-confirmation": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Send confirmation email",
         "requestBody": {
           "required": true,
@@ -23108,7 +23361,9 @@
                     },
                     "sent": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -23130,7 +23385,9 @@
     },
     "/users-permissions/permissions": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get default generated permissions",
         "responses": {
           "200": {
@@ -23199,7 +23456,9 @@
     },
     "/users-permissions/roles": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "List roles",
         "responses": {
           "200": {
@@ -23258,7 +23517,9 @@
         }
       },
       "post": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Create a role",
         "requestBody": {
           "$ref": "#/components/requestBodies/Users-Permissions-RoleRequest"
@@ -23273,7 +23534,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -23295,7 +23558,9 @@
     },
     "/users-permissions/roles/{id}": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get a role",
         "parameters": [
           {
@@ -23360,7 +23625,9 @@
     },
     "/users-permissions/roles/{role}": {
       "put": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Update a role",
         "parameters": [
           {
@@ -23386,7 +23653,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -23406,7 +23675,9 @@
         }
       },
       "delete": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Delete a role",
         "parameters": [
           {
@@ -23429,7 +23700,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -23451,7 +23724,9 @@
     },
     "/users": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get list of users",
         "responses": {
           "200": {
@@ -23492,7 +23767,9 @@
         }
       },
       "post": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Create a user",
         "requestBody": {
           "required": true,
@@ -23500,7 +23777,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["username", "email", "password"],
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
                 "properties": {
                   "email": {
                     "type": "string"
@@ -23577,7 +23858,9 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get a user",
         "parameters": [
           {
@@ -23624,7 +23907,9 @@
         }
       },
       "put": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Update a user",
         "parameters": [
           {
@@ -23643,7 +23928,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["username", "email", "password"],
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
                 "properties": {
                   "email": {
                     "type": "string"
@@ -23718,7 +24007,9 @@
         }
       },
       "delete": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Delete a user",
         "parameters": [
           {
@@ -23771,7 +24062,9 @@
     },
     "/users/me": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get authenticated user info",
         "responses": {
           "200": {
@@ -23809,7 +24102,9 @@
     },
     "/users/count": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get user count",
         "responses": {
           "200": {

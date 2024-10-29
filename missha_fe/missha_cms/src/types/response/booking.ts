@@ -1,4 +1,5 @@
 import { BaseData } from '../base/baseData';
+import { ServiceType } from './services';
 import { UserResponseType } from './user';
 
 export type BookingResponseType = {
@@ -6,7 +7,9 @@ export type BookingResponseType = {
   customer_full_name: string;
   customer_phone: string;
   date: string;
-  services: string;
+  service: {
+    data: BaseData<ServiceType>;
+  };
   status: string;
   createdAt: string;
   updatedAt: string;

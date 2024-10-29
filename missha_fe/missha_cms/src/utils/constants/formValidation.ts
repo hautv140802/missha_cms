@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 const formValidation = {
   firstName: { required: 'Tên không được để trống' },
   lastName: { required: 'Họ không được để trống' },
@@ -85,6 +87,26 @@ const formValidation = {
   },
   dateBooking: {
     required: 'Ngày booking không được để trống',
+  },
+  service: {
+    required: 'Dịch vụ không được để trống',
+  },
+  status: {
+    required: 'Trạng thái không được để trống',
+  },
+  date_booking: {
+    required: 'Ngày đặt không được để trống',
+    // validate: (date_booking: string) => {
+    //   const targetDate = dayjs(date_booking);
+
+    //   const currentDate = dayjs();
+
+    //   const differenceInDays = targetDate.diff(currentDate, 'day');
+
+    //   if (differenceInDays < 3) {
+    //     return 'Ngày đặt phải trước 3 ngày';
+    //   }
+    // },
   },
 };
 

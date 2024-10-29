@@ -125,7 +125,7 @@ const ReactQuillComponent = (props: IReactQuillComponentProps) => {
       )}
       <ReactQuill
         ref={quillRef}
-        className={clsx('w-full min-h-[40rem]', className)}
+        className={clsx('w-full', className)}
         theme="snow"
         value={currentValue}
         onChange={setCurrentValue}

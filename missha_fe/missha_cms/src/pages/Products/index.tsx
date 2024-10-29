@@ -21,7 +21,7 @@ import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
 import PAGE_SIZE from '@/utils/constants/pageSize';
 import { SettingOutlined } from '@ant-design/icons';
-import { TableColumnsType } from 'antd';
+import { Avatar, TableColumnsType } from 'antd';
 import Search from 'antd/es/input/Search';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
@@ -75,14 +75,16 @@ const Products = () => {
       title: 'Tên sản phẩm',
       dataIndex: ['attributes', 'name'],
       key: 'name',
+      render: name => <p className="max-w-[30rem] line-clamp-1">{name}</p>,
     },
     {
       title: 'Slug',
       dataIndex: ['attributes', 'slug'],
       key: 'slug',
+      render: slug => <p className="max-w-[20rem] line-clamp-1">{slug}</p>,
     },
     {
-      title: 'Ảnh chính sản phẩm',
+      title: 'Ảnh chính',
       dataIndex: ['attributes', 'avatar', 'data'],
       key: 'avatar',
       render: (avatar: BaseData<ImageType>) => (
@@ -107,14 +109,21 @@ const Products = () => {
       title: 'Bộ sư tập',
       dataIndex: ['attributes', 'gallery', 'data'],
       key: 'gallery',
-      render: (gallery: BaseData<ImageType>[]) =>
-        gallery?.map((item, index) => (
-          <AvatarComponent
-            key={index}
-            src={item?.attributes?.url}
-            alt={item?.attributes?.name}
-          />
-        )),
+      render: (gallery: BaseData<ImageType>[]) => (
+        <Avatar.Group
+          max={{
+            count: 3,
+          }}
+        >
+          {gallery?.map((item, index) => (
+            <AvatarComponent
+              key={index}
+              src={item?.attributes?.url}
+              alt={item?.attributes?.name}
+            />
+          ))}
+        </Avatar.Group>
+      ),
     },
     {
       title: 'Danh mục',
@@ -279,7 +288,7 @@ const Products = () => {
         <p className="uppercase text-[1.6rem] font-[700]">Quản lý sản phẩm</p>
         <div className="flex justify-between items-center mb-[1.8rem] mt-[2.4rem]">
           <div className="max-w-[20rem]">
-            <Search placeholder="Nhập từ khóa tìm kiếm" enterButton />
+            {/* <Search placeholder="Nhập từ khóa tìm kiếm" enterButton /> */}
           </div>
           <div className="flex justify-between items-center gap-[1.8rem]">
             <ButtonComponent

@@ -1,37 +1,39 @@
 import ActionsColumn from '@/components/common/ActionsColumn';
+import AvatarComponent from '@/components/common/Avatar';
 import ButtonComponent from '@/components/common/Button';
 import ContentWrapper from '@/components/common/ContentWrapper';
 import ModalComponent from '@/components/common/Modal';
-import OrderStatusComponent from '@/components/common/OrderStatus';
 import SettingColumn from '@/components/common/SettingColumn';
 import TableComponent from '@/components/common/Table';
-import BookingForm from '@/components/pages/BookingForm';
-import useDeleteBooking from '@/libs/axios/booking/useDeleteBooking';
-import { useFetchBookings } from '@/libs/swr/useFetchBookings';
+import ProductLineForm from '@/components/pages/ProductLineForm';
+import ServiceForm from '@/components/pages/ServiceForm';
+import useDeleteProductLine from '@/libs/axios/productLine/useDeleteProductLine';
+import useDeleteService from '@/libs/axios/service/useDeleteService';
+import { useFetchServices } from '@/libs/swr/useServices';
 import { BaseData } from '@/types/base/baseData';
-import { BookingResponseType } from '@/types/response/booking';
+import { ImageType } from '@/types/common/image';
+import { ProductLineResponseType } from '@/types/response/product';
+import { ServiceType } from '@/types/response/services';
 import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
 import PAGE_SIZE from '@/utils/constants/pageSize';
-import formatNumberPhone from '@/utils/functions/formatPhone';
+import { formatPrice } from '@/utils/functions/formatPrice';
 import { SettingOutlined } from '@ant-design/icons';
 import { TableColumnsType } from 'antd';
-import Search from 'antd/es/input/Search';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const defaultCheckedList = [
-  'customer_email',
-  'customer_full_name',
-  'customer_phone',
-  'date',
-  'service',
-  'status',
+  'title',
+  'slug',
+  'banner',
+  'price',
+  'short_description',
   'actions',
 ];
 
-const Bookings = () => {
+const Serives = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCheckedList, setCurrentCheckedList] =
     useState<string[]>(defaultCheckedList);
@@ -39,8 +41,7 @@ const Bookings = () => {
   const [checkedList, setCheckedList] = useState(defaultCheckedList);
   const [visibleColumns, setVisibleColumns] = useState<TableColumnsType<any>>();
   const [openFormModal, setOpenFormModal] = useState<boolean>(false);
-  const [selectedRecord, setSelectedRecord] =
-    useState<BaseData<BookingResponseType>>();
+  const [selectedRecord, setSelectedRecord] = useState<BaseData<ServiceType>>();
 
   const [openTime, setOpenTime] = useState<string>();
   const [currentFormType, setCurrentFormType] = useState<string>(
@@ -53,7 +54,7 @@ const Bookings = () => {
     'pagination[pageSize]': PAGE_SIZE,
   };
 
-  const { data, isLoading, pagination, mutate } = useFetchBookings(params);
+  const { data, isLoading, pagination, mutate } = useFetchServices(params);
   const columns: TableColumnsType<any> = [
     {
       title: 'ID',
@@ -61,54 +62,43 @@ const Bookings = () => {
       key: 'id',
     },
     {
-      title: 'Email khách hàng',
-      dataIndex: ['attributes', 'customer_email'],
-      key: 'customer_email',
+      title: 'Tên dịch vụ',
+      dataIndex: ['attributes', 'title'],
+      key: 'title',
+      render: title => <p className="max-w-[30rem] line-clamp-1">{title}</p>,
     },
     {
-      title: 'Tên khách hàng',
-      dataIndex: ['attributes', 'customer_full_name'],
-      key: 'customer_full_name',
+      title: 'Đường dẫn',
+      dataIndex: ['attributes', 'slug'],
+      key: 'slug',
+      render: slug => <p className="max-w-[20rem] line-clamp-1">{slug}</p>,
     },
     {
-      title: 'Số điện thoại',
-      dataIndex: ['attributes', 'customer_phone'],
-      key: 'customer_phone',
-      render: customer_phone => formatNumberPhone(customer_phone),
+      title: 'Giá',
+      dataIndex: ['attributes', 'price'],
+      key: 'price',
+      render: price => formatPrice(price),
     },
     {
-      title: 'Ngày booking',
-      dataIndex: ['attributes', 'date'],
-      render: (date: string) => dayjs(date).format(defaultKey.DATE_TIME_FORMAT),
-      key: 'date',
-    },
-    {
-      title: 'Dịch vụ',
-      dataIndex: ['attributes', 'service', 'data', 'attributes', 'title'],
-      key: 'service',
-      render: service => (
-        <p className="max-w-[20rem] line-clamp-1">{service}</p>
-      ),
-    },
-    {
-      title: 'Trạng thái',
-      dataIndex: ['attributes', 'status'],
-      key: 'status',
-      render: status => (
-        <OrderStatusComponent
-          className="flex justify-start items-center"
-          status={status}
+      title: 'banner',
+      dataIndex: ['attributes', 'banner', 'data'],
+      key: 'banner',
+      render: (banner: BaseData<ImageType>) => (
+        <AvatarComponent
+          src={banner?.attributes?.url}
+          alt={banner?.attributes?.name}
         />
       ),
-      align: 'left',
     },
     {
-      title: 'Ngày áp dụng',
-      dataIndex: ['attributes', 'publishedAt'],
-      render: (publishedAt: string) =>
-        dayjs(publishedAt).format(defaultKey.DATE_TIME_FORMAT),
-      key: 'publishedAt',
+      title: 'Mô tả',
+      dataIndex: ['attributes', 'short_description'],
+      key: 'short_description',
+      render: short_description => (
+        <p className="max-w-[50rem] line-clamp-1">{short_description}</p>
+      ),
     },
+
     {
       title: 'Ngày tạo',
       dataIndex: ['attributes', 'createdAt'],
@@ -140,7 +130,7 @@ const Bookings = () => {
             setOpenTime(new Date().toString());
           }}
           onHandleDelete={async () => {
-            const productLineRes = await useDeleteBooking(record.id);
+            const productLineRes = await useDeleteService(record.id);
             if (productLineRes && productLineRes.data.id) {
               toast.success('Xóa thông tin thành công!');
               mutate();
@@ -210,17 +200,17 @@ const Bookings = () => {
   };
   const title =
     currentFormType === formType.FORM_VIEW
-      ? 'Xem chi booking'
+      ? 'Xem chi tiết dịch vụ'
       : currentFormType === formType.FORM_CREATE
-      ? 'Tạo mới booking'
-      : 'Cập nhật booking';
+      ? 'Tạo mới dịch vụ'
+      : 'Cập nhật dịch vụ';
   return (
     <ContentWrapper className="h-full">
       <div>
-        <p className="uppercase text-[1.6rem] font-[700]">Quản lý booking</p>
+        <p className="uppercase text-[1.6rem] font-[700]">Quản lý dịch vụ</p>
         <div className="flex justify-between items-center mb-[1.8rem] mt-[2.4rem]">
           <div className="max-w-[20rem]">
-            <Search placeholder="Nhập từ khóa tìm kiếm" enterButton />
+            {/* <Search placeholder="Nhập từ khóa tìm kiếm" enterButton /> */}
           </div>
           <div className="flex justify-between items-center gap-[1.8rem]">
             <ButtonComponent
@@ -274,7 +264,7 @@ const Bookings = () => {
         title={title}
         onCancel={handleCancelFormModal}
       >
-        <BookingForm
+        <ServiceForm
           type={currentFormType}
           record={selectedRecord}
           onCloseModal={handleCancelFormModal}
@@ -286,4 +276,4 @@ const Bookings = () => {
   );
 };
 
-export default Bookings;
+export default Serives;

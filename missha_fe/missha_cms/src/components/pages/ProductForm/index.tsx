@@ -110,21 +110,21 @@ const ProductForm = (props: IProductFormProps) => {
     setOptionProductLines([]);
     setOptionSkinProperties([]);
     setGalleryIDs(
-      record?.attributes?.gallery?.data?.map(item => item.id) || null
+      record?.attributes?.gallery?.data?.map(item => item?.id) || null
     );
     reset({
-      name: record?.attributes.name,
-      slug: record?.attributes.slug,
-      price: record?.attributes.price,
-      sale_price: record?.attributes.price || 0,
-      categories: record?.attributes.categories.data.map(
+      name: record?.attributes?.name,
+      slug: record?.attributes?.slug,
+      price: record?.attributes?.price,
+      sale_price: record?.attributes?.price || 0,
+      categories: record?.attributes?.categories?.data.map(
         category => category.id
       ),
-      product_line: record?.attributes.product_line.data.id,
-      skin_properties: record?.attributes.skin_properties.data.map(
+      product_line: record?.attributes?.product_line?.data?.id,
+      skin_properties: record?.attributes?.skin_properties?.data.map(
         skinProperty => skinProperty.id
       ),
-      total_purchase: record?.attributes.total_purchase || 0,
+      total_purchase: record?.attributes?.total_purchase || 0,
     });
 
     if (record?.attributes.avatar.data)
@@ -143,9 +143,9 @@ const ProductForm = (props: IProductFormProps) => {
         }))
       );
     }
-    if (record?.attributes.descripton) {
+    if (record?.attributes?.description) {
       setDescription(
-        formType.FORM_CREATE !== type ? record?.attributes.descripton : ''
+        formType.FORM_CREATE !== type ? record?.attributes?.description : ''
       );
     }
   }, [record?.id, openTime]);
@@ -440,137 +440,133 @@ const ProductForm = (props: IProductFormProps) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-1 md:grid-cols-2  gap-[1.2rem]">
-        {isDisable && (
+        <div className="grid grid-cols-1 gap-[1.6rem] h-fit">
+          {isDisable && (
+            <InputComponent
+              label="Slug:"
+              name="slug"
+              placeholder="Slug"
+              control={control}
+              disabled={isDisable}
+            />
+          )}
           <InputComponent
-            label="Slug:"
-            name="slug"
-            placeholder="Slug"
+            label="Tên sản phẩm:"
+            name="name"
+            placeholder="Tên sản phảm"
+            control={control}
+            errors={errors.name}
+            rules={formValidation.product_name}
+            disabled={isDisable}
+            isRequired
+          />
+          <InputComponent
+            label="Giá bán:"
+            name="price"
+            placeholder="Giá bán"
+            control={control}
+            disabled={isDisable}
+            errors={errors.price}
+            rules={formValidation.price}
+            isRequired
+          />
+          <InputComponent
+            label="Giá giảm:"
+            name="sale_price"
+            placeholder="Giá giảm"
             control={control}
             disabled={isDisable}
           />
-        )}
-        <InputComponent
-          label="Tên sản phẩm:"
-          name="name"
-          placeholder="Tên sản phảm"
-          control={control}
-          errors={errors.name}
-          rules={formValidation.product_name}
-          disabled={isDisable}
-          isRequired
-        />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-[1.2rem]">
-        <InputComponent
-          label="Giá bán:"
-          name="price"
-          placeholder="Giá bán"
-          control={control}
-          disabled={isDisable}
-          errors={errors.price}
-          rules={formValidation.price}
-          isRequired
-        />
-        <InputComponent
-          label="Giá giảm:"
-          name="sale_price"
-          placeholder="Giá giảm"
-          control={control}
-          disabled={isDisable}
-        />
-      </div>
-      <div className="flex flex-col gap-[1.2rem]">
-        <UploadImageComponent
-          label="Ảnh chính sản phẩm:"
-          disabled={isDisable}
-          maxCount={1}
-          onAddImage={handleAddAvatar}
-        />
-        <ReviewImage
-          listImage={avatar}
-          onDelete={handleDeleteAvatar}
-          disabled={isDisable}
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-[1.2rem]">
-        <SelectComponent
-          label="Danh mục::"
-          control={control}
-          name="categories"
-          options={optionCategories}
-          mode="multiple"
-          disabled={isDisable}
-          rules={formValidation.product_categories}
-          errors={
-            Array.isArray(errors?.categories)
-              ? errors.categories[0]
-              : errors.categories
-          }
-          isRequired
-          onPopupScroll={handlePopupScrollCategory}
-        />
-        <SelectComponent
-          label="Dòng sản phẩm:"
-          placeholder="Dòng sản phẩm"
-          control={control}
-          name="skin_properties"
-          options={optionSkinProperties}
-          mode="multiple"
-          disabled={isDisable}
-          rules={formValidation.product_skin_properties}
-          errors={
-            Array.isArray(errors?.skin_properties)
-              ? errors.skin_properties[0]
-              : errors.skin_properties
-          }
-          isRequired
-          onPopupScroll={handlePopupScrollSkinProperties}
-        />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-[1.2rem]">
-        <SelectComponent
-          label="Dòng sản phẩm:"
-          placeholder="Dòng sản phẩm"
-          control={control}
-          name="product_line"
-          options={optionProductLines}
-          disabled={isDisable}
-          rules={formValidation.product_product_line}
-          errors={errors.product_line}
-          isRequired
-          onPopupScroll={handlePopupScrollProductLine}
-        />
-        {isDisable && (
-          <InputComponent
-            label="Total purchase:"
-            name="total_purchase"
-            placeholder="Total purchase"
+          <div className="flex flex-col gap-[1.2rem]">
+            <UploadImageComponent
+              label="Ảnh chính sản phẩm:"
+              disabled={isDisable}
+              maxCount={1}
+              onAddImage={handleAddAvatar}
+            />
+            <ReviewImage
+              listImage={avatar}
+              onDelete={handleDeleteAvatar}
+              disabled={isDisable}
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-[1.6rem] h-fit">
+          <SelectComponent
+            label="Danh mục:"
             control={control}
+            name="categories"
+            options={optionCategories}
+            mode="multiple"
             disabled={isDisable}
+            rules={formValidation.product_categories}
+            errors={
+              Array.isArray(errors?.categories)
+                ? errors.categories[0]
+                : errors.categories
+            }
+            isRequired
+            onPopupScroll={handlePopupScrollCategory}
           />
-        )}
-      </div>
+          <SelectComponent
+            label="Dòng sản phẩm:"
+            placeholder="Dòng sản phẩm"
+            control={control}
+            name="skin_properties"
+            options={optionSkinProperties}
+            mode="multiple"
+            disabled={isDisable}
+            rules={formValidation.product_skin_properties}
+            errors={
+              Array.isArray(errors?.skin_properties)
+                ? errors.skin_properties[0]
+                : errors.skin_properties
+            }
+            isRequired
+            onPopupScroll={handlePopupScrollSkinProperties}
+          />
+          <SelectComponent
+            label="Dòng sản phẩm:"
+            placeholder="Dòng sản phẩm"
+            control={control}
+            name="product_line"
+            options={optionProductLines}
+            disabled={isDisable}
+            rules={formValidation.product_product_line}
+            errors={errors.product_line}
+            isRequired
+            onPopupScroll={handlePopupScrollProductLine}
+          />
+          {isDisable && (
+            <InputComponent
+              label="Total purchase:"
+              name="total_purchase"
+              placeholder="Total purchase"
+              control={control}
+              disabled={isDisable}
+            />
+          )}
 
-      <div className="flex flex-col gap-[1.2rem]">
-        <UploadImageComponent
-          label="Bộ sư tập:"
-          maxCount={1}
-          onAddImage={handleAddGallery}
-          disabled={isDisable}
-        />
-        <ReviewImage
-          listImage={gallery}
-          onDelete={handleDeleteGallery}
-          disabled={isDisable}
-        />
+          <div className="flex flex-col gap-[1.2rem] mt-[1rem]">
+            <UploadImageComponent
+              label="Bộ sư tập:"
+              maxCount={1}
+              onAddImage={handleAddGallery}
+              disabled={isDisable}
+            />
+            <ReviewImage
+              listImage={gallery}
+              onDelete={handleDeleteGallery}
+              disabled={isDisable}
+            />
+          </div>
+        </div>
       </div>
 
       <ReactQuillComponent
         setCurrentValue={setDescription}
         currentValue={description}
       />
-
       <div className="flex justify-end items-end gap-[1.2rem]">
         <ButtonComponent
           text="Hủy"

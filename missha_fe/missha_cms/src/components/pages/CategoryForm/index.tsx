@@ -39,16 +39,20 @@ const CategoryForm = (props: ICategoryFormProps) => {
   });
   useEffect(() => {
     reset({
-      name: record?.attributes.name,
-      slug: record?.attributes.slug,
+      name: record?.attributes?.name,
+      slug: record?.attributes?.slug,
     });
 
-    if (record?.attributes.banner.data)
+    if (record?.attributes?.banner?.data)
       setBanner({
-        id: record?.attributes.banner.data.id,
-        name: record?.attributes.banner.data.attributes.name,
-        url: `${BASE_URL}${record?.attributes.banner.data.attributes.url}`,
+        id: record?.attributes?.banner?.data?.id,
+        name: record?.attributes?.banner?.data?.attributes?.name,
+        url: `${BASE_URL}${record?.attributes?.banner?.data?.attributes?.url}`,
       });
+
+    if (type === formType.FORM_CREATE) {
+      setBanner(undefined);
+    }
   }, [record?.id, openTime]);
 
   const uploadBanner = async () => {
@@ -106,7 +110,7 @@ const CategoryForm = (props: ICategoryFormProps) => {
     setBannerFile(fileList);
   };
 
-  const handleDeleteBanner = (id?: number) => {
+  const handleDeleteBanner = (id?: number | string) => {
     if (id) {
       setBanner(undefined);
       setBannerFile(undefined);

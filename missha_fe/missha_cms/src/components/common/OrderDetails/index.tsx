@@ -21,6 +21,9 @@ const OrderDetails = (props: IOrderDetailsComponent) => {
       title: 'Product name',
       dataIndex: ['attributes', 'product', 'data', 'attributes', 'name'],
       key: 'product_name',
+      render: product_name => (
+        <p className="max-w-[25rem] line-clamp-1">{product_name}</p>
+      ),
     },
     {
       title: 'Unit price',
