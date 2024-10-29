@@ -4,6 +4,8 @@ const variables = {
   USER: 'USER',
   PROFILE: 'profile',
   ROLE: 'role',
+  USED: 'USED',
+  UNUSED: 'UNUSED',
 };
 
 export default variables;

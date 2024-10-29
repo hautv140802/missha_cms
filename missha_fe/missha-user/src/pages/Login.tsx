@@ -42,7 +42,7 @@ const Login = () => {
           JSON.stringify(resLogin?.data?.user)
         );
       }
-      toast.success("Đăng nhập thành công, chuyển trang sau 3s!");
+      toast.success("Đăng nhập thành công!");
 
       if (redirectUrl) {
         navigate(redirectUrl);

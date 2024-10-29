@@ -12,6 +12,7 @@ const urls = {
   VOUCHERS: '/vouchers',
   BOOKINGS: '/bookings',
   SERVICES: '/services',
+  USER_VOUCHERS: '/user-vouchers',
 };
 
 export default urls;

@@ -4,24 +4,25 @@ import ContentWrapper from '@/components/common/ContentWrapper';
 import ModalComponent from '@/components/common/Modal';
 import SettingColumn from '@/components/common/SettingColumn';
 import TableComponent from '@/components/common/Table';
-import ProductLineForm from '@/components/pages/ProductLineForm';
-import useDeleteProductLine from '@/libs/axios/productLine/useDeleteProductLine';
-import { useFetchProductLines } from '@/libs/swr/useFetchProductLines';
+import { useFetchUserVouchers } from '@/libs/swr/useUserVouchers';
 import { BaseData } from '@/types/base/baseData';
-import { ProductLineResponseType } from '@/types/response/product';
 import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
 import PAGE_SIZE from '@/utils/constants/pageSize';
 import { SettingOutlined } from '@ant-design/icons';
 import { TableColumnsType } from 'antd';
-import Search from 'antd/es/input/Search';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { VoucherType } from '../../../../missha-user/src/types/response/voucher';
+import { formatPrice } from '@/utils/functions/formatPrice';
+import useDeleteUserVoucher from '@/libs/axios/userVoucher/useDeleteUserVoucher';
+import UserVoucherForm from '@/components/pages/UserVoucherForm';
+import { UserVoucherType } from '@/types/response/userVoucher';
 
-const defaultCheckedList = ['name', 'slug', 'actions'];
+const defaultCheckedList = ['email', 'voucher', 'status', 'actions'];
 
-const ProductLines = () => {
+const UserVouchers = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCheckedList, setCurrentCheckedList] =
     useState<string[]>(defaultCheckedList);
@@ -30,7 +31,7 @@ const ProductLines = () => {
   const [visibleColumns, setVisibleColumns] = useState<TableColumnsType<any>>();
   const [openFormModal, setOpenFormModal] = useState<boolean>(false);
   const [selectedRecord, setSelectedRecord] =
-    useState<BaseData<ProductLineResponseType>>();
+    useState<BaseData<UserVoucherType>>();
 
   const [openTime, setOpenTime] = useState<string>();
   const [currentFormType, setCurrentFormType] = useState<string>(
@@ -43,7 +44,7 @@ const ProductLines = () => {
     'pagination[pageSize]': PAGE_SIZE,
   };
 
-  const { data, isLoading, pagination, mutate } = useFetchProductLines(params);
+  const { data, isLoading, pagination, mutate } = useFetchUserVouchers(params);
   const columns: TableColumnsType<any> = [
     {
       title: 'ID',
@@ -51,15 +52,28 @@ const ProductLines = () => {
       key: 'id',
     },
     {
-      title: 'Tên dòng sản phẩm',
-      dataIndex: ['attributes', 'name'],
-      key: 'name',
+      title: 'Khách hàng',
+      dataIndex: ['attributes', 'user', 'data', 'attributes', 'email'],
+      key: 'email',
+    },
+
+    {
+      title: 'Voucher',
+      dataIndex: ['attributes', 'voucher', 'data'],
+      key: 'voucher',
+      render: (voucher: BaseData<VoucherType>) => (
+        <p>
+          <span className="font-[500]">{voucher?.attributes?.code}</span> -{' '}
+          {formatPrice(Number(voucher?.attributes?.amount_decrease))}
+        </p>
+      ),
     },
     {
-      title: 'Slug',
-      dataIndex: ['attributes', 'slug'],
-      key: 'slug',
+      title: 'Trạng thái',
+      dataIndex: ['attributes', 'status'],
+      key: 'status',
     },
+
     {
       title: 'Ngày tạo',
       dataIndex: ['attributes', 'createdAt'],
@@ -91,7 +105,7 @@ const ProductLines = () => {
             setOpenTime(new Date().toString());
           }}
           onHandleDelete={async () => {
-            const productLineRes = await useDeleteProductLine(record.id);
+            const productLineRes = await useDeleteUserVoucher(record.id);
             if (productLineRes && productLineRes.data.id) {
               toast.success('Xóa thông tin thành công!');
               mutate();
@@ -162,15 +176,15 @@ const ProductLines = () => {
   };
   const title =
     currentFormType === formType.FORM_VIEW
-      ? 'Xem chi tiết dòng sản phẩm'
+      ? 'Xem chi tiết voucher khách hàng'
       : currentFormType === formType.FORM_CREATE
-      ? 'Tạo mới dòng sản phẩm'
-      : 'Cập nhật dòng sản phẩm';
+      ? 'Tạo mới voucher khách hàng'
+      : 'Cập nhật voucher khách hàng';
   return (
     <ContentWrapper className="h-full">
       <div>
         <p className="uppercase text-[1.6rem] font-[700]">
-          Quản lý dòng sản phẩm
+          Quản lý voucher khách hàng
         </p>
         <div className="flex justify-between items-center mb-[1.8rem] mt-[2.4rem]">
           <div className="max-w-[20rem]">
@@ -228,7 +242,7 @@ const ProductLines = () => {
         title={title}
         onCancel={handleCancelFormModal}
       >
-        <ProductLineForm
+        <UserVoucherForm
           type={currentFormType}
           record={selectedRecord}
           onCloseModal={handleCancelFormModal}
@@ -240,4 +254,4 @@ const ProductLines = () => {
   );
 };
 
-export default ProductLines;
+export default UserVouchers;

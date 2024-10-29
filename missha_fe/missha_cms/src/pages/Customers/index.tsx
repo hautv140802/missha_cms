@@ -213,6 +213,7 @@ const Customers = () => {
     setCurrentFormType(formType.FORM_CREATE);
     setOpenTime(new Date().toString());
     setOpenFormModal(true);
+    setSelectedRecord(undefined);
   };
   const title =
     currentFormType === formType.FORM_VIEW

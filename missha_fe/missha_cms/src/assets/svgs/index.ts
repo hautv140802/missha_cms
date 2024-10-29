@@ -30,6 +30,8 @@ import voucher from './voucher.svg';
 import productLine from './product-line.svg';
 import category from './category.svg';
 import skinProperty from './skin-property.svg';
+import users from './users.svg';
+import service from './service.svg';
 const svgs = {
   logo,
   menuOrder,
@@ -63,6 +65,8 @@ const svgs = {
   productLine,
   category,
   skinProperty,
+  users,
+  service,
 };
 
 export default svgs;

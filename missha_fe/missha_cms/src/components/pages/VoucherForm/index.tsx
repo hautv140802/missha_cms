@@ -128,6 +128,9 @@ const VoucherForm = (props: IVoucherFormProps) => {
         placeholder="Tên dòng sản phẩm"
         control={control}
         disabled={isView}
+        isRequired
+        rules={formValidation.code_voucher}
+        errors={errors.code}
       />
       <InputComponent
         label="Tiêu đề voucher:"
@@ -135,6 +138,9 @@ const VoucherForm = (props: IVoucherFormProps) => {
         placeholder="Tên dòng sản phẩm"
         control={control}
         disabled={isView}
+        rules={formValidation.title}
+        errors={errors.title}
+        isRequired
       />
       <InputComponent
         label="Số tiền giảm:"
@@ -142,6 +148,9 @@ const VoucherForm = (props: IVoucherFormProps) => {
         placeholder="Số tiền giảm"
         control={control}
         disabled={isView}
+        isRequired
+        rules={formValidation.amount_decrease}
+        errors={errors.amount_decrease}
       />
       <UploadImageComponent
         label="Ảnh voucher:"

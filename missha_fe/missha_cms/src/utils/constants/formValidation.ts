@@ -108,6 +108,18 @@ const formValidation = {
     //   }
     // },
   },
+  title: {
+    required: 'Tiêu đề không được để trống',
+  },
+  name_service: {
+    required: 'Tên dịch vụ không được để trống',
+  },
+  user: {
+    required: 'Khách hàng không được để trống',
+  },
+  voucher: {
+    required: 'Voucher không được để trống',
+  },
 };
 
 export default formValidation;

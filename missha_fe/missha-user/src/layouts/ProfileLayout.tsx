@@ -6,6 +6,9 @@ import BreadcrumbComponent from "../components/Breadcrumb";
 
 import { Menu, MenuProps } from "antd";
 import { useEffect, useState } from "react";
+import { getAccessToken } from "../utils/functions/getUserInfo";
+import { clear } from "console";
+import toast from "react-hot-toast";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -14,10 +17,16 @@ const items: MenuItem[] = [
   { key: paths.PROFILE_ORDERS, label: "Đơn hàng" },
   { key: paths.PROFILE_BOOKINGS, label: "Lịch Spa" },
   { key: paths.PROFILE_VOUCHERS, label: "Vouchers" },
+  { key: paths.LOGIN, label: "Đăng xuất" },
 ];
 export default function ProfileLayout() {
   const navigate = useNavigate();
   const location = useLocation();
+  const access_token = getAccessToken();
+
+  if (!!access_token === false) {
+    navigate(paths.LOGIN);
+  }
   const [selectedKey, setSelectedKey] = useState<string[]>([location.pathname]);
 
   const currentItem = items.find(
@@ -46,6 +55,12 @@ export default function ProfileLayout() {
     key: string;
     keyPath: string[];
   }) => {
+    if (key === paths.LOGIN) {
+      localStorage.clear();
+      toast.success("Đăng xuất thành công!");
+      navigate(key);
+      return;
+    }
     navigate(key);
     setSelectedKey(keyPath);
   };

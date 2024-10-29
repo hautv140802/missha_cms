@@ -5,3 +5,7 @@ input:-webkit-autofill:focus {
 input[data-autocompleted] {
   background-color: transparent !important;
 }
+
+.ant-input.ant-input-disabled {
+  color: black;
+}

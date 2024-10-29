@@ -30,6 +30,7 @@ const ServiceForm = (props: IProductLineFormProps) => {
   const { type, record, onCloseModal, openTime, handleComplete } = props;
   const [banner, setBanner] = useState<UploadLocalType>();
   const [bannerFile, setBannerFile] = useState<UploadFile>();
+  const isView = formType.FORM_VIEW === type;
   const {
     control,
     handleSubmit,
@@ -124,7 +125,7 @@ const ServiceForm = (props: IProductLineFormProps) => {
     setBannerFile(fileList);
   };
 
-  const handleDeleteBanner = (id?: number) => {
+  const handleDeleteBanner = (id?: number | string) => {
     if (id) {
       setBanner(undefined);
       setBannerFile(undefined);
@@ -142,7 +143,9 @@ const ServiceForm = (props: IProductLineFormProps) => {
         placeholder="Tên dịch vụ"
         control={control}
         errors={errors.title}
-        // rules={formValidation.title}
+        rules={formValidation.name_service}
+        isRequired
+        disabled={isView}
       />
       {type === formType.FORM_VIEW && (
         <InputComponent
@@ -150,6 +153,7 @@ const ServiceForm = (props: IProductLineFormProps) => {
           name="slug"
           placeholder="Đường dẫn"
           control={control}
+          disabled={isView}
         />
       )}
       <InputComponent
@@ -159,6 +163,8 @@ const ServiceForm = (props: IProductLineFormProps) => {
         control={control}
         errors={errors.price}
         rules={formValidation.price}
+        isRequired
+        disabled={isView}
       />
 
       <TextAreaComponent
@@ -168,18 +174,19 @@ const ServiceForm = (props: IProductLineFormProps) => {
         control={control}
         // errors={errors.price}
         // rules={formValidation.price}
+        disabled={isView}
       />
       <div className="flex flex-col gap-[0.6rem]">
         <UploadImageComponent
           label="Ảnh danh mục:"
-          disabled={type === formType.FORM_VIEW}
           maxCount={1}
           onAddImage={handleAddBanner}
+          disabled={isView}
         />
         <ReviewImage
           listImage={banner}
           onDelete={handleDeleteBanner}
-          disabled={type === formType.FORM_VIEW}
+          disabled={isView}
         />
       </div>
 

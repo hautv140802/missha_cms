@@ -13,6 +13,7 @@ import Customers from '@/pages/Customers';
 import Vouchers from '@/pages/Vouchers';
 import Bookings from '@/pages/Bookings';
 import Services from '@/pages/Services';
+import UserVouchers from '@/pages/UserVouchers';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
       { path: paths.VOUCHERS, element: <Vouchers /> },
       { path: paths.BOOKINGS, element: <Bookings /> },
       { path: paths.SERVICES, element: <Services /> },
+      { path: paths.USER_VOUCHERS, element: <UserVouchers /> },
     ],
   },
 ]);

@@ -222,6 +222,7 @@ const Orders = () => {
   const handleCreateForm = () => {
     setCurrentFormType(formType.FORM_CREATE);
     setOpenFormModal(true);
+    setSelectedRecord(undefined);
   };
 
   const title =

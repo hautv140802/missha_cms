@@ -194,7 +194,7 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
   if (page === "booking") {
     return (
       <div className="max-w-[140rem] mx-auto">
-        <p className="text-[2rem]">Popular treatments</p>
+        <p className="text-[2rem]">Phương pháp trị liệu</p>
         <div className="mt-[2rem] flex justify-start items-center gap-[1.6rem]">
           {treatments?.[0] && (
             <div className="group relative w-[31.6rem] h-[35.2rem] border hover:bg-[rgba(0,0,0,0.3)] ">

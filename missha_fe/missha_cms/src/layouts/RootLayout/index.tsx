@@ -70,7 +70,16 @@ const items: MenuItem[] = [
     paths.VOUCHERS,
     <img src={svgs.voucher} className="w-[1.8rem] h-[1.8rem]" />
   ),
-  getItem('Quản lý dịch vụ', paths.SERVICES, <PieChartOutlined />),
+  getItem(
+    'Quản lý dịch vụ',
+    paths.SERVICES,
+    <img src={svgs.service} className="w-[1.8rem] h-[1.8rem]" />
+  ),
+  getItem(
+    'Quản lý voucher khách hàng',
+    paths.USER_VOUCHERS,
+    <img src={svgs.users} className="w-[1.8rem] h-[1.8rem]" />
+  ),
   // getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
 ];
 
