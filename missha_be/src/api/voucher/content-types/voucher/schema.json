@@ -31,14 +31,6 @@
     },
     "title": {
       "type": "text"
-    },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "USED",
-        "UNUSED"
-      ],
-      "default": "UNUSED"
     }
   }
 }

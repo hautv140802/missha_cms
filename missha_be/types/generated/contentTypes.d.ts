@@ -1339,8 +1339,6 @@ export interface ApiVoucherVoucher extends Schema.CollectionType {
     amount_decrease: Attribute.BigInteger;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Attribute.Text;
-    status: Attribute.Enumeration<['USED', 'UNUSED']> &
-      Attribute.DefaultTo<'UNUSED'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
