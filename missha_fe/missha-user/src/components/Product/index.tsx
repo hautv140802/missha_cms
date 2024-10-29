@@ -70,6 +70,7 @@ const ProductComponent = (props: IProductComponentProps) => {
             src={formatUrl(product?.attributes?.avatar?.data?.attributes?.url)}
             alt={product?.attributes?.name || ""}
             className="w-full h-64 object-cover"
+            loading="lazy"
           />
 
           {/* Discount badge */}
@@ -103,14 +104,14 @@ const ProductComponent = (props: IProductComponentProps) => {
 
             <div
               className={clsx(
-                "text-gray-500 text-[1.1rem] line-through",
+                "text-gray-500 text-[1.4rem] line-through italic",
                 isSale ? "visible" : "invisible"
               )}
             >
               {formatPrice(product?.attributes?.price)}
             </div>
 
-            <div className="text-[#ff9900] text-[1.4rem] font-bold">
+            <div className="text-[#ff9900] text-[1.6rem] font-bold">
               {formatPrice(
                 isSale
                   ? product?.attributes?.sale_price

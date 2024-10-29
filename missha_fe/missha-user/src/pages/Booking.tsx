@@ -51,7 +51,7 @@ const Booking = () => {
     });
   };
   return (
-    <div className="w-ful pt-[1.2rem] pb-[3.2rem] bg-background mt-[10rem]">
+    <div className="w-ful pt-[1.2rem] pb-[3.2rem] bg-background mt-[5.8rem]">
       <BannerBooking
         setOpenBookingForm={setOpenBookingForm}
         treatmentSelected={treatmentSelected}
@@ -118,7 +118,7 @@ const Booking = () => {
         <ModalComponent
           open={openBookingForm}
           onCancel={handleCancelForm}
-          title="Đặt dịch vụ chăm sóc da"
+          title="Lên lịch hẹn chăm sóc da"
           closable
         >
           <BookingForm

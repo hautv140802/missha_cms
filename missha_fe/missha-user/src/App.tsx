@@ -19,13 +19,14 @@ function App() {
         }}
       >
         <QueryClientProvider client={queryClient}>
-          <Scrollbars
+          {/* <Scrollbars
             style={{ maxWidth: "100vw", height: "100vh" }}
             autoHide
             renderTrackVertical={(props) => (
               <div {...props} className="track-vertical z-[9999]" />
             )}
-          >
+          > */}
+          <div style={{ maxWidth: "100vw", height: "100vh" }}>
             <AppRouter />
             {/* <ReactQueryDevtools initialIsOpen={false} /> */}
             <Toaster
@@ -43,7 +44,8 @@ function App() {
                 },
               }}
             />
-          </Scrollbars>
+          </div>
+          {/* </Scrollbars> */}
         </QueryClientProvider>
       </ConfigProvider>
     </>

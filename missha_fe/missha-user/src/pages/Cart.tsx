@@ -117,7 +117,7 @@ const Cart = () => {
     }
   };
   return (
-    <div className="py-[1.2rem] mt-[10rem] bg-background">
+    <div className="py-[1.2rem] mt-[5.8rem] bg-background">
       <div className="w-[140rem] mx-auto">
         <BreadcrumbComponent items={breadcrumb} />
       </div>

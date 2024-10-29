@@ -16,11 +16,11 @@ const BannerBooking = (props: IBannerBookingProps) => {
     <div className="relative w-[140rem] h-[29rem] mx-auto">
       <img src={images.banner_booking} className="w-full h-full object-cover" />
       <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] backdrop-blur p-[1.2rem_1.2rem] rounded-[0.8rem] shadow-md">
-        <p className="text-[4rem] font-[600] italic text-center">
-          Schedule your skincare appointment now
+        <p className="text-[4.4rem] font-[600] italic text-center">
+          Lên lịch hẹn chăm sóc da ngay bây giờ
         </p>
         <p className="text-[2rem] text-center">
-          Find the perfect treatment for your skin needs!
+          Tìm phương pháp điều trị hoàn hảo cho nhu cầu làn da của bạn!
         </p>
       </div>
 

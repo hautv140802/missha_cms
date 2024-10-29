@@ -91,7 +91,7 @@ const ProductDetail = () => {
     navigate(paths.CART);
   };
   return (
-    <div className="bg-background mt-[10rem]">
+    <div className="bg-background mt-[5.8rem]">
       <div className="max-w-[120rem] mx-auto">
         <BreadcrumbComponent items={itemBreadcrumbs} />
       </div>

@@ -65,7 +65,7 @@ const Register = () => {
 
   const password = watch("password");
   return (
-    <div className="w-[140] flex flex-col justify-between gap-[2.4rem] mx-auto mt-[12.4rem] mb-[2.4rem] bg-white p-[2.4rem]">
+    <div className="w-[140] flex flex-col justify-between gap-[2.4rem] mx-auto mt-[5.8rem] mb-[2.4rem] bg-white p-[2.4rem]">
       <p className="text-[2.4rem] font-[500] text-center w-full">
         Missha register
       </p>

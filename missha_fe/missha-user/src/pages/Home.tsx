@@ -31,7 +31,7 @@ const Home = () => {
   });
 
   return (
-    <div className="w-ful py-[0.8rem] pb-[3.2rem] bg-[#F8F8FC] mt-[10rem]">
+    <div className="w-ful py-[0.8rem] pb-[3.2rem] bg-[#F8F8FC] mt-[5.8rem]">
       <BannerComponent />
       <div className="h-[0.8rem] w-full bg-[#F7F7F7]"></div>
       <WelcomeComponent />

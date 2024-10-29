@@ -2,7 +2,7 @@ import clsx from "clsx";
 import svgs from "../../assets/svgs";
 import { Badge } from "antd";
 import paths from "../../utils/constants/paths";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavItem from "./NavItem";
 import useCartStore from "../../stores/useCartStore";
 
@@ -29,9 +29,12 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
               className="w-full h-full"
             />
           </div> */}
-          <div>
-            <p className="uppercase text-[2.4rem] font-bold">Missha</p>
-          </div>
+          <Link to={"/"}>
+            <div>
+              <p className="uppercase text-[2.4rem] font-bold">Missha</p>
+            </div>
+          </Link>
+
           <div className="flex justify-end items-center gap-[10rem]">
             <nav className="flex justify-between items-center gap-[5rem]">
               <NavItem

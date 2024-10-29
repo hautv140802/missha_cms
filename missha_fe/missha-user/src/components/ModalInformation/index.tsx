@@ -93,7 +93,7 @@ const ModalInformation = (props: IModalInformationProps) => {
     } else {
       setDataDistricts([]);
     }
-  }, [city]);
+  }, [city, dataAddress?.length]);
 
   useEffect(() => {
     const findIndex = dataDistricts?.findIndex(
@@ -105,14 +105,13 @@ const ModalInformation = (props: IModalInformationProps) => {
     } else {
       setDataWards([]);
     }
-  }, [district]);
+  }, [district, dataAddress?.length]);
 
   const onSubmit: SubmitHandler<FormInformationType> = (data) => {
     const address = [data?.address, data?.ward, data?.district, data?.city]
       .filter((item) => item)
       .join(", ");
 
-    console.log("address", address);
     setReceivedInformation({
       ...data,
       address,

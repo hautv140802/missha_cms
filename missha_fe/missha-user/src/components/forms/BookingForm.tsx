@@ -192,6 +192,9 @@ const BookingForm = (props: IBookingFormProps) => {
           control={control}
           options={optionServices}
           onPopupScroll={handlePopupScrollServices}
+          isRequired
+          rules={formValidation.service}
+          errors={errors.service}
         />
         <p className="text-[1.4rem] italic text-justify">
           {showAll ? shortDescription : shortDescription?.slice(0, 250)}

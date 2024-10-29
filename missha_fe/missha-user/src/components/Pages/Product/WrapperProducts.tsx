@@ -15,14 +15,14 @@ const WrapperProducts = (props: IWrapperProductsProps) => {
 
   if (isLoading)
     return (
-      <div className="flex justify-center items-center py-[10rem]">
+      <div className="flex justify-center items-center py-[10rem] h-[34.3rem]">
         <Spin />
       </div>
     );
 
   if (!isLoading && products?.length === 0)
     return (
-      <div className="flex justify-center items-center py-[10rem]">
+      <div className="flex justify-center items-center py-[10rem] h-[34.3rem]">
         <p className="text-[2.4rem]">Không có sản phẩm</p>
       </div>
     );

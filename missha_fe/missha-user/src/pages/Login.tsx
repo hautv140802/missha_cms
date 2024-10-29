@@ -68,7 +68,7 @@ const Login = () => {
   }, [access_token]);
 
   return (
-    <div className="w-[140rem] flex justify-between gap-[2.4rem] mx-auto mt-[10rem] bg-[#f7f7f7] py-[2.4rem]">
+    <div className="w-[140rem] flex justify-between gap-[2.4rem] mx-auto mt-[5.8rem] bg-[#f7f7f7] py-[2.4rem]">
       <div className="w-[50%] min-h-[60rem] bg-white h-full py-[10rem]">
         <p className="text-[2.4rem] font-[500] text-center">Missha login</p>
         <form
