@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-29T14:16:37.931Z"
+    "x-generation-date": "2024-10-30T04:06:54.759Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5111,6 +5111,9 @@
                       "title": {
                         "type": "string"
                       },
+                      "public": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -8095,6 +8098,9 @@
                                   },
                                   "title": {
                                     "type": "string"
+                                  },
+                                  "public": {
+                                    "type": "boolean"
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -15540,6 +15546,9 @@
                       "title": {
                         "type": "string"
                       },
+                      "public": {
+                        "type": "boolean"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -15600,10 +15609,6 @@
             "format": "date-time"
           },
           "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -15695,6 +15700,9 @@
               },
               "title": {
                 "type": "string"
+              },
+              "public": {
+                "type": "boolean"
               }
             }
           }
@@ -16381,6 +16389,9 @@
           },
           "title": {
             "type": "string"
+          },
+          "public": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",

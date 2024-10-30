@@ -1289,9 +1289,10 @@ export interface ApiUserVoucherUserVoucher extends Schema.CollectionType {
     singularName: 'user-voucher';
     pluralName: 'user-vouchers';
     displayName: 'user-voucher';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     user: Attribute.Relation<
@@ -1307,7 +1308,6 @@ export interface ApiUserVoucherUserVoucher extends Schema.CollectionType {
     status: Attribute.Enumeration<['USED', 'UNUSED']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::user-voucher.user-voucher',
       'oneToOne',
@@ -1339,6 +1339,7 @@ export interface ApiVoucherVoucher extends Schema.CollectionType {
     amount_decrease: Attribute.BigInteger;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Attribute.Text;
+    public: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
