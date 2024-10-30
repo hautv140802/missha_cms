@@ -18,7 +18,7 @@ const NavItem = (props: INavItemProps) => {
     >
       <p
         className={clsx(
-          "text-[1.6rem] font-[500]",
+          "text-[1.4rem] font-[500]",
           className,
           active ? "text-[#FF9800] font-[600]" : ""
         )}

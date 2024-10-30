@@ -16,6 +16,5 @@ export type RegisterType = {
 };
 
 export type UserVoucherRequestType = BaseRequest & {
-  "filters[user]"?: number;
   "filters[status]"?: string;
 };

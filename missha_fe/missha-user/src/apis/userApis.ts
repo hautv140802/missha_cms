@@ -7,6 +7,7 @@ import { UserLoginResponseType, UserVoucherType } from "../types/response/user";
 import urls from "../utils/constants/urls";
 import { BaseResponse } from "../types/base/baseResponse";
 import { BaseData } from "../types/base/baseData";
+import { UserVoucherBodyType } from "../types/request/userVoucher";
 
 const userApis = {
   login(body: UserLoginType) {
@@ -31,6 +32,10 @@ const userApis = {
 
   update(id: number, body: RegisterType) {
     return axiosClient.put<UserType>(`${urls.USERS}/${id}`, body);
+  },
+
+  getCreateUserVoucher(body: UserVoucherBodyType) {
+    return axiosClient.post(urls.USER_VOUCHERS, { data: body });
   },
 };
 

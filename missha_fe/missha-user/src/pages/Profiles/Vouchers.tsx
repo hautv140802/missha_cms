@@ -14,8 +14,8 @@ const Vouchers = () => {
     isLoading: isLoadingUserVouchers,
     pagination: paginationUserVouchers,
   } = useQueryUserVouchers({
-    "filters[user]": user?.id,
     "filters[status]": variables.UNUSED,
+    "filters[user]": user?.id,
     "sort[0]": "createdAt:desc",
     populate: "deep, 3",
     "pagination[pageSize]": 5,
@@ -26,7 +26,7 @@ const Vouchers = () => {
       <div className="w-ful bg-white p-[2.4rem]">
         <p className="text-[1.6rem] font-[500] uppercase">Vouchers</p>
         <WrapperVouchers
-          dataVouchers={dataUserVouchers}
+          dataUserVouchers={dataUserVouchers}
           isLoading={isLoadingUserVouchers}
         />
       </div>

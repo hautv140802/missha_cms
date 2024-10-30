@@ -50,7 +50,7 @@ const WrapperVoucher = (props: IWrapperVoucher) => {
                   item?.attributes?.voucher?.data?.id === selectedVoucher?.id
                 }
                 page="cart"
-                userVoucher={item}
+                voucher={item?.attributes?.voucher?.data}
                 setSelectedVoucher={setSelectedVoucher}
               />
             ))}

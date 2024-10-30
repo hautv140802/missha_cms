@@ -20,7 +20,7 @@ const WrapperListOrder = (props: IWrapperListOrderProps) => {
       </div>
     );
 
-  if (isLoading && dataOrders.length === 0)
+  if (!isLoading && dataOrders.length === 0)
     return (
       <div className="bg-white p-[2.4rem] py-[10rem] flex justify-center items-center">
         <p className="text-center text-[2rem] py-[10rem] text-[#ff9900]">

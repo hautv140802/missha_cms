@@ -29,7 +29,7 @@ const WrapperProducts = (props: IWrapperProductsProps) => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-start items-center gap-[3.2rem] mt-[2.4rem]">
+      <div className="flex flex-wrap justify-start items-center gap-[3.8rem] mt-[2.4rem]">
         {products.map((item, index) => (
           <ProductComponent key={index} page="product" product={item} />
         ))}

@@ -1,15 +1,11 @@
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu, type MenuProps } from 'antd';
+import { DesktopOutlined, UserOutlined } from '@ant-design/icons';
+import { Dropdown, Layout, Menu, Space, type MenuProps } from 'antd';
 import { useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import svgs from '../../assets/svgs';
 import paths from '../../utils/constants/paths';
 import { getAccessToken } from '@/utils/functions/getAccessToken';
-
+import toast from 'react-hot-toast';
 const { Header, Content, Footer, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -40,10 +36,7 @@ const items: MenuItem[] = [
     paths.BOOKINGS,
     <img src={svgs.calender} className="w-[1.8rem] h-[1.8rem]" />
   ),
-  // getItem('Quản lý sản phẩm', 'PRODUCT', <ProductOutlined />, [
-  //   getItem('Sản phẩm chính', 'MAIN_PRODUCT', <ProductOutlined />),
-  //   getItem('Sản phẩm biến thể', 'VARIANT_PRODUCT', <ProductOutlined />),
-  // ]),
+
   getItem(
     'Quản lý danh mục',
     paths.CATEGORIES,
@@ -80,7 +73,6 @@ const items: MenuItem[] = [
     paths.USER_VOUCHERS,
     <img src={svgs.users} className="w-[1.8rem] h-[1.8rem]" />
   ),
-  // getItem('Quản lý Homepage', 'MANAGE_HOME_PAGE', <HomeOutlined />),
 ];
 
 const RootLayout = () => {
@@ -114,6 +106,13 @@ const RootLayout = () => {
     return <Navigate to={paths.LOGIN} />;
   }
 
+  const onclickDropdown = ({ key }: { key: string }) => {
+    if (key === 'LOG_OUT') {
+      localStorage.clear();
+      toast.success('Đăng xuất thành công!');
+      navigate(paths.LOGIN);
+    }
+  };
   return (
     <Layout className="min-h-screen w-[99vw]">
       <Sider
@@ -123,7 +122,7 @@ const RootLayout = () => {
         theme="light"
       >
         <div className="demo-logo-vertical my-[1rem] flex items-center justify-center">
-          <img src={svgs.logo} alt="" width={70} height={70} />
+          <p className="uppercase text-[2.4rem] font-bold">Missha</p>
         </div>
 
         <Menu
@@ -147,7 +146,23 @@ const RootLayout = () => {
             gap: '16px',
             alignItems: 'center',
           }}
-        ></Header>
+        >
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  label: 'Đăng xuất',
+                  key: 'LOG_OUT',
+                },
+              ],
+              onClick: onclickDropdown,
+            }}
+            className="bg-white mt-0"
+            arrow
+          >
+            <UserOutlined className="text-[2.4rem]" />
+          </Dropdown>
+        </Header>
         <Content>
           <Outlet />
         </Content>

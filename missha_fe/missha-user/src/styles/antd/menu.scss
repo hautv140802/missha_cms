@@ -9,5 +9,11 @@
     color: black;
     font-size: 1.6rem;
     border-radius: 0;
+
+    &:last-child {
+      .ant-menu-title-content {
+        color: red;
+      }
+    }
   }
 }

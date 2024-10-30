@@ -10,6 +10,7 @@ import { useQueryCategories } from "../hooks/queries/categories.query";
 import { useQueryProducts } from "../hooks/queries/products.query";
 import WrapperTreatment from "../components/WarpperTreatments";
 import { useQueryServices } from "../hooks/queries/services.query";
+import WrapperVoucher from "../components/Pages/Home/WrapperVoucher";
 const Home = () => {
   const { data: dataCategories } = useQueryCategories({
     populate: "deep, 3",
@@ -36,8 +37,9 @@ const Home = () => {
       <div className="h-[0.8rem] w-full bg-[#F7F7F7]"></div>
       <WelcomeComponent />
       <BenefitComponent />
+      <WrapperVoucher />
       <QuickFilterComponent categories={dataCategories} />
-      <div className="h-[1.6rem] w-full bg-[#F8F8FC]"></div>
+      <div className="h-[1.2rem] w-full bg-[#F8F8FC]"></div>
       <div className="bg-[#F8F8FC]">
         <div className="mb-[1.2rem] w-[140rem] mx-auto bg-white p-[2.4rem]">
           <WrapperTreatment treatments={dateServices} page="product" />
