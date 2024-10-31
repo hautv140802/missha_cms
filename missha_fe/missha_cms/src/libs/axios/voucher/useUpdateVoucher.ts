@@ -1,9 +1,9 @@
 import axiosClient from '..';
 import axios from 'axios';
 import urls from '@/utils/constants/urls';
-import { FormVoucherType } from '@/types/request/form/formVoucher';
+import { VoucherRequestType } from '@/types/request/voucher';
 
-const useUpdateVoucher = async (id: number, body: FormVoucherType) => {
+const useUpdateVoucher = async (id: number, body: VoucherRequestType) => {
   try {
     const response = await axiosClient.put(`${urls.VOUCHERS}/${id}`, {
       data: body,

@@ -18,6 +18,7 @@ import OrderStatusComponent from '@/components/common/OrderStatus';
 import VoucherBadge from '@/components/common/VoucherBadge';
 import ModalComponent from '@/components/common/Modal';
 import OrderForm from '@/components/pages/OrderForm';
+import formatNumberPhone from '@/utils/functions/formatPhone';
 
 const defaultCheckedList = [
   'order_code',
@@ -73,6 +74,7 @@ const Orders = () => {
       title: 'Số điện thoại',
       dataIndex: ['attributes', 'customer_phone'],
       key: 'customer_phone',
+      render: phone => formatNumberPhone(phone),
     },
     {
       title: 'Tổng tiền bán',

@@ -132,9 +132,9 @@ const CategoryForm = (props: ICategoryFormProps) => {
       />
       {type === formType.FORM_VIEW && (
         <InputComponent
-          label="Slug:"
+          label="Đường dẫn:"
           name="slug"
-          placeholder="Slug"
+          placeholder="Đường dẫn"
           control={control}
         />
       )}

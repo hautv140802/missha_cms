@@ -195,9 +195,9 @@ const BookingForm = (props: IBookingFormProps) => {
       <DatePickerComponent
         format={defaultKey.DATE_TIME_FORMAT}
         control={control}
-        label="Ngày booking:"
+        label="Ngày hẹn:"
         name="date"
-        placeholder="Ngày booking"
+        placeholder="Ngày hẹn"
         errors={errors.date}
         rules={formValidation.date_booking}
         isRequired

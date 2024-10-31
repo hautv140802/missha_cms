@@ -77,7 +77,7 @@ const Bookings = () => {
       render: customer_phone => formatNumberPhone(customer_phone),
     },
     {
-      title: 'Ngày booking',
+      title: 'Ngày hẹn',
       dataIndex: ['attributes', 'date'],
       render: (date: string) => dayjs(date).format(defaultKey.DATE_TIME_FORMAT),
       key: 'date',

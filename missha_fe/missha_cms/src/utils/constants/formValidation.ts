@@ -95,7 +95,7 @@ const formValidation = {
     required: 'Trạng thái không được để trống',
   },
   date_booking: {
-    required: 'Ngày đặt không được để trống',
+    required: 'Ngày hẹn không được để trống',
     // validate: (date_booking: string) => {
     //   const targetDate = dayjs(date_booking);
 
@@ -119,6 +119,9 @@ const formValidation = {
   },
   voucher: {
     required: 'Voucher không được để trống',
+  },
+  public: {
+    required: 'Public không được để trống',
   },
 };
 

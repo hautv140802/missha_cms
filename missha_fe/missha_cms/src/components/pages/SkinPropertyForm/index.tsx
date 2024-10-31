@@ -20,7 +20,7 @@ interface ISkinPropertyFormProps {
 }
 const SkinPropertyForm = (props: ISkinPropertyFormProps) => {
   const { type, record, onCloseModal, openTime, handleComplete } = props;
-
+  const isDisable = type === formType.FORM_VIEW;
   const {
     control,
     handleSubmit,
@@ -80,12 +80,13 @@ const SkinPropertyForm = (props: ISkinPropertyFormProps) => {
         control={control}
         errors={errors.name}
         rules={formValidation.skin_property}
+        disabled={isDisable}
       />
       {type === formType.FORM_VIEW && (
         <InputComponent
-          label="Slug:"
+          label="Đường dẫn:"
           name="slug"
-          placeholder="Slug"
+          placeholder="Đường dẫn"
           control={control}
         />
       )}

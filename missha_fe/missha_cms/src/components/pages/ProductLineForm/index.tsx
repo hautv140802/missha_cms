@@ -20,7 +20,7 @@ interface IProductLineFormProps {
 }
 const ProductLineForm = (props: IProductLineFormProps) => {
   const { type, record, onCloseModal, openTime, handleComplete } = props;
-
+  const isDisable = type === formType.FORM_VIEW;
   const {
     control,
     handleSubmit,
@@ -80,13 +80,15 @@ const ProductLineForm = (props: IProductLineFormProps) => {
         control={control}
         errors={errors.name}
         rules={formValidation.product_line}
+        disabled={isDisable}
       />
       {type === formType.FORM_VIEW && (
         <InputComponent
-          label="Slug:"
+          label="Đường dẫn:"
           name="slug"
-          placeholder="Slug"
+          placeholder="Đường dẫn"
           control={control}
+          disabled={isDisable}
         />
       )}
 

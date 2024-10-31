@@ -324,7 +324,7 @@ const ProductForm = (props: IProductFormProps) => {
       skin_properties: formatValue(data?.skin_properties),
       avatar: avatarId || null,
       gallery: galleryIds || undefined,
-      descripton: description,
+      description: description,
     };
 
     if (type === formType.FORM_CREATE) {
@@ -443,9 +443,9 @@ const ProductForm = (props: IProductFormProps) => {
         <div className="grid grid-cols-1 gap-[1.6rem] h-fit">
           {isDisable && (
             <InputComponent
-              label="Slug:"
+              label="Đường dẫn:"
               name="slug"
-              placeholder="Slug"
+              placeholder="Đường dẫn"
               control={control}
               disabled={isDisable}
             />
@@ -509,8 +509,8 @@ const ProductForm = (props: IProductFormProps) => {
             onPopupScroll={handlePopupScrollCategory}
           />
           <SelectComponent
-            label="Dòng sản phẩm:"
-            placeholder="Dòng sản phẩm"
+            label="Đặc tính da:"
+            placeholder="Đặc tính da"
             control={control}
             name="skin_properties"
             options={optionSkinProperties}

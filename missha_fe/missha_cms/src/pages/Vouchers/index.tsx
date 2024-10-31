@@ -16,7 +16,6 @@ import PAGE_SIZE from '@/utils/constants/pageSize';
 import { formatPrice } from '@/utils/functions/formatPrice';
 import { SettingOutlined } from '@ant-design/icons';
 import { TableColumnsType } from 'antd';
-import Search from 'antd/es/input/Search';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -26,7 +25,7 @@ const defaultCheckedList = [
   'title',
   'image',
   'amount_decrease',
-  'publishedAt',
+  'public',
   'actions',
 ];
 
@@ -86,6 +85,12 @@ const Vouchers = () => {
       dataIndex: ['attributes', 'amount_decrease'],
       key: 'amount_decrease',
       render: amount_decrease => formatPrice(amount_decrease),
+    },
+    {
+      title: 'Public',
+      dataIndex: ['attributes', 'public'],
+      key: 'public',
+      render: _public => (_public ? 'Có' : 'Không'),
     },
     {
       title: 'Ngày áp dụng',

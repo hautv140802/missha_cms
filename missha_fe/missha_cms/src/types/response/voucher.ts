@@ -11,4 +11,5 @@ export type VoucherResponseType = {
   image: {
     data: BaseData<ImageType>;
   };
+  public: boolean;
 };

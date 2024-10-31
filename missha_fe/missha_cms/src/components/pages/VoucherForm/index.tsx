@@ -1,6 +1,7 @@
 import ButtonComponent from '@/components/common/Button';
 import InputComponent from '@/components/common/Input';
 import ReviewImage from '@/components/common/ReviewImage';
+import SelectComponent from '@/components/common/Select';
 import UploadImageComponent from '@/components/common/UploadImage';
 import useCreateProductLine from '@/libs/axios/productLine/useCreateProductLine';
 import useUpdateProductLine from '@/libs/axios/productLine/useUpdateProductLine';
@@ -46,16 +47,17 @@ const VoucherForm = (props: IVoucherFormProps) => {
   });
   useEffect(() => {
     reset({
-      code: record?.attributes.code,
-      title: record?.attributes.title,
-      amount_decrease: record?.attributes.amount_decrease,
+      code: record?.attributes?.code,
+      title: record?.attributes?.title,
+      amount_decrease: record?.attributes?.amount_decrease,
+      public: record?.attributes?.public ? 1 : 0,
     });
 
     setImageVoucher(
       record?.attributes?.image?.data
         ? {
-            id: record?.attributes?.image.data.id,
-            name: record?.attributes?.image.data.attributes.name,
+            id: record?.attributes?.image?.data?.id,
+            name: record?.attributes?.image?.data?.attributes?.name,
             url: `${BASE_URL}${record?.attributes?.image?.data?.attributes?.url}`,
           }
         : null
@@ -75,7 +77,8 @@ const VoucherForm = (props: IVoucherFormProps) => {
       code: data.code,
       amount_decrease: data.amount_decrease,
       title: data.title,
-      image: imageVoucherID || null,
+      public: data.public ? true : false,
+      image: imageVoucherID || imageVoucher?.id || null,
     };
 
     if (type === formType.FORM_CREATE) {
@@ -151,6 +154,20 @@ const VoucherForm = (props: IVoucherFormProps) => {
         isRequired
         rules={formValidation.amount_decrease}
         errors={errors.amount_decrease}
+      />
+      <SelectComponent
+        label="Public:"
+        name="public"
+        placeholder="Public"
+        control={control}
+        errors={errors.public}
+        rules={formValidation.public}
+        options={[
+          { value: 1, label: 'Có' },
+          { value: 0, label: 'Không' },
+        ]}
+        disabled={isView}
+        isRequired
       />
       <UploadImageComponent
         label="Ảnh voucher:"

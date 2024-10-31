@@ -3,4 +3,5 @@ export type VoucherRequestType = {
   amount_decrease: number;
   title: string;
   image: number | null;
+  public: boolean;
 };

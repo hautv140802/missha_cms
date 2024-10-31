@@ -59,7 +59,7 @@ const Categories = () => {
       key: 'name',
     },
     {
-      title: 'Slug',
+      title: 'Đường dẫn',
       dataIndex: ['attributes', 'slug'],
       key: 'slug',
     },

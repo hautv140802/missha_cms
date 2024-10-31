@@ -78,7 +78,7 @@ const Products = () => {
       render: name => <p className="max-w-[30rem] line-clamp-1">{name}</p>,
     },
     {
-      title: 'Slug',
+      title: 'Đường dẫn',
       dataIndex: ['attributes', 'slug'],
       key: 'slug',
       render: slug => <p className="max-w-[20rem] line-clamp-1">{slug}</p>,
