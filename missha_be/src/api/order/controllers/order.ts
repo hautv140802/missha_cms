@@ -65,7 +65,6 @@ export default factories.createCoreController('api::order.order', ({strapi}) => 
       vnp_Params["vnp_ReturnUrl"] = returnUrl;
       vnp_Params["vnp_IpAddr"] = ipAddr;
       vnp_Params["vnp_CreateDate"] = createDate;
-      const mapping = strapi.config.get("mapping");
       if (bankCode) {
         vnp_Params["vnp_BankCode"] = bankCode;
       }
