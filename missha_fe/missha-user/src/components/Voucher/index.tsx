@@ -64,7 +64,7 @@ const VoucherComponent = (props: IVoucherComponentProps) => {
     return (
       <div className="flex justify-between items-center gap-[0.8rem] border border-solid  rounded-[1.6rem] pr-[1.2rem] bg-white overflow-hidden before:order-gray-400">
         <div className="w-[30%] h-[7.6rem] flex justify-center items-center bg-[#f7f7f7] border-r px-[0.4rem]">
-          <p className="text-[1.4rem] font-[500] text-[#FF9800]">
+          <p className="text-[1.4rem] font-[500] text-[#FF9800] break-all text-center">
             {voucher?.attributes?.code}
           </p>
         </div>
@@ -86,7 +86,7 @@ const VoucherComponent = (props: IVoucherComponentProps) => {
         onClick={handleSelectedVoucher}
       >
         <div className="w-[30%] h-[7.6rem] flex justify-center items-center bg-[#FF9800] px-[0.4rem]">
-          <p className="text-[1.4rem] font-[500] text-white">
+          <p className="text-[1.4rem] font-[500] text-white break-all text-center">
             {voucher?.attributes?.code}
           </p>
         </div>
@@ -109,7 +109,7 @@ const VoucherComponent = (props: IVoucherComponentProps) => {
     return (
       <div className="min-w-[40rem] flex justify-between items-center gap-[0.8rem] border border-solid rounded-[1.6rem] pr-[1.2rem] bg-white overflow-hidden before:order-gray-400">
         <div className="w-[30%] h-[7.6rem] flex justify-center items-center bg-[#f7f7f7] border-r px-[0.4rem]">
-          <p className="text-[1.4rem] font-[500] text-[#FF9800] break-all text-center line-clamp-3">
+          <p className="text-[1.4rem] font-[500] text-[#FF9800] break-all text-center line-clamp-3 text-center">
             {voucher?.attributes?.code}
           </p>
         </div>

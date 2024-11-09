@@ -86,7 +86,9 @@ const Login = () => {
           <InputComponent
             name="password"
             label="Mật khẩu"
+            isPassword
             placeholder="Mật khẩu"
+            autoComplete="new-password"
             control={control}
             rules={formValidation.password}
             errors={errors.password}

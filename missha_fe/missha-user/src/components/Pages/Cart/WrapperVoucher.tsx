@@ -7,7 +7,6 @@ import { getUserProfile } from "../../../utils/functions/getUserInfo";
 import variables from "../../../utils/constants/variables";
 import { BaseData } from "../../../types/base/baseData";
 import { VoucherType } from "../../../types/response/voucher";
-import clsx from "clsx";
 
 interface IWrapperVoucher {
   selectedVoucher?: BaseData<VoucherType>;

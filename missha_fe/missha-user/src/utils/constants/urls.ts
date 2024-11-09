@@ -15,6 +15,7 @@ const urls = {
   BOOKINGS: "/bookings",
   USERS: "/users",
   ORDER_BY_SLUG: "/slugify/slugs/oder",
+  PAYMENT_CRATE: "create_payment_url",
 };
 
 export default urls;

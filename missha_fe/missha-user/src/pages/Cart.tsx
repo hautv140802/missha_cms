@@ -21,6 +21,8 @@ import { ReceivedInformationType } from "../types/common/receivedInformation";
 import { getUserProfile } from "../utils/functions/getUserInfo";
 import toast from "react-hot-toast";
 import axios from "axios";
+import paymentApis from "../apis/paymentApis";
+import RadioComponent from "../components/Radio";
 
 const breadcrumb = [
   {
@@ -40,6 +42,7 @@ const Cart = () => {
     BaseData<VoucherType> | undefined
   >();
 
+  const [paymentMethod, setPaymentMethod] = useState<number>(1);
   const totalPrice = getTotalPrice();
   const totalSaveMoney = getTotalSaveMoney();
 
@@ -90,7 +93,7 @@ const Cart = () => {
         customer_phone: information?.phone || "",
         shipping_address: information?.address || "",
         order_details: orderDetails,
-        payment_method: "COD",
+        payment_method: paymentMethod === 1 ? "COD" : "VNPAY",
         shipping_method: "Giao qua đối tác",
         status: "Chờ xác nhận",
         user: user?.id,
@@ -101,9 +104,33 @@ const Cart = () => {
       });
 
       if (resOrder) {
-        toast.success("Đặt hàng thành công!");
-        clearCart();
-        navigate(paths.PROFILE_ORDERS);
+        if (paymentMethod === 1) {
+          toast.success("Đặt hàng thành công!");
+          clearCart();
+          navigate(paths.PROFILE_ORDERS);
+          return;
+        }
+
+        if (paymentMethod === 2) {
+          try {
+            clearCart();
+            const resPayment = await paymentApis.post({
+              order_code: resOrder?.data?.data?.attributes?.order_code,
+            });
+            if (resPayment) {
+              window.location.replace(resPayment?.data?.url);
+            }
+          } catch (error) {
+            console.log(error);
+            if (axios.isAxiosError(error)) {
+              toast.error(
+                `Thanh toán qua VN PAY thất bại: ${error?.response?.data?.error?.message}`
+              );
+            } else {
+              toast.error(`Thanh toán qua VN PAY thất bại: ${error}`);
+            }
+          }
+        }
       }
     } catch (error) {
       console.log(error);
@@ -204,6 +231,42 @@ const Cart = () => {
                     ]}
                   />
                 </div>
+              </div>
+            </div>
+            <div className="shadow-md p-[2.4rem]  bg-white">
+              <p className="text-[2rem] font-[500] uppercase text-center">
+                Phương thức thanh toán
+              </p>
+              <Divider className="my-[0.8rem]" />
+              <div className="flex flex-col gap-[1.2rem]">
+                {/* <div className="w-full">
+                  <SelectComponent
+                    name="shippingPayment"
+                    className="w-full text-[1.6rem]"
+                    value={"GHTC"}
+                    options={[
+                      {
+                        value: "GHTC",
+                        label: "Giao hàng qua đối tác (35.000 đ)",
+                      },
+                    ]}
+                  />
+                </div> */}
+                <RadioComponent
+                  name="payment_method"
+                  value={paymentMethod}
+                  onChange={(e) => setPaymentMethod(e?.target?.value)}
+                  options={[
+                    {
+                      value: 1,
+                      label: "Thanh toán khi nhận hàng",
+                    },
+                    {
+                      value: 2,
+                      label: "Thanh toán qua VN PAY",
+                    },
+                  ]}
+                />
               </div>
             </div>
 
