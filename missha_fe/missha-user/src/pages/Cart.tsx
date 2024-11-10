@@ -178,7 +178,7 @@ const Cart = () => {
 
             <Divider />
             <div className="flex flex-col gap-[1.2rem] mt-[1.6rem]">
-              <ScrollbarComponent height="67.6rem">
+              <ScrollbarComponent height="81.9rem">
                 {items?.length > 0 ? (
                   <div className="w-[99%]">
                     {items?.map((item, index) => (
@@ -277,7 +277,7 @@ const Cart = () => {
               <div className="flex flex-col gap-[1.2rem]">
                 <div className="flex flex-col gap-[0.4rem]">
                   <div className="flex justify-between items-center">
-                    <p className="text-[1.4rem] font-[500]">Tạm tính:</p>
+                    <p className="text-[1.6rem] font-[500]">Tạm tính:</p>
                     <p className="text-[1.6rem] font-[600]">
                       {formatPrice(totalPrice)}
                     </p>
@@ -298,12 +298,6 @@ const Cart = () => {
                     <p className="text-[1.6rem] font-[600]">
                       - {formatPrice(discountValue)}
                     </p>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-[1.6rem] font-[500]">
-                      Phương thức thanh toán:
-                    </p>
-                    <p className="text-[1.6rem] font-[600]">COD</p>
                   </div>
                   <div className="flex justify-between items-center mt-[0.4rem]">
                     <p className="text-[1.8rem] font-[600]">Tổng thanh toán:</p>

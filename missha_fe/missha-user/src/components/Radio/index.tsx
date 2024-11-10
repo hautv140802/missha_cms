@@ -54,7 +54,7 @@ export default function RadioComponent({
             render={({ field: { onChange, onBlur, value, ref } }) => (
               <Radio.Group
                 className={clsx(
-                  "font-[400] text-[14px] md:text-[16px] text-red",
+                  "font-[500] text-[14px] md:text-[16px] text-red",
                   className
                 )}
                 options={options}
@@ -69,7 +69,7 @@ export default function RadioComponent({
         ) : (
           <Radio.Group
             className={clsx(
-              "font-[400] text-[14px] md:text-[16px] text-red",
+              "font-[500] text-[14px] md:text-[16px] text-red",
               className
             )}
             options={options}

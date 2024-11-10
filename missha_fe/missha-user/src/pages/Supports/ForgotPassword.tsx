@@ -1,7 +1,7 @@
-import { Breadcrumb } from "antd";
 import paths from "../../utils/constants/paths";
 import SupportText from "../../components/Support/SupportText";
 import React from "react";
+import BreadcrumbComponent from "../../components/Breadcrumb";
 
 const ForgotPassword = () => {
   const breadcrumbItems = [
@@ -96,7 +96,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="w-[140rem] mx-auto items-center mt-[6.8rem] bg-background min-h-[calc(100vh-20rem)]">
-      <Breadcrumb items={breadcrumbItems} />
+      <BreadcrumbComponent items={breadcrumbItems} />
 
       <div className="wrapper my-[48px] max-w-[140rem] md:mx-auto">
         <div className="w-full">

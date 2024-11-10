@@ -1,6 +1,6 @@
-import { Breadcrumb } from "antd";
 import paths from "../../utils/constants/paths";
 import SupportText from "../../components/Support/SupportText";
+import BreadcrumbComponent from "../../components/Breadcrumb";
 
 const PolicyReturn = () => {
   const breadcrumbItems = [
@@ -67,7 +67,7 @@ const PolicyReturn = () => {
   ];
   return (
     <div className="w-[140rem] mx-auto items-center mt-[6.8rem] bg-background min-h-[calc(100vh-20rem)]">
-      <Breadcrumb items={breadcrumbItems} />
+      <BreadcrumbComponent items={breadcrumbItems} />
       <div className="wrapper max-w-[140rem] mx-auto my-[2.4rem]">
         <div className="w-full">
           <SupportText
@@ -137,7 +137,7 @@ const PolicyReturn = () => {
                 type="step"
               />
               <SupportText
-                content={`Khách hàng cần thông báo cho nhân viên missha lý do đổi trả và cung cấp thông tin liên lạc chính xác để chúng tôi thực hiện quy trình đổi trả nhanh chóng.`}
+                content={`Khách hàng cần thông báo cho nhân viên Missha lý do đổi trả và cung cấp thông tin liên lạc chính xác để chúng tôi thực hiện quy trình đổi trả nhanh chóng.`}
                 type="step"
               />
 
@@ -151,7 +151,7 @@ const PolicyReturn = () => {
                 </p>
               </div>
               <SupportText
-                content={`Missha quan tâm đến sự hài lòng của khách hàng và cam kết hỗ trợ đổi trả miễn phí theo quy định. Khách có thể chuyển hàng qua bưu điện và cung cấp mã bưu điện để missha xử lý và gửi hàng sớm nhất.`}
+                content={`Missha quan tâm đến sự hài lòng của khách hàng và cam kết hỗ trợ đổi trả miễn phí theo quy định. Khách có thể chuyển hàng qua bưu điện và cung cấp mã bưu điện để Missha xử lý và gửi hàng sớm nhất.`}
                 type="step"
               />
             </ul>
@@ -171,7 +171,7 @@ const PolicyReturn = () => {
               <p className="flex flex-col md:flex-row font-bold text-[#484848] text-[14px] md:text-[17px] my-2 text-nowrap">
                 Lưu ý: &nbsp;
                 <SupportText
-                  content={`Tất cả các đơn hàng đã thanh toán có sử dụng gift card, missha hỗ trợ chuyển mã sử dụng cho đơn hàng tiếp theo.`}
+                  content={`Tất cả các đơn hàng đã thanh toán có sử dụng gift card, Missha hỗ trợ chuyển mã sử dụng cho đơn hàng tiếp theo.`}
                   className="text-wrap"
                 />
               </p>

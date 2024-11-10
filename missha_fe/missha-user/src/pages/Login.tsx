@@ -78,9 +78,9 @@ const Login = () => {
           <InputComponent
             control={control}
             name="identifier"
-            label="Tài khoản"
+            label="Email"
             placeholder="Tài khoản"
-            rules={formValidation.identifier}
+            rules={formValidation.email}
             errors={errors.identifier}
           />
           <InputComponent

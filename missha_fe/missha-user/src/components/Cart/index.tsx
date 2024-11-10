@@ -1,3 +1,4 @@
+import images from "../../assets/images";
 import { CartType } from "../../types/common/cart";
 import { formatPrice } from "../../utils/functions/formatPrice";
 
@@ -14,7 +15,7 @@ const CartComponent = (props: ICartComponentProps) => {
     <div className="flex justify-start items-start gap-[1.2rem]">
       <div className="w-[12rem] h-[12rem] min-w-[12rem] rounded-[0.2rem] cursor-pointer border">
         <img
-          src={cart.avatar}
+          src={cart.avatar || images.imageEmpty}
           className="w-full h-full object-cover rounded-[0.6rem] cursor-pointer"
         />
       </div>

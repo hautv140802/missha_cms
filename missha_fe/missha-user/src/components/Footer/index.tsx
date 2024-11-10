@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import svgs from "../../assets/svgs";
+import paths from "../../utils/constants/paths";
 
 const FooterComponent = () => {
   return (
@@ -64,12 +66,17 @@ const FooterComponent = () => {
             <p className="text-[2.4rem] text-white font-[500]">Hỗ trợ</p>
           </div>
           <div className="flex flex-col gap-[1.2rem]">
-            <div className="text-[2.4rem] text-white font-[400]">
-              <p>Đổi mật khẩu</p>
-            </div>
-            <div className="text-[2.4rem] text-white font-[400]">
-              <p>Chính sách đổi trả</p>
-            </div>
+            <Link to={paths.SUPPORT_POLICY_RETURN}>
+              <div className="text-[2.4rem] text-white font-[400]">
+                <p>Chính sách đổi trả</p>
+              </div>
+            </Link>
+            <Link to={paths.SUPPORT_FORGOT_PASSWORD}>
+              <div className="text-[2.4rem] text-white font-[400]">
+                <p>Lấy lại mật khẩu</p>
+              </div>
+            </Link>
+
             <div className="text-[2.4rem] text-white font-[400]">
               <p>Hướng dẫn thanh toán</p>
             </div>
