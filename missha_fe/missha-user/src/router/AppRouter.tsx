@@ -16,6 +16,8 @@ import Orders from "../pages/Profiles/Orders";
 import Bookings from "../pages/Profiles/Bookings";
 import OrderDetail from "../pages/Profiles/OrderDetail";
 import Vouchers from "../pages/Profiles/Vouchers";
+import OrderFail from "../pages/OrderFail";
+import OrderSuccess from "../pages/OrderSuccess";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +65,8 @@ const router = createBrowserRouter([
         path: paths.REGISTER,
         element: <Register />,
       },
+      { path: `${paths.ORDER_FAIL}/:id`, element: <OrderFail /> },
+      { path: `${paths.ORDER_SUCCESS}/:id`, element: <OrderSuccess /> },
     ],
   },
   {

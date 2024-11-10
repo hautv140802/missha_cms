@@ -23,6 +23,11 @@ const orderApis = {
     );
   },
 
+  get(id: string) {
+    return axiosClient.get<BaseResponse<BaseData<OrderType>>>(
+      `${urls.ORDERS}/${id}?populate=deep, 5`
+    );
+  },
   update(id: number, status: string) {
     return axiosClient.put<BaseResponse<BaseData<OrderType>>>(
       `${urls.ORDERS}/${id}`,

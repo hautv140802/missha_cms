@@ -113,7 +113,6 @@ const Cart = () => {
 
         if (paymentMethod === 2) {
           try {
-            clearCart();
             const resPayment = await paymentApis.post({
               order_code: resOrder?.data?.data?.attributes?.order_code,
             });

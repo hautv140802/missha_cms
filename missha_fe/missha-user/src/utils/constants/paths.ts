@@ -19,6 +19,8 @@ const paths = {
   REGISTER: "/register",
   SUPPORT: "/support",
   BOOKING: "/booking",
+  ORDER_SUCCESS: "/order-success",
+  ORDER_FAIL: "/order-fail",
 };
 
 export default paths;
