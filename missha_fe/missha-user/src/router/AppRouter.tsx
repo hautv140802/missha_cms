@@ -6,7 +6,6 @@ import Products from "../pages/Products";
 import AboutUs from "../pages/AboutUs";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Support from "../pages/Support";
 import Cart from "../pages/Cart";
 import Booking from "../pages/Booking";
 import ProductDetail from "../pages/ProductDetail";
@@ -18,6 +17,9 @@ import OrderDetail from "../pages/Profiles/OrderDetail";
 import Vouchers from "../pages/Profiles/Vouchers";
 import OrderFail from "../pages/OrderFail";
 import OrderSuccess from "../pages/OrderSuccess";
+import ForgotPassword from "../pages/Supports/ForgotPassword";
+import PolicyReturn from "../pages/Supports/PolicyReturn";
+import Support from "../pages/Supports/Support";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +69,18 @@ const router = createBrowserRouter([
       },
       { path: `${paths.ORDER_FAIL}/:id`, element: <OrderFail /> },
       { path: `${paths.ORDER_SUCCESS}/:id`, element: <OrderSuccess /> },
+      {
+        path: paths.SUPPORT,
+        element: <Support />,
+      },
+      {
+        path: paths.SUPPORT_FORGOT_PASSWORD,
+        element: <ForgotPassword />,
+      },
+      {
+        path: paths.SUPPORT_POLICY_RETURN,
+        element: <PolicyReturn />,
+      },
     ],
   },
   {

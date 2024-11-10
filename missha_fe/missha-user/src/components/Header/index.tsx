@@ -61,6 +61,15 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
                   pathname.includes(paths.PROFILE_BOOKINGS)
                 }
               />
+              <NavItem
+                link={paths.SUPPORT}
+                name="HỖ TRỢ"
+                active={[
+                  paths.SUPPORT,
+                  paths.SUPPORT_FORGOT_PASSWORD,
+                  paths.SUPPORT_POLICY_RETURN,
+                ].includes(pathname)}
+              />
               {/* <NavItem
                 link={paths.SUPPORT}
                 name="HỖ TRỢ"

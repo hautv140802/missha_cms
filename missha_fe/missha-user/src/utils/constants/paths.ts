@@ -21,6 +21,8 @@ const paths = {
   BOOKING: "/booking",
   ORDER_SUCCESS: "/order-success",
   ORDER_FAIL: "/order-fail",
+  SUPPORT_FORGOT_PASSWORD: "/support/forgot-password",
+  SUPPORT_POLICY_RETURN: "/support/policy-return",
 };
 
 export default paths;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import orderApis from "../apis/orderApis";
 import { BaseData } from "../types/base/baseData";
 import { OrderType } from "../types/response/order";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Spin } from "antd";
 import paths from "../utils/constants/paths";
 import ProductComponent from "../components/Product";

@@ -16,6 +16,9 @@ import quickSort_4 from "./quickSort_4.png";
 import quickSort_5 from "./quickSort_5.jpg";
 import test_product from "./test_product.jpg";
 import product from "./product.jpg";
+import forgotPassword from "./forgot-password.png";
+import policyReturn from "./policy-return.png";
+import imageEmpty from "./image-empty.png";
 const images = {
   banner_1,
   banner_2,
@@ -35,6 +38,9 @@ const images = {
   quickSort_5,
   test_product,
   product,
+  forgotPassword,
+  policyReturn,
+  imageEmpty,
 };
 
 export default images;
