@@ -30,7 +30,7 @@ const Bookings = () => {
     "pagination[pageSize]": 5,
     "pagination[page]": currentPage,
     "sort[0]": "updatedAt:desc",
-    "filters[user]": user?.id?.toString(),
+    "filters[user]": user?.id,
   });
   return (
     <div className="w-ful bg-white">

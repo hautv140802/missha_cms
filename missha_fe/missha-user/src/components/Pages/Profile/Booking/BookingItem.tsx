@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import paths from "../../../../utils/constants/paths";
+import images from "../../../../assets/images";
 
 interface IBookingItemProps {
   booking: BaseData<BookingType>;
@@ -47,10 +48,12 @@ const BookingItem = (props: IBookingItemProps) => {
       <div className="flex justify-start items-center gap-[1.2rem]">
         <div className="min-w-[8.2rem] w-[8.2rem] min-h-[8.2rem] h-[8.2rem] border">
           <img
-            src={formatUrl(
-              booking.attributes.service.data.attributes.banner.data.attributes
-                .url
-            )}
+            src={
+              formatUrl(
+                booking?.attributes?.service?.data?.attributes?.banner?.data
+                  ?.attributes?.url
+              ) || images.imageEmpty
+            }
             className="w-full h-full object-cover"
             loading="lazy"
           />
@@ -59,11 +62,13 @@ const BookingItem = (props: IBookingItemProps) => {
         <div className="w-full flex justify-between items-start h-[8.2rem]">
           <div className="w-full flex flex-col gap-[0.8rem]">
             <p className="text-[1.6rem] leading-[2.2rem] text-[rgba(0,0,0,0.87)] max-w-[30rem] line-clamp-1">
-              {booking.attributes.service.data.attributes.title}
+              {booking?.attributes?.service?.data?.attributes?.title}
             </p>
             <div className="flex justify-between items-end">
               <span className="text-[1.4rem] text-black">
-                {formatPrice(booking.attributes.service.data.attributes.price)}
+                {formatPrice(
+                  booking?.attributes?.service?.data?.attributes?.price
+                )}
               </span>
             </div>
           </div>
@@ -71,17 +76,19 @@ const BookingItem = (props: IBookingItemProps) => {
             <p className="text-nowrap text-[1.4rem]">
               Ngày booking:{" "}
               <span>
-                {dayjs(booking.attributes.date.toString()).format("DD/MM/YYYY")}
+                {dayjs(booking?.attributes?.date?.toString()).format(
+                  "DD/MM/YYYY"
+                )}
               </span>
             </p>
 
-            <StatusOrder status={booking.attributes.status} />
+            <StatusOrder status={booking?.attributes?.status} />
             <div>
               <p className="text-[1.2rem]">
-                {booking.attributes.customer_phone}
+                {booking?.attributes?.customer_phone}
               </p>
               <p className="text-[1.2rem]">
-                {booking.attributes.customer_full_name}
+                {booking?.attributes?.customer_full_name}
               </p>
             </div>
           </div>

@@ -6,6 +6,7 @@ import { CategoryType } from "../../types/response/category";
 import { BaseData } from "../../types/base/baseData";
 import formatUrl from "../../utils/functions/formatUrl";
 import paths from "../../utils/constants/paths";
+import images from "../../assets/images";
 
 interface IQuickFilterComponent {
   categories?: BaseData<CategoryType>[];
@@ -48,9 +49,11 @@ const QuickFilterComponent = (props: IQuickFilterComponent) => {
               >
                 <div className="relative group">
                   <img
-                    src={formatUrl(
-                      cateItem?.attributes?.banner?.data?.attributes?.url
-                    )}
+                    src={
+                      formatUrl(
+                        cateItem?.attributes?.banner?.data?.attributes?.url
+                      ) || images.imageEmpty
+                    }
                     className="w-[12rem] h-[12rem] rounded-[16px] object-cover"
                     alt={cateItem?.attributes?.banner?.data?.attributes?.name}
                   />

@@ -14,6 +14,7 @@ import { ServiceType } from "../types/response/service";
 import { BaseData } from "../types/base/baseData";
 import ClipBoardCustom from "../assets/svgs/Custom/ClipBoard";
 import { Tooltip } from "antd";
+import images from "../assets/images";
 const Booking = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -67,9 +68,11 @@ const Booking = () => {
               <div className="group relative">
                 <div className="h-[19rem]">
                   <img
-                    src={formatUrl(
-                      newServices?.attributes?.banner?.data?.attributes?.url
-                    )}
+                    src={
+                      formatUrl(
+                        newServices?.attributes?.banner?.data?.attributes?.url
+                      ) || images.imageEmpty
+                    }
                     className="w-full h-full object-cover"
                     alt={`Treatment ${index + 1}`}
                   />

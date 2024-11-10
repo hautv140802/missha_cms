@@ -1,3 +1,4 @@
+import images from "../../../../assets/images";
 import { BaseData } from "../../../../types/base/baseData";
 import { OrderDetailType } from "../../../../types/response/orderDetail";
 import { formatPrice } from "../../../../utils/functions/formatPrice";
@@ -12,10 +13,12 @@ const OrderItem = (props: IOrderItemProps) => {
     <div className="flex justify-start items-center gap-[1.2rem]">
       <div className="min-w-[8.2rem] w-[8.2rem] min-h-[8.2rem] h-[8.2rem] border">
         <img
-          src={formatUrl(
-            order_detail?.attributes?.product?.data?.attributes?.avatar?.data
-              ?.attributes?.url
-          )}
+          src={
+            formatUrl(
+              order_detail?.attributes?.product?.data?.attributes?.avatar?.data
+                ?.attributes?.url
+            ) || images.imageEmpty
+          }
           className="w-full h-full object-cover"
         />
       </div>

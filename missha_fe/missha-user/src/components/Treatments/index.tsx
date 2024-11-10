@@ -4,6 +4,7 @@ import { ServiceType } from "../../types/response/service";
 import formatUrl from "../../utils/functions/formatUrl";
 import paths from "../../utils/constants/paths";
 import ClipBoardCustom from "../../assets/svgs/Custom/ClipBoard";
+import images from "../../assets/images";
 interface ITreatmentComponentProps {
   page?: "product" | "booking";
   treatments: BaseData<ServiceType>[];
@@ -27,9 +28,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
           {treatments?.[0] && (
             <div className="group relative w-[31.6rem] h-[24rem] border hover:bg-[rgba(0,0,0,0.3)] ">
               <img
-                src={formatUrl(
-                  treatments?.[0]?.attributes?.banner?.data?.attributes?.url
-                )}
+                src={
+                  formatUrl(
+                    treatments?.[0]?.attributes?.banner?.data?.attributes?.url
+                  ) || images.imageEmpty
+                }
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -54,9 +57,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[1] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] ">
                 <img
-                  src={formatUrl(
-                    treatments?.[1]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[1]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -81,9 +86,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[2] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] ">
                 <img
-                  src={formatUrl(
-                    treatments?.[2]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[2]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -109,9 +116,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
           {treatments?.[3] && (
             <div className="group relative w-[34.5rem] h-[24rem] border hover:bg-[rgba(0,0,0,0.3)] ">
               <img
-                src={formatUrl(
-                  treatments?.[3]?.attributes?.banner?.data?.attributes?.url
-                )}
+                src={
+                  formatUrl(
+                    treatments?.[3]?.attributes?.banner?.data?.attributes?.url
+                  ) || images.imageEmpty
+                }
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -135,9 +144,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[4] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] ">
                 <img
-                  src={formatUrl(
-                    treatments?.[4]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[4]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -162,9 +173,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[5] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] ">
                 <img
-                  src={formatUrl(
-                    treatments?.[5]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[5]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -199,9 +212,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
           {treatments?.[0] && (
             <div className="group relative w-[31.6rem] h-[35.2rem] border hover:bg-[rgba(0,0,0,0.3)] ">
               <img
-                src={formatUrl(
-                  treatments?.[0]?.attributes?.banner?.data?.attributes?.url
-                )}
+                src={
+                  formatUrl(
+                    treatments?.[0]?.attributes?.banner?.data?.attributes?.url
+                  ) || images.imageEmpty
+                }
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -224,9 +239,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[1] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] ">
                 <img
-                  src={formatUrl(
-                    treatments?.[1]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[1]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -251,9 +268,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[2] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] ">
                 <img
-                  src={formatUrl(
-                    treatments?.[2]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[2]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -279,9 +298,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
           {treatments?.[3] && (
             <div className="group relative w-[34.5rem] h-[35.2rem] border hover:bg-[rgba(0,0,0,0.3)] ">
               <img
-                src={formatUrl(
-                  treatments?.[3]?.attributes?.banner?.data?.attributes?.url
-                )}
+                src={
+                  formatUrl(
+                    treatments?.[3]?.attributes?.banner?.data?.attributes?.url
+                  ) || images.imageEmpty
+                }
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -305,9 +326,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[4] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] ">
                 <img
-                  src={formatUrl(
-                    treatments?.[4]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[4]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -332,9 +355,11 @@ const TreatmentComponent = (props: ITreatmentComponentProps) => {
             {treatments?.[5] && (
               <div className="group relative w-[34.5rem] h-full border hover:bg-[rgba(0,0,0,0.3)] cursor-pointer">
                 <img
-                  src={formatUrl(
-                    treatments?.[5]?.attributes?.banner?.data?.attributes?.url
-                  )}
+                  src={
+                    formatUrl(
+                      treatments?.[5]?.attributes?.banner?.data?.attributes?.url
+                    ) || images.imageEmpty
+                  }
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
