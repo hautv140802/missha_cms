@@ -116,7 +116,7 @@ const ProductForm = (props: IProductFormProps) => {
       name: record?.attributes?.name,
       slug: record?.attributes?.slug,
       price: record?.attributes?.price,
-      sale_price: record?.attributes?.price || 0,
+      sale_price: record?.attributes?.price,
       categories: record?.attributes?.categories?.data.map(
         category => category.id
       ),
@@ -549,7 +549,7 @@ const ProductForm = (props: IProductFormProps) => {
 
           <div className="flex flex-col gap-[1.2rem] mt-[1rem]">
             <UploadImageComponent
-              label="Bộ sư tập:"
+              label="Bộ sưu tập:"
               maxCount={1}
               onAddImage={handleAddGallery}
               disabled={isDisable}
@@ -564,6 +564,7 @@ const ProductForm = (props: IProductFormProps) => {
       </div>
 
       <ReactQuillComponent
+        label="Mô tả"
         setCurrentValue={setDescription}
         currentValue={description}
       />

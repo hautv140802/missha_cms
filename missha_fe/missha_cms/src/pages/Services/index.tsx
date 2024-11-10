@@ -80,7 +80,7 @@ const Serives = () => {
       render: price => formatPrice(price),
     },
     {
-      title: 'banner',
+      title: 'Ảnh dịch vụ',
       dataIndex: ['attributes', 'banner', 'data'],
       key: 'banner',
       render: (banner: BaseData<ImageType>) => (

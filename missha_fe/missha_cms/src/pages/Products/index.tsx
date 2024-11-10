@@ -20,6 +20,7 @@ import {
 import defaultKey from '@/utils/constants/default';
 import formType from '@/utils/constants/formType';
 import PAGE_SIZE from '@/utils/constants/pageSize';
+import { formatPrice } from '@/utils/functions/formatPrice';
 import { SettingOutlined } from '@ant-design/icons';
 import { Avatar, TableColumnsType } from 'antd';
 import Search from 'antd/es/input/Search';
@@ -99,14 +100,16 @@ const Products = () => {
       title: 'Giá bán',
       dataIndex: ['attributes', 'price'],
       key: 'price',
+      render: price => formatPrice(Number(price)),
     },
     {
       title: 'Giá giảm',
       dataIndex: ['attributes', 'sale_price'],
       key: 'sale_price',
+      render: sale_price => formatPrice(Number(sale_price)),
     },
     {
-      title: 'Bộ sư tập',
+      title: 'Bộ sưu tập',
       dataIndex: ['attributes', 'gallery', 'data'],
       key: 'gallery',
       render: (gallery: BaseData<ImageType>[]) => (

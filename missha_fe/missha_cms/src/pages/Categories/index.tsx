@@ -64,7 +64,7 @@ const Categories = () => {
       key: 'slug',
     },
     {
-      title: 'Banner',
+      title: 'Ảnh dịch vụ',
       dataIndex: ['attributes', 'banner', 'data'],
       key: 'banner',
       render: (banner: BaseData<ImageType>) => (

@@ -111,7 +111,7 @@ const ReactQuillComponent = (props: IReactQuillComponentProps) => {
               labelClassName
             )}
           >
-            {label}
+            {label}:
           </label>
           <div
             className={clsx(

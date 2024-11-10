@@ -178,7 +178,7 @@ const ServiceForm = (props: IProductLineFormProps) => {
       />
       <div className="flex flex-col gap-[0.6rem]">
         <UploadImageComponent
-          label="Ảnh danh mục:"
+          label="Ảnh dịch vụ:"
           maxCount={1}
           onAddImage={handleAddBanner}
           disabled={isView}
