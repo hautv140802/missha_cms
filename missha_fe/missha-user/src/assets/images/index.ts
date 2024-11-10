@@ -19,6 +19,8 @@ import product from "./product.jpg";
 import forgotPassword from "./forgot-password.png";
 import policyReturn from "./policy-return.png";
 import imageEmpty from "./image-empty.png";
+import zalo from "./zalo.jpg";
+import messager from "./messenger.png";
 const images = {
   banner_1,
   banner_2,
@@ -41,6 +43,8 @@ const images = {
   forgotPassword,
   policyReturn,
   imageEmpty,
+  zalo,
+  messager,
 };
 
 export default images;
