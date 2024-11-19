@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import svgs from "../../assets/svgs";
-import { Badge } from "antd";
+import { Badge, Input } from "antd";
 import paths from "../../utils/constants/paths";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavItem from "./NavItem";
 import useCartStore from "../../stores/useCartStore";
+import { useState } from "react";
+import SearchResultList from "../SearchResultList";
 
 interface IHeaderComponentProps {
   className?: string;
@@ -18,6 +20,12 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
   const { getTotalQuantity } = useCartStore();
 
   const totalQuantity = getTotalQuantity();
+
+  const [searchKey, setSearchKey] = useState<string>();
+
+  const handleResetSearch = () => {
+    setSearchKey(undefined);
+  };
   return (
     <div className="w-full shadow-md fixed top-0 bg-white opacity-100 z-[1000]">
       <div className={clsx("w-[120rem] mx-auto py-[1.2rem]", className)}>
@@ -35,6 +43,19 @@ const HeaderComponent = (props: IHeaderComponentProps) => {
             </div>
           </Link>
 
+          <div className="w-[30rem]">
+            {searchKey && (
+              <SearchResultList
+                searchKey={searchKey}
+                handleResetSearch={handleResetSearch}
+              />
+            )}
+            <Input
+              placeholder="Tìm kiếm sản phẩm"
+              onChange={(e) => setSearchKey(e?.target?.value)}
+              value={searchKey}
+            />
+          </div>
           <div className="flex justify-end items-center gap-[10rem]">
             <nav className="flex justify-between items-center gap-[5rem]">
               <NavItem

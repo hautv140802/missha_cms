@@ -6,4 +6,5 @@ export type productRequestType = BaseRequest & {
   "filters[$and][0][sale_price][$gte]"?: string;
   "filters[$and][1][sale_price][$lte]"?: string;
   "filters[categories][slug]"?: string;
+  _q?: string;
 };
